@@ -107,4 +107,4 @@ To remove an existing field, simply comment out the `<AccordionLayout />` compon
 
 ## Acknowledgments
 
-I want to thank [@USKhokhar](https://github.com/USKhokhar "@USKhokhar") who did [Astro-Vitae](https://github.com/USKhokhar/astro-vitae "Astro-Vitae") that served as the basis for this project.
+I want to thank [@USKhokhar](https://github.com/USKhokhar "@USKhokhar") as well as @mmouzo(https://github.com/mmouzo) who inspired this page.
