@@ -1,8 +1,8 @@
 ---
 title: about
-name: "Cezar Kelso"
+name: "Julian Yves Richard Corbet"
 designation: "Senior Detective"
-location: Los Angeles, CA 90001
+location: Zurich, ZH 8003
 website: "https://corbet.ch"
 ---
 
