@@ -1,6 +1,6 @@
-# Astro-CV-Esquelete
+# Corbet CV 
 
-Astro-CV-Esquelete is a free, easy-to-use CV template with a clean design. Just fill in your details and you're ready to go!
+Corbet CV - smart CV page 
 
 ## Project Structure
 
