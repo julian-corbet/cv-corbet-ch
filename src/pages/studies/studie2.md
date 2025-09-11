@@ -4,7 +4,7 @@ location: Frankfurt, Germany
 url: https://www.goethe-university-frankfurt.de/
 institute: Goethe University Frankfurt
 date: 2017
-tags: ["Psychology", "quantitative research"]
+tags: ["Psychology","quantitative research"]
 ---
 
     

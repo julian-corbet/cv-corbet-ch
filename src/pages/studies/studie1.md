@@ -5,9 +5,5 @@ url: https://www.goethe-university-frankfurt.de/
 institute: Goethe University Frankfurt
 date: 2022
 tags:
-  [
-    "Physics",
-    "AI",
-    "Neuroscience",
-  ]
+  ["Physics","AI","Neuroscience"]
 ---
