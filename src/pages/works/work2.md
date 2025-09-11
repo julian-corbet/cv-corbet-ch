@@ -1,22 +1,16 @@
 ---
-title: Tactical Team Leader
-date: 1985 - 1990
-url: http://atawajof.dz/vonilzor
-location: Los Angeles, California
-org: Los Angeles County Sheriff's Department – SWAT Division
+title: AIRBUS Defense & Space
+date: 2023 - 2024
+url: https://www.airbus.com/en/products-services/defence
+location: Ingolstadt, Germany
+org: AIRBUS
 tags:
   [
-    "SWAT",
-    "Surveillance",
-    "Undercover Operations",
-    "Evidence Gathering",
-    "Case Solving",
-    "Interviewing Skills",
+    "Defense",
+    "Air Power Branch",
   ]
 ---
-
-- Led SWAT operations in high-risk situations, including hostage rescues, armed standoffs, and counter-terrorism missions.
-- Developed and implemented tactical plans tailored to specific scenarios, ensuring the safety of hostages, civilians, and law enforcement personnel.
-- Conducted specialized training for SWAT team members in firearms proficiency, close-quarters combat, tactical movement, and hostage negotiation.
-- Coordinated with local, state, and federal agencies to support joint operations and enhance interagency cooperation.
-- Provided expertise and assistance in the planning and execution of high-profile security details for visiting dignitaries, VIPs, and major events.
+Certification Engineer | Master thesis Airworthiness
+- Responsibility: Owned technical analysis of decades of unstructured aircraft maintenance data to identify cost overruns and compliance exposures
+- Initiative: Built automated data models leveraging AI tools to speed up analysis, uncovered operational issues highlighting six-figure savings potential
+- Success: Triggered redesign of data analysis and warehousing workflows, inspired a seven-figure long-term investment plan reshaping maintenance
