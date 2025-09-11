@@ -1,5 +1,5 @@
 ---
-title: Bachelor of Science in Psychology | Grade: 1.6 (CH: 5.6 adj.) | Apr 2017 
+title: Bachelor of Science in Psychology
 location: Frankfurt, Germany
 url: https://www.goethe-university-frankfurt.de/
 institute: Goethe University Frankfurt
