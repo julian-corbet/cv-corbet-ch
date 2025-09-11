@@ -1,6 +1,6 @@
 ---
 title: Swisscom | Swisscom Financial Services via CDI (Talent Solutions Provider)
-date: 2024 - 2025
+date: 06/2024 - 03/2025
 url: https://www.swisscom.ch/
 location: Bern + Zürich, Switzerland
 org: Swisscom
