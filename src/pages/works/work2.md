@@ -1,6 +1,6 @@
 ---
 title: AIRBUS Defense & Space
-date: 2023 - 2024
+date: 07/2023 - 03/2024
 url: https://www.airbus.com/en/products-services/defence
 location: Ingolstadt, Germany
 org: AIRBUS
