@@ -10,6 +10,8 @@ const projects = Object.values(await import.meta.glob("../pages/projects/*.md", 
 const studies = Object.values(await import.meta.glob("../pages/studies/*.md", { eager: true })) as any[];
 const certificates = Object.values(await import.meta.glob("../pages/certificates/*.md", { eager: true })) as any[];
 const blogs = Object.values(await import.meta.glob("../pages/blogs/*.md", { eager: true })) as any[];
+const section1 = Object.values(await import.meta.glob("../pages/section1/*.md", { eager: true })) as any[];
+const section2 = Object.values(await import.meta.glob("../pages/section2/*.md", { eager: true })) as any[];
 const contact = Object.values(await import.meta.glob("../pages/contact/*.md", { eager: true })) as any[];
 
 const PDF = "/corbet-cv-2025.pdf";
@@ -101,6 +103,40 @@ const PDF = "/corbet-cv-2025.pdf";
             description={item.compiledContent()}
             url={item.frontmatter.url}
             url_name={item.frontmatter.url_name}
+          />
+        );
+      })
+    }
+  </AccordionLayout>
+
+  <AccordionLayout title={"Sektion 1"} icon={"carbon:folder"}>
+    {
+      section1.map((item) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
+            url={item.frontmatter.url}
+            url_name={"Mehr erfahren"}
+          />
+        );
+      })
+    }
+  </AccordionLayout>
+
+  <AccordionLayout title={"Sektion 2"} icon={"carbon:folder-add"}>
+    {
+      section2.map((item) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
+            url={item.frontmatter.url}
+            url_name={"Mehr erfahren"}
           />
         );
       })
