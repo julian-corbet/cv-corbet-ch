@@ -9,21 +9,37 @@ import { Icon } from "astro-icon/components";
 <html lang="gl">
   <head>
     <script is:inline>
-      const savedTheme = localStorage.getItem("theme");
-      const currentTheme = savedTheme || "lofi";
-      document.documentElement.setAttribute("data-theme", currentTheme);
+      // Custom theme management - no external dependencies
+      const initTheme = () => {
+        const theme = localStorage.getItem('theme') || 'lofi';
+        document.documentElement.setAttribute('data-theme', theme);
+        return theme;
+      };
 
-      // Ensure toggle state matches theme
-      document.addEventListener("DOMContentLoaded", () => {
+      const updateToggle = (theme) => {
         const toggle = document.querySelector('input[data-toggle-theme]');
-        if (toggle) {
-          toggle.checked = currentTheme === "black";
+        if (toggle) toggle.checked = theme === 'black';
+      };
+
+      // Initialize theme
+      const currentTheme = initTheme();
+
+      // Update toggle state
+      updateToggle(currentTheme);
+
+      // Theme change function
+      window.changeTheme = (checked) => {
+        const theme = checked ? 'black' : 'lofi';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+      };
+
+      // Event delegation for toggle
+      document.addEventListener('change', (e) => {
+        if (e.target.matches('input[data-toggle-theme]')) {
+          window.changeTheme(e.target.checked);
         }
       });
-    </script>
-    <script>
-      import { themeChange } from "theme-change";
-      themeChange();
     </script>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/favicon.webp" />
