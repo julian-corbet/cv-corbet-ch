@@ -9,13 +9,17 @@ import { Icon } from "astro-icon/components";
 <html lang="gl">
   <head>
     <script is:inline>
-      if (localStorage.getItem("theme") === null) {
-        document.documentElement.setAttribute("data-theme", "lofi");
-      } else
-        document.documentElement.setAttribute(
-          "data-theme",
-          localStorage.getItem("theme")
-        );
+      const savedTheme = localStorage.getItem("theme");
+      const currentTheme = savedTheme || "lofi";
+      document.documentElement.setAttribute("data-theme", currentTheme);
+
+      // Ensure toggle state matches theme
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggle = document.querySelector('input[data-toggle-theme]');
+        if (toggle) {
+          toggle.checked = currentTheme === "black";
+        }
+      });
     </script>
     <script>
       import { themeChange } from "theme-change";
@@ -25,6 +29,9 @@ import { Icon } from "astro-icon/components";
     <link rel="icon" type="image/png" href="/favicon.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="preload" href="/corbet-cv-2025.pdf" as="document" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>Corbet CV</title>
   </head>
   <body class="flex flex-col min-h-screen">
@@ -38,7 +45,6 @@ import { Icon } from "astro-icon/components";
         data-toggle-theme="black,lofi"
         data-act-class="ACTIVECLASS"
         class="toggle toggle-sm mx-1 bg-secondary"
-        checked
       />
       <Icon name="carbon:light" class="w-4 h-4" />
     </div>

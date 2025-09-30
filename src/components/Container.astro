@@ -4,12 +4,14 @@ import AccordionLayout from "../layouts/AccordionLayout.astro";
 import * as about from "../pages/about/about.md";
 import Card from "./Card.astro";
 import ContactCard from "./ContactCard.astro";
-const works = await Astro.glob("../pages/works/*.md");
-const projects = await Astro.glob("../pages/projects/*.md");
-const studies = await Astro.glob("../pages/studies/*.md");
-const certificates = await Astro.glob("../pages/certificates/*.md");
-const blogs = await Astro.glob("../pages/blogs/*.md");
-const contact = await Astro.glob("../pages/contact/*.md");
+
+const works = Object.values(await import.meta.glob("../pages/works/*.md", { eager: true })) as any[];
+const projects = Object.values(await import.meta.glob("../pages/projects/*.md", { eager: true })) as any[];
+const studies = Object.values(await import.meta.glob("../pages/studies/*.md", { eager: true })) as any[];
+const certificates = Object.values(await import.meta.glob("../pages/certificates/*.md", { eager: true })) as any[];
+const blogs = Object.values(await import.meta.glob("../pages/blogs/*.md", { eager: true })) as any[];
+const contact = Object.values(await import.meta.glob("../pages/contact/*.md", { eager: true })) as any[];
+
 const PDF = "/corbet-cv-2025.pdf";
 ---
 

@@ -5,5 +5,34 @@ import compress from "astro-compress";
 
 export default defineConfig({
   output: "static",
-  integrations: [tailwind(), icon(), compress()]
+  compressHTML: true,
+  build: {
+    inlineStylesheets: 'auto',
+  },
+  vite: {
+    build: {
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ['astro-icon']
+          }
+        }
+      }
+    },
+    optimizeDeps: {
+      exclude: ['astro-compress']
+    }
+  },
+  integrations: [
+    tailwind(),
+    icon(),
+    compress({
+      CSS: true,
+      HTML: true,
+      Image: true,
+      JavaScript: true,
+      SVG: true,
+    })
+  ]
 });
