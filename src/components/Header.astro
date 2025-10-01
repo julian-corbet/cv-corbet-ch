@@ -28,17 +28,13 @@ import * as about from "../pages/about/about.md";
       <h2 class="text-lg mb-2 text-secondary">
         {about.frontmatter.designation}
       </h2>
-      <div class="flex items-center justify-center mt-1">
+      <div class="flex items-center justify-center mt-1 text-sm text-secondary">
+        <Icon name="carbon:phone" class="w-4 h-4 mr-1" />
+        <span class="mr-3">+41 79 930 3796</span>
         <Icon name="carbon:location" class="w-4 h-4 mr-1" />
-        <p class="text-sm text-secondary">{about.frontmatter.location}</p>
-      </div>
-	  <div class="flex items-center justify-center mt-1">
-        <Icon name="carbon:location" class="w-4 h-4 mr-1" />
-        <p class="text-sm text-secondary">{about.frontmatter.location}</p>
-      </div>
-	  <div class="flex items-center justify-center mt-1">
-        <Icon name="carbon:location" class="w-4 h-4 mr-1" />
-        <p class="text-sm text-secondary">{about.frontmatter.location}</p>
+        <span class="mr-3">Zürich, Switzerland</span>
+        <Icon name="carbon:email" class="w-4 h-4 mr-1" />
+        <span>career@mgmt.corbet.ch</span>
       </div>
     </div>
   </article>

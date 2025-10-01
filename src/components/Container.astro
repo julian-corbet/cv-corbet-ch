@@ -12,6 +12,9 @@ const certificates = Object.values(await import.meta.glob("../pages/certificates
 const blogs = Object.values(await import.meta.glob("../pages/blogs/*.md", { eager: true })) as any[];
 const section1 = Object.values(await import.meta.glob("../pages/section1/*.md", { eager: true })) as any[];
 const section2 = Object.values(await import.meta.glob("../pages/section2/*.md", { eager: true })) as any[];
+const section3 = Object.values(await import.meta.glob("../pages/section3/*.md", { eager: true })) as any[];
+const section4 = Object.values(await import.meta.glob("../pages/section4/*.md", { eager: true })) as any[];
+
 const contact = Object.values(await import.meta.glob("../pages/contact/*.md", { eager: true })) as any[];
 
 const PDF = "/corbet-cv-2025.pdf";
@@ -142,6 +145,42 @@ const PDF = "/corbet-cv-2025.pdf";
       })
     }
   </AccordionLayout>
+
+  <AccordionLayout title={"Sektion 3"} icon={"carbon:data-table"}>
+    {
+      section3.map((item) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
+            url={item.frontmatter.url}
+            url_name={"Details"}
+          />
+        );
+      })
+    }
+  </AccordionLayout>
+
+  <AccordionLayout title={"Sektion 4"} icon={"carbon:analytics"}>
+    {
+      section4.map((item) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
+            url={item.frontmatter.url}
+            url_name={"Details"}
+          />
+        );
+      })
+    }
+  </AccordionLayout>
+
+
 
   <AccordionLayout title={"Files"} icon={"carbon:volume-file-storage"}>
     <div class="flex justify-center w-full">
