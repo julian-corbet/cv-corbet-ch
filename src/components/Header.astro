@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import * as about from "../pages/about/about.md";
+import * as contacts from "../pages/contacts.md";
 ---
 
 <header class="mx-auto pt-6 pb-2 relative">
@@ -28,13 +29,36 @@ import * as about from "../pages/about/about.md";
       <h2 class="text-lg mb-2 text-secondary">
         {about.frontmatter.designation}
       </h2>
-      <div class="flex items-center justify-center mt-1 text-sm text-secondary">
+      <div class="flex items-center justify-start mt-1 text-sm text-secondary">
         <Icon name="carbon:phone" class="w-4 h-4 mr-1" />
-        <span class="mr-3">+41 79 930 3796</span>
+        <span class="mr-3">{contacts.frontmatter.header.phone}</span>
         <Icon name="carbon:location" class="w-4 h-4 mr-1" />
-        <span class="mr-3">Zürich, Switzerland</span>
+        <span class="mr-3">{contacts.frontmatter.header.location}</span>
         <Icon name="carbon:email" class="w-4 h-4 mr-1" />
-        <span>career@mgmt.corbet.ch</span>
+        <span>{contacts.frontmatter.header.email}</span>
+      </div>
+      <div class="flex items-center justify-start mt-1 text-sm text-secondary">
+        <span class="mr-2">Let's grab coffee:</span>
+        <Icon name="carbon:calendar" class="w-4 h-4 mr-1" />
+        <a href={contacts.frontmatter.social.calendar} class="underline hover:no-underline text-green-600 mr-3" target="_blank">connect.corbet.ch</a>
+        <span class="mr-2">|</span>
+        {
+          Object.entries(contacts.frontmatter.social).filter(([key]) => key !== 'calendar').map(([platform, url]: [string, string]) => {
+            // Map platform names to icon names
+            const iconMap = {
+              whatsapp: 'mdi:whatsapp',
+              telegram: 'mdi:telegram',
+              linkedin: 'mdi:linkedin',
+              twitter: 'mdi:twitter'
+            };
+            const iconName = iconMap[platform as keyof typeof iconMap] || 'carbon:add';
+            return (
+              <a href={url} class="mr-1 hover:scale-105 transition-transform" target="_blank" rel="noopener">
+                <Icon name={iconName} class="w-4 h-4" />
+              </a>
+            );
+          })
+        }
       </div>
     </div>
   </article>

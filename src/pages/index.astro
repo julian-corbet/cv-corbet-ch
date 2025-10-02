@@ -11,14 +11,14 @@ import { Icon } from "astro-icon/components";
     <script is:inline>
       // Custom theme management - no external dependencies
       const initTheme = () => {
-        const theme = localStorage.getItem('theme') || 'lofi';
+        const theme = localStorage.getItem('theme') || 'black'; // Default dark
         document.documentElement.setAttribute('data-theme', theme);
         return theme;
       };
 
       const updateToggle = (theme) => {
         const toggle = document.querySelector('input[data-toggle-theme]');
-        if (toggle) toggle.checked = theme === 'black';
+        if (toggle) toggle.checked = theme === 'lofi'; // Checked = Light mode now
       };
 
       // Initialize theme
@@ -29,7 +29,7 @@ import { Icon } from "astro-icon/components";
 
       // Theme change function
       window.changeTheme = (checked) => {
-        const theme = checked ? 'black' : 'lofi';
+        const theme = checked ? 'lofi' : 'black'; // Checked = Light, Unchecked = Dark
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
       };
