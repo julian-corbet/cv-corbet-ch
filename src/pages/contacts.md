@@ -3,15 +3,15 @@
 
 header:
   phone: "+41 79 930 3796"
-  email: "career@mgmt.corbet.ch"
+  email: "social+cv@mgmt.corbet.ch"
   location: "ZH, CH"
 
 social:
   calendar: "https://connect.corbet.ch/time"
   signal: "https://signal.me/#p/USER"
   whatsapp: "https://wa.me/+4179303796"
-  telegram: "https://t.me/USER"
-  linkedin: "https://linkedin.com/in/user"
+  telegram: "https://t.me/rich_co"
+  linkedin: "https://www.linkedin.com/in/julian-corbet/"
   threema: "https://threema.id/USER"
   x: "https://x.com/USER"
   matrix: "@USER:matrix.org"
