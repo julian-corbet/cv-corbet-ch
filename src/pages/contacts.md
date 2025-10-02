@@ -1,5 +1,5 @@
 ---
-# All your contact information in one maintainable place
+# All contact information in one maintainable place
 
 header:
   phone: "+41 79 930 3796"
@@ -19,4 +19,4 @@ social:
 
 # Contact Information
 
-This file centrally manages all your contact details and social links for the CV header.
+This file centrally manages all contact details and social links for the CV header.
