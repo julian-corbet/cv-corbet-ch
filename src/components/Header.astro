@@ -54,25 +54,29 @@ import * as contacts from "../pages/contacts.md";
         </div>
         <div class="flex items-center">
           {
-            Object.entries(contacts.frontmatter.social).filter(([key]) => key !== 'calendar').map(([platform, url]: [string, string]) => {
+            Object.entries(contacts.frontmatter.social).filter(([key]) => key !== 'calendar').sort(([a], [b]) => a.localeCompare(b)).map(([platform, url]: [string, string]) => {
             // Map platform names to icon names
             const iconMap = {
               whatsapp: 'mdi:whatsapp',
               telegram: 'mdi:telegram',
               linkedin: 'mdi:linkedin',
-              github: 'carbon:logo-github',
               x: 'carbon:logo-x'
             };
               const iconName = iconMap[platform as keyof typeof iconMap] || 'carbon:add';
               return (
                 <a href={url} class="mr-1 hover:scale-105 transition-transform" target="_blank" rel="noopener">
-                  {platform === 'signal' ? (
-                    <img src="/signal.svg" alt="Signal Messenger" class="w-4 h-4 signal-icon" />
-                  ) : platform === 'matrix' ? (
-                    <img src="/matrix.png" alt="Matrix" class="w-4 h-4 matrix-icon" />
-                  ) : (
-                    <Icon name={iconName} class="w-4 h-4" />
-                  )}
+                {platform === 'signal' ? (
+                  <img src="/signal.svg" alt="Signal Messenger" class="w-4 h-4 signal-icon" />
+                ) : platform === 'matrix' ? (
+                  <img src="/matrix.png" alt="Matrix" class="w-4 h-4 matrix-icon" />
+                ) : platform === 'threema' ? (
+                  <>
+                    <img src="/threema.svg" alt="Threema" class="w-4 h-4 threema-icon threema-light" />
+                    <img src="/threema-negative.svg" alt="Threema" class="w-4 h-4 threema-icon threema-dark hidden" />
+                  </>
+                ) : (
+                  <Icon name={iconName} class="w-4 h-4" />
+                )}
                 </a>
               );
             })

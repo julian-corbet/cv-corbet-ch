@@ -12,7 +12,7 @@ social:
   whatsapp: "https://wa.me/+4179303796"
   telegram: "https://t.me/USER"
   linkedin: "https://linkedin.com/in/user"
-  github: "https://github.com/user"
+  threema: "https://threema.id/USER"
   x: "https://x.com/USER"
   matrix: "@USER:matrix.org"
 ---
