@@ -5,15 +5,17 @@ import * as about from "../pages/about/about.md";
 import Card from "./Card.astro";
 import ContactCard from "./ContactCard.astro";
 
-const works = Object.values(await import.meta.glob("../pages/works/*.md", { eager: true })) as any[];
-const projects = Object.values(await import.meta.glob("../pages/projects/*.md", { eager: true })) as any[];
-const studies = Object.values(await import.meta.glob("../pages/studies/*.md", { eager: true })) as any[];
-const certificates = Object.values(await import.meta.glob("../pages/certificates/*.md", { eager: true })) as any[];
-const blogs = Object.values(await import.meta.glob("../pages/blogs/*.md", { eager: true })) as any[];
-const section1 = Object.values(await import.meta.glob("../pages/section1/*.md", { eager: true })) as any[];
-const section2 = Object.values(await import.meta.glob("../pages/section2/*.md", { eager: true })) as any[];
-const section3 = Object.values(await import.meta.glob("../pages/section3/*.md", { eager: true })) as any[];
-const section4 = Object.values(await import.meta.glob("../pages/section4/*.md", { eager: true })) as any[];
+const executiveSummary = Object.values(await import.meta.glob("../pages/executive-summary/*.md", { eager: true })) as any[];
+const valuesVision = Object.values(await import.meta.glob("../pages/values-vision/*.md", { eager: true })) as any[];
+const skillsFinance = Object.values(await import.meta.glob("../pages/skills-finance/*.md", { eager: true })) as any[];
+const skillsStrategy = Object.values(await import.meta.glob("../pages/skills-strategy/*.md", { eager: true })) as any[];
+const skillsCloudAi = Object.values(await import.meta.glob("../pages/skills-cloud-ai/*.md", { eager: true })) as any[];
+const experiments = Object.values(await import.meta.glob("../pages/experiments/*.md", { eager: true })) as any[];
+const highlightedProjects = Object.values(await import.meta.glob("../pages/highlighted-projects/*.md", { eager: true })) as any[];
+const jobHistory = Object.values(await import.meta.glob("../pages/job-history/*.md", { eager: true })) as any[];
+const education = Object.values(await import.meta.glob("../pages/education/*.md", { eager: true })) as any[];
+const personalBackground = Object.values(await import.meta.glob("../pages/personal-background/*.md", { eager: true })) as any[];
+const references = Object.values(await import.meta.glob("../pages/references/*.md", { eager: true })) as any[];
 
 const contact = Object.values(await import.meta.glob("../pages/contact/*.md", { eager: true })) as any[];
 
@@ -21,15 +23,114 @@ const PDF = "/corbet-cv-2025.pdf";
 ---
 
 <div class="join join-vertical gap-1">
-  <AccordionLayout title={"About"} icon={"carbon:identification"}>
-    <article class="text-justify">
-      <Fragment set:html={about.compiledContent()} />
-    </article>
+  <AccordionLayout title={"Executive Summary"} icon={"carbon:identification"}>
+    {
+      executiveSummary.map((item) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+          />
+        );
+      })
+    }
   </AccordionLayout>
 
-  <AccordionLayout title={"Work"} icon={"carbon:construction"}>
+  <AccordionLayout title={"Values & Vision"} icon={"carbon:idea"}>
     {
-      works.map((item) => {
+      valuesVision.map((item) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+          />
+        );
+      })
+    }
+  </AccordionLayout>
+
+  <AccordionLayout title={"Skills: Finance"} icon={"carbon:chart-line"}>
+  {
+    skillsFinance.map((item) => {
+      return (
+        <Card
+          title={item.frontmatter.title}
+          timeframe={item.frontmatter.date}
+          description={item.compiledContent()}
+          tags={item.frontmatter.tags}
+        />
+      );
+    })
+  }
+</AccordionLayout>
+
+  <AccordionLayout title={"Skills: Strategy"} icon={"carbon:diagram"}>
+    {
+      skillsStrategy.map((item) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
+          />
+        );
+      })
+    }
+  </AccordionLayout>
+
+  <AccordionLayout title={"Skills: Cloud & AI"} icon={"carbon:chip"}>
+    {
+      skillsCloudAi.map((item) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
+          />
+        );
+      })
+    }
+  </AccordionLayout>
+
+  <AccordionLayout title={"Thoughts & Experiments"} icon={"carbon:chemistry"}>
+    {
+      experiments.map((item) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
+          />
+        );
+      })
+    }
+  </AccordionLayout>
+
+  <AccordionLayout title={"Key Projects"} icon={"carbon:code"}>
+    {
+      highlightedProjects.map((item) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
+            url={item.frontmatter.url}
+            url_name={"View project"}
+          />
+        );
+      })
+    }
+  </AccordionLayout>
+
+  <AccordionLayout title={"Job History"} icon={"carbon:portfolio"}>
+    {
+      jobHistory.map((item) => {
         return (
           <Card
             title={item.frontmatter.title}
@@ -45,9 +146,9 @@ const PDF = "/corbet-cv-2025.pdf";
     }
   </AccordionLayout>
 
-  <AccordionLayout title={"Studies"} icon={"carbon:education"}>
+  <AccordionLayout title={"Education"} icon={"carbon:education"}>
     {
-      studies.map((item) => {
+      education.map((item) => {
         return (
           <Card
             title={item.frontmatter.title}
@@ -62,118 +163,28 @@ const PDF = "/corbet-cv-2025.pdf";
     }
   </AccordionLayout>
 
-  <AccordionLayout title={"Projects"} icon={"carbon:tools"}>
+  <AccordionLayout title={"Social & Impact"} icon={"carbon:share"}>
     {
-      projects.map((item) => {
+      personalBackground.map((item) => {
         return (
           <Card
             title={item.frontmatter.title}
             timeframe={item.frontmatter.date}
             description={item.compiledContent()}
-            tags={item.frontmatter.tags}
-            url={item.frontmatter.url}
-            url_name={"View project"}
           />
         );
       })
     }
   </AccordionLayout>
 
-  <AccordionLayout title={"Certifications"} icon={"carbon:certificate"}>
+  <AccordionLayout title={"References"} icon={"carbon:task"}>
     {
-      certificates.map((item) => {
+      references.map((item) => {
         return (
           <Card
             title={item.frontmatter.title}
             timeframe={item.frontmatter.date}
             description={item.compiledContent()}
-            tags={item.frontmatter.tags}
-            url={item.frontmatter.url}
-            url_name={"View Certificate"}
-          />
-        );
-      })
-    }
-  </AccordionLayout>
-
-  <AccordionLayout title={"Blogs"} icon={"carbon:pen"}>
-    {
-      blogs.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
-            description={item.compiledContent()}
-            url={item.frontmatter.url}
-            url_name={item.frontmatter.url_name}
-          />
-        );
-      })
-    }
-  </AccordionLayout>
-
-  <AccordionLayout title={"Sektion 1"} icon={"carbon:folder"}>
-    {
-      section1.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
-            description={item.compiledContent()}
-            tags={item.frontmatter.tags}
-            url={item.frontmatter.url}
-            url_name={"Mehr erfahren"}
-          />
-        );
-      })
-    }
-  </AccordionLayout>
-
-  <AccordionLayout title={"Sektion 2"} icon={"carbon:folder-add"}>
-    {
-      section2.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
-            description={item.compiledContent()}
-            tags={item.frontmatter.tags}
-            url={item.frontmatter.url}
-            url_name={"Mehr erfahren"}
-          />
-        );
-      })
-    }
-  </AccordionLayout>
-
-  <AccordionLayout title={"Sektion 3"} icon={"carbon:data-table"}>
-    {
-      section3.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
-            description={item.compiledContent()}
-            tags={item.frontmatter.tags}
-            url={item.frontmatter.url}
-            url_name={"Details"}
-          />
-        );
-      })
-    }
-  </AccordionLayout>
-
-  <AccordionLayout title={"Sektion 4"} icon={"carbon:analytics"}>
-    {
-      section4.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
-            description={item.compiledContent()}
-            tags={item.frontmatter.tags}
-            url={item.frontmatter.url}
-            url_name={"Details"}
           />
         );
       })
@@ -206,19 +217,6 @@ const PDF = "/corbet-cv-2025.pdf";
     </div>
   </AccordionLayout>
 
-  <AccordionLayout title={"Contact"} icon={"carbon:location-person"}>
-    <div class="flex flex-wrap content-around gap-4 justify-center">
-      {
-        contact.map((item) => {
-          return (
-            <ContactCard
-              url={item.frontmatter.url}
-              url_name={item.frontmatter.title}
-              icon={item.frontmatter.icon}
-            />
-          );
-        })
-      }
-    </div>
-  </AccordionLayout>
+
+
 </div>

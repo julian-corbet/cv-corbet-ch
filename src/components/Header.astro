@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import * as about from "../pages/about/about.md";
+import * as executiveSummary from "../pages/executive-summary/summary.md";
 import * as contacts from "../pages/contacts.md";
 ---
 
@@ -20,10 +20,10 @@ import * as contacts from "../pages/contacts.md";
 
     <div class="text-left md:max-w-md mx-auto">
       <h1 class="text-3xl font-extrabold tracking-tight md:text-3xl relative">
-        {about.frontmatter.name}
+        {executiveSummary.frontmatter.name}
       </h1>
       <h2 class="text-lg mb-2 text-secondary">
-        {about.frontmatter.designation}
+        {executiveSummary.frontmatter.designation}
       </h2>
       <div class="flex items-center md:justify-between mt-1 text-sm text-secondary">
         <span class="flex items-center">

@@ -3,7 +3,7 @@
 
 header:
   phone: "+41 79 930 3796"
-  email: "social+cv@mgmt.corbet.ch"
+  email: "career@mgmt.corbet.ch"
   location: "ZH, CH"
 
 social:
