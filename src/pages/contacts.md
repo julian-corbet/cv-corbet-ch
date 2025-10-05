@@ -2,7 +2,7 @@
 # All contact information in one maintainable place
 
 header:
-  phone: "+41 79 930 3796"
+  phone: "+41 79 930 37 96"
   email: "career@mgmt.corbet.ch"
   location: "ZH, CH"
 

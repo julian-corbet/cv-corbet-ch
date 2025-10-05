@@ -28,7 +28,7 @@ import * as contacts from "../pages/contacts.md";
       <div class="flex items-center md:justify-between mt-1 text-sm text-secondary">
         <span class="flex items-center">
           <Icon name="carbon:phone" class="w-4 h-4 mr-1" />
-          {contacts.frontmatter.header.phone}
+          <a href={`tel:${contacts.frontmatter.header.phone}`} class="hover:underline">{contacts.frontmatter.header.phone}</a>
         </span>
         <span class="mx-2">|</span>
         <span class="flex items-center">
@@ -38,7 +38,7 @@ import * as contacts from "../pages/contacts.md";
         <span class="mx-2">|</span>
         <span class="flex items-center">
           <Icon name="carbon:email" class="w-4 h-4 mr-1" />
-          {contacts.frontmatter.header.email}
+          <a href={`mailto:${contacts.frontmatter.header.email}`} class="hover:underline">{contacts.frontmatter.header.email}</a>
         </span>
       </div>
       <div class="flex items-center justify-between mt-1 text-sm text-secondary">
