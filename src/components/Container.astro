@@ -268,7 +268,7 @@ const PDF = "/corbet-cv-2025.pdf";
 
 <script is:inline>
   document.querySelectorAll('.folder-collapse input').forEach((input) => {
-    const figure = input.closest('.folder-collapse').querySelector('.figure');
+    const figure = input.closest('.folder-collapse').querySelector('figure');
     input.addEventListener('change', () => {
       figure.style.display = input.checked ? 'none' : 'flex';
     });
