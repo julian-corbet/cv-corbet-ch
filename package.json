@@ -12,7 +12,6 @@
   "dependencies": {
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/dm-sans": "^5.0.5",
-    "@iconify-json/carbon": "^1.1.31",
     "@iconify-json/mdi": "^1.1.64",
     "astro": "^5.14.1",
     "astro-compress": "^2.2.21",
@@ -21,6 +20,7 @@
     "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
+    "@iconify-json/carbon": "^1.2.13",
     "@tailwindcss/typography": "^0.5.10",
     "daisyui": "^4.9.0"
   }
