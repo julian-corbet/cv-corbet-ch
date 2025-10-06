@@ -2,7 +2,7 @@
 title: Independent
 subtitle: A Softer Space & Corbet Consulting (Freelance Management Consulting)
 date: 01/2018 - 06/2023
-url: https://asofterspace.com/
+header_url: https://asofterspace.com/
 location: CH, DE, IS, UK
 org: A Softer Space
 tags:

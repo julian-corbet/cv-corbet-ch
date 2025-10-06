@@ -2,7 +2,7 @@
 title: NEXGEN
 subtitle: Business Consultants (meanwhile part of cofinpro)
 date: 04/2022 - 06/2022
-url: https://cofinpro.de/
+header_url: https://cofinpro.de/
 location: Frankfurt, Germany
 org: NEXGEN
 tags:

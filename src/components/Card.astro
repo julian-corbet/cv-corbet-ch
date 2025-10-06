@@ -1,23 +1,30 @@
 ---
 import { Icon } from "astro-icon/components";
-const { timeframe, title, description, url, tags, url_name, location, subtitle } =
+const { timeframe, title, description, url, tags, url_name, location, subtitle, header_url } =
   Astro.props;
 ---
 
 <div class="card card-compact card-bordered bg-transparent w-full md:w-128 lg:w-160 hover:shadow-lg transition-all my-4">
-  <div class="card-body">
+  <div class={`card-body ${url ? 'grid grid-cols-[1fr_160px] gap-4' : ''}`}>
     {title && (
-      <div class="mb-2">
-        <div class="flex justify-between items-start">
-          <span class="inline-block uppercase card-title font-extrabold tracking-tighter md:text-2xl">{title}</span>
+      <div class={`mb-2 ${url ? 'col-span-2' : ''}`}>
+        <div class="flex justify-between items-center prose">
+          {header_url ? (
+            <a href={header_url} target="_blank" class="inline-block uppercase card-title font-extrabold tracking-tighter md:text-2xl hover:underline">
+              {title}
+              <Icon name="carbon:link" class="w-4 h-4 ml-2 inline" />
+            </a>
+          ) : (
+            <span class="inline-block uppercase card-title font-extrabold tracking-tighter md:text-2xl">{title}</span>
+          )}
           {timeframe && (
-            <span class="inline-block align-baseline shadow-sm px-3 py-0.5 rounded font-mono text-sm">
+            <span class="inline-block font-mono text-sm">
               {timeframe}
             </span>
           )}
         </div>
-        <div class="text-left">
-          {subtitle && <h2 class="italic text-base font-normal text-secondary">{subtitle}</h2>}
+        <div class="text-left -mt-0.5">
+          {subtitle && <h2 class="italic text-base font-normal text-secondary m-0">{subtitle}</h2>}
           {location && (
             <div class="flex items-center mt-1">
               <Icon name="carbon:location" class="w-4 h-4 mr-1" />
@@ -28,37 +35,44 @@ const { timeframe, title, description, url, tags, url_name, location, subtitle }
       </div>
     )}
 
-    <div class="grid grid-cols-3 gap-4 place-items-center">
-      <div class={`${title ? 'col-span-2' : (url ? 'col-span-2' : 'col-span-3')} ${!url && !timeframe ? 'self-start justify-self-start text-left col-span-3' : 'self-start justify-self-start text-left'}`}>
-      <div class="${title ? 'col-span-2' : 'col-span-3'} self-start justify-self-start text-left">
+    <div class="flex items-center">
+      <div class={`flex-1 text-left ${url ? 'max-w-prose' : 'max-w-none'}`}>
         <article class="prose prose-lg md:prose-xl text-base leading-relaxed max-w-none font-normal text-justify hyphens-auto prose-p:last:mb-0">
           <Fragment set:html={description}></Fragment>
         </article>
-        {Array.isArray(tags) && tags.length > 0 && (
-          <div class="flex flex-wrap content-around gap-2 my-4">
-            {tags.map((item) => (
-              <span class="badge text-center inline-block align-middle w-max h-max text-sm  badge-outline shadow-md mb-1" :key={item}>{item}</span>
-            ))}
-          </div>
-        )}
       </div>
-
-      {!title && timeframe && (
-        <div class="self-center justify-self-center">
-          <div class="badge w-max h-max text-center badge-outline inline-block align-middle shadow-md font-mono">
-            {timeframe}
-          </div>
-        </div>
-      )}
-
-      {url && (
-        <div class="self-center justify-self-end">
-          <a href={url} target="_blank" class="link link-hover text-sm text-right flex justify-center items-center">
-            {url_name}
-            {url && url !== "#" && url.trim() !== "" && <Icon name="carbon:link" class="w-4 h-4 ml-2" />}
-          </a>
+      {(!title && (timeframe || url)) && (
+        <div class="flex items-center gap-2 ml-4">
+          {!title && timeframe && (
+            <div class="badge w-max text-center font-mono">
+              {timeframe}
+            </div>
+          )}
+          {!title && url && (
+            <a href={url} target="_blank" class="link link-hover text-sm flex items-center">
+              {url_name}
+              {url && url !== "#" && url.trim() !== "" && <Icon name="carbon:link" class="w-4 h-4 ml-2" />}
+            </a>
+          )}
         </div>
       )}
     </div>
+
+    {url && title && (
+      <div class="flex flex-col h-full justify-center items-end">
+        <a href={url} target="_blank" class="link link-hover text-sm flex items-center">
+          {url_name}
+          {url && url !== "#" && url.trim() !== "" && <Icon name="carbon:link" class="w-4 h-4 ml-2" />}
+        </a>
+      </div>
+    )}
+
+    {Array.isArray(tags) && tags.length > 0 && (
+      <div class={`flex flex-wrap content-around gap-2 my-4 ${url ? 'col-span-2' : ''}`}>
+        {tags.map((item) => (
+          <span class="badge text-center inline-block align-middle w-max h-max text-sm  badge-outline shadow-md mb-1" :key={item}>{item}</span>
+        ))}
+      </div>
+    )}
   </div>
 </div>

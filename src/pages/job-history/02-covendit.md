@@ -2,7 +2,7 @@
 title: COVENDIT
 subtitle: Corporate Finance
 date: 04/2022 - 06/2022
-url: https://covendit.de/
+header_url: https://covendit.de/
 location: Frankfurt, Germany
 org: COVENDIT
 tags:
