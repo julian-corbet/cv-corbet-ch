@@ -33,6 +33,10 @@ downloads:
     description: "Academic CV - highlighting research and qualifications"
     button: "Download PDF"
     filename: "downloads/cv_academic.pdf"
+  - title: "test"
+    description: "test"
+    button: "Download PDF"
+    filename: "downloads/highschool.pdf"
 ---
 
 # Downloads
