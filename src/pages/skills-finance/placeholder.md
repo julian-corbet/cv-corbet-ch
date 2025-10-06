@@ -1,7 +1,7 @@
 ---
-title: Finance Skills
+title: Financial Modelling
 date: 2025
 tags: ["Financial Analysis", "Investment Banking", "Strategy", "Procurement"]
 ---
 
-Coming soon - detailed finance and investment skills will be outlined here.
+Applies DCF, Multiples & comps; skilled in scenario and sensitivity analysis, enables debt & equity financing decisions
