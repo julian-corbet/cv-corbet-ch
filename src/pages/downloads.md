@@ -44,4 +44,4 @@ downloads:
 
 # Downloads
 
-This file defines all downloadable files for the CV section.
+This file defines all downloadable files for the downloads section. Only use spaces, not tabs. (YAML format)
