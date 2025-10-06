@@ -1,5 +1,6 @@
 ---
-title: A Softer Space & Corbet Consulting (Bespoke Software Development Startup | Freelance Management Consulting)
+title: Independent
+subtitle: A Softer Space & Corbet Consulting (Freelance Management Consulting)
 date: 01/2018 - 06/2023
 url: https://asofterspace.com/
 location: CH, DE, IS, UK

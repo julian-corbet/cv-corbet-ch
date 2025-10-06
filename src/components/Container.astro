@@ -29,8 +29,6 @@ const PDF = "/corbet-cv-2025.pdf";
       executiveSummary.map((item) => {
         return (
           <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
             description={item.compiledContent()}
           />
         );
@@ -56,12 +54,13 @@ const PDF = "/corbet-cv-2025.pdf";
   {
     skillsFinance.map((item) => {
       return (
-        <Card
-          title={item.frontmatter.title}
-          timeframe={item.frontmatter.date}
-          description={item.compiledContent()}
-          tags={item.frontmatter.tags}
-        />
+          <Card
+            title={item.frontmatter.title}
+            subtitle={item.frontmatter.subtitle}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
+          />
       );
     })
   }
