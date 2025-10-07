@@ -28,7 +28,7 @@ downloads:
         description: "Bachelor of Science Certificate in Psychology"
         button: "Download PDF"
         filename: "downloads/bsc_psychology.pdf"
-	  - title: "test nochmal"
+      - title: "test nochmal"
         description: "copy und paste die Herausforderung"
         button: "Download PDF"
         filename: "downloads/cv_detailed.pdf"

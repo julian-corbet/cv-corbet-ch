@@ -41,6 +41,43 @@ import { Icon } from "astro-icon/components";
         }
       });
     </script>
+    <script is:inline>
+      // Handle hash links to open accordions and scroll to cards
+      function handleHash() {
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+          let targetElement = document.getElementById(hash);
+          if (targetElement) {
+            // Check if target is inside a collapse-content (accordion content)
+            const collapseContent = targetElement.closest('.collapse-content');
+            if (collapseContent) {
+              // Find the checkbox inside the parent collapse
+              const collapse = collapseContent.closest('.collapse');
+              if (collapse) {
+                const checkbox = collapse.querySelector('input[type="checkbox"]');
+                if (checkbox && !checkbox.checked) {
+                  checkbox.checked = true;
+                }
+              }
+            } else if (targetElement.classList.contains('collapse')) {
+              // If target is the accordion itself
+              const checkbox = targetElement.querySelector('input[type="checkbox"]');
+              if (checkbox && !checkbox.checked) {
+                checkbox.checked = true;
+              }
+            }
+            // Scroll to the target
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      }
+
+      // Handle initial hash on page load
+      window.addEventListener('DOMContentLoaded', handleHash);
+
+      // Handle hash changes (e.g., browser back/forward)
+      window.addEventListener('hashchange', handleHash);
+    </script>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/favicon.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

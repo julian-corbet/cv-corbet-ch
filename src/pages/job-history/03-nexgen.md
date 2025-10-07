@@ -7,10 +7,11 @@ location: Frankfurt, Germany
 org: NEXGEN
 tags:
   [
-    "Fintech",
+    "Fintech:skills-finance",
     "Regulation of securities",
-	"Cloud",
+	"Cloud:skills-cloud-ai",
   ]
+link_id: "nexgen"
 ---
 Junior Consultant | working student 
 - Responsibility: Evaluated regulatory exposure and performance bottlenecks in Tier 1 banking IT systems for T+1 securities settlement

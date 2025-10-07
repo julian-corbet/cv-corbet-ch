@@ -1,10 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
-const { timeframe, title, description, url, tags, url_name, location, subtitle, header_url } =
+const { timeframe, title, description, url, tags, url_name, location, subtitle, header_url, id } =
   Astro.props;
 ---
 
-<div class="card card-compact card-bordered bg-transparent w-full md:w-128 lg:w-160 hover:shadow-lg transition-all my-4">
+<div id={id} class="card card-compact card-bordered bg-transparent w-full md:w-128 lg:w-160 hover:shadow-lg transition-all my-4">
   <div class={`card-body ${url ? 'grid grid-cols-[1fr_160px] gap-4' : ''}`}>
     {title && (
       <div class={`mb-2 ${url ? 'col-span-2' : ''}`}>
@@ -69,9 +69,30 @@ const { timeframe, title, description, url, tags, url_name, location, subtitle, 
 
     {Array.isArray(tags) && tags.length > 0 && (
       <div class={`flex flex-wrap content-around gap-2 my-4 ${url ? 'col-span-2' : ''}`}>
-        {tags.map((item) => (
-          <span class="badge text-center inline-block align-middle w-max h-max text-sm  badge-outline shadow-md mb-1" :key={item}>{item}</span>
-        ))}
+        {tags.map((item) => {
+          if (item.includes(':')) {
+            const [label, link_id] = item.split(':');
+            if (link_id.trim()) {
+              return (
+                <a href={`#${link_id.trim()}`} class="badge text-center inline-block align-middle w-max h-max text-sm badge-outline shadow-md mb-1 link link-hover">
+                  {label}
+                </a>
+              );
+            } else {
+              return (
+                <span class="badge text-center inline-block align-middle w-max h-max text-sm badge-outline shadow-md mb-1">
+                  {label}
+                </span>
+              );
+            }
+          } else {
+            return (
+              <span class="badge text-center inline-block align-middle w-max h-max text-sm badge-outline shadow-md mb-1">
+                {item}
+              </span>
+            );
+          }
+        })}
       </div>
     )}
   </div>

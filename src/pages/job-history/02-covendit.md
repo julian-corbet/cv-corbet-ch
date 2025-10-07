@@ -7,9 +7,10 @@ location: Frankfurt, Germany
 org: COVENDIT
 tags:
   [
-    "Investment Banking",
+    "Investment Banking:skills-finance",
     "MidCap M&A Advisory",
   ]
+link_id: "covendit"
 ---
 Investment Banking Analyst | working student
 - Responsibility: Supported seven-figure client-facing M&A deals, prepared teasers, information memorandums and financial models (multiples, DCF)

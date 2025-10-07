@@ -9,8 +9,9 @@ tags:
   [
     "Startup",
     "Freelance",
-	"Management Consulting",
+	"Management Consulting:skills-strategy",
   ]
+link_id: "independent"
 ---
 Co-Founder | Head of Business Development | Freelance Management Consultant 
 - Responsibility: Led business development; built distributed team and client base across Europe with emphasis on long-term customer relationships

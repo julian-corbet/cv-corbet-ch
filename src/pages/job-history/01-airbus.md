@@ -10,6 +10,7 @@ tags:
     "Defense",
     "Air Power Branch",
   ]
+link_id: "airbus"
 ---
 Certification Engineer | Master thesis Airworthiness
 - Responsibility: Owned technical analysis of decades of unstructured aircraft maintenance data to identify cost overruns and compliance exposures
