@@ -1,7 +1,7 @@
 ---
-title: Financial Modelling
-tags: ["Financial Analysis", "Investment Banking", "Strategy", "Procurement"]
+title: Transactions
+tags: ["Financial Analysis", "Investment Banking", "Strategy"]
 link_id: "transactions"
 ---
 
-Applies DCF, Multiples & comps; skilled in scenario and sensitivity analysis, enables debt & equity financing decisions
+ Experience in origination, due diligence & IMs; skilled in structuring and execution of strategic growth investments (Buy & Build)
