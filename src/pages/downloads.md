@@ -5,7 +5,7 @@ downloads:
     button: "Download PDF"
     filename: "downloads/education/msc_physics.pdf"
   - title: "Employment reference Airbus"
-    description: "Employment reference from Airbus Defence & Space  (Defense industry | Air power branch) in Germany"
+    description: "Employment reference from Airbus Defence & Space  (Defense industry & Air power branch) in Germany"
     button: "Download PDF"
     filename: "downloads/employment/airbus.pdf"
   - title: "Employment reference Covendit"
