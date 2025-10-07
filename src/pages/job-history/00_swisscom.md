@@ -5,7 +5,7 @@ date: 06/2024 - 03/2025
 header_url: https://www.swisscom.ch/
 location: Bern + Zürich, Switzerland
 org: Swisscom
-tags: ["Finance:financial-modelling", "Strategy:transactions", "Cloud", "AI"]
+tags: ["Finance:financial-modelling", "Strategy:downloads", "Cloud", "AI"]
 link_id: "swisscom"
 ---
 Executive Assistant | Consultant to multiple departments (B2B & Infrastructure)
