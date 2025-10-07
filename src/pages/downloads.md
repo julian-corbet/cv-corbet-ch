@@ -20,10 +20,10 @@ downloads:
     type: "folder"
     description: "View my additional documents (certificates, transcripts, and reference letters) here"
     children:
-      - title: "CV Detailed"
-        description: "Extended CV in two pages - detailed version with more content"
+      - title: "Employment reference NexGen"
+        description: "Employment reference from NexGen (MidCap M&A Advisory) in Germany"
         button: "Download PDF"
-        filename: "downloads/cv_detailed.pdf"
+        filename: "downloads/nexgen.pdf"
       - title: "CV One Page"
         description: "Condensed CV - optimized for quick reading"
         button: "Download PDF"
