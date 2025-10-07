@@ -24,7 +24,7 @@ downloads:
         description: "Employment reference from NexGen (Focus on FinTech & Regulation of securities & Cloud) in Germany"
         button: "Download PDF"
         filename: "downloads/nexgen.pdf"
-      - title: "Bachelor of Science Certifcate in Psychology"
+      - title: "Bachelor Certifcate in Psychology"
         description: "Bachelor of Science Certificate in Psychology"
         button: "Download PDF"
         filename: "downloads/education/bsc_psychology"
