@@ -32,6 +32,10 @@ downloads:
         description: "Bachelor of Science Certificate in Physics"
         button: "Download PDF"
         filename: "downloads/education/bsc_physics"
+      - title: "Certificate Teaching Students"
+        description: "Co-Creation of a mentoring program enlisting all undergrads"
+        button: "Download PDF"
+        filename: "downloads/certificates/students.pdf"
       
   
 ---
