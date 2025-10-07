@@ -7,9 +7,9 @@ location: Frankfurt, Germany
 org: NEXGEN
 tags:
   [
-    "Fintech:skills-finance",
+    "Fintech:transactions",
     "Regulation of securities",
-	"Cloud:skills-cloud-ai",
+	"Cloud:dataair",
   ]
 link_id: "nexgen"
 ---

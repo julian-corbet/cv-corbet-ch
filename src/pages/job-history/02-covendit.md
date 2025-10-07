@@ -7,7 +7,7 @@ location: Frankfurt, Germany
 org: COVENDIT
 tags:
   [
-    "Investment Banking:skills-finance",
+    "Investment Banking:financial-modelling",
     "MidCap M&A Advisory",
   ]
 link_id: "covendit"
