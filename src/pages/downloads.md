@@ -4,6 +4,10 @@ downloads:
     description: "Master of Science Certificate in Physics"
     button: "Download PDF"
     filename: "downloads/education/msc_physics.pdf"
+  - title: "Employment reference Airbus"
+    description: "Employment reference from Airbus Defence & Space in Germany"
+    button: "Download PDF"
+    filename: "downloads/employment-references/CORBET_Airbus_2024.pdf"
   - title: "Extended Portfolio"
     type: "folder"
     description: "View my additional documents (certificates, transcripts, and reference letters) here"
@@ -32,14 +36,7 @@ downloads:
         description: "copy und paste die Herausforderung"
         button: "Download PDF"
         filename: "downloads/cv_detailed.pdf"
-  - title: "CV Academic"
-    description: "Academic CV - highlighting research and qualifications"
-    button: "Download PDF"
-    filename: "downloads/cv_academic.pdf"
-  - title: "test"
-    description: "test"
-    button: "Download PDF"
-    filename: "downloads/highschool.pdf"
+  
 ---
 
 # Downloads
