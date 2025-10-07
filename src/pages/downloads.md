@@ -1,12 +1,12 @@
 ---
 downloads:
-  - title: "Resume Tech"
-    description: "Technical resume - focused on skills and technologies"
+  - title: "Master Certificate Physics"
+    description: "Master of Science Certificate in Physics"
     button: "Download PDF"
-    filename: "downloads/resume_tech.pdf"
-  - title: "My Documents"
+    filename: "downloads/education/msc_physics.pdf"
+  - title: "Extended Portfolio"
     type: "folder"
-    description: "Organized collection of CVs and portfolios"
+    description: "View my additional documents (certificates, transcripts, and reference letters) here"
     children:
       - title: "CV Detailed"
         description: "Extended CV in two pages - detailed version with more content"
@@ -25,7 +25,7 @@ downloads:
         button: "Download PDF"
         filename: "downloads/bsc_physics.pdf"
       - title: "Psychology Bachelor Certificate"
-        description: "Bachelor of Science Certificate in Psychology"
+        description: "View my supporting documents (certificates, transcripts, and reference letters) here"
         button: "Download PDF"
         filename: "downloads/bsc_psychology.pdf"
       - title: "test nochmal"
