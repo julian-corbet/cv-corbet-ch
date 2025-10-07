@@ -7,7 +7,7 @@ downloads:
   - title: "Employment reference Airbus"
     description: "Employment reference from Airbus Defence & Space in Germany"
     button: "Download PDF"
-    filename: "downloads/employment-references/CORBET_Airbus_2024.pdf"
+    filename: "downloads/employment/CORBET_Airbus_2024.pdf"
   - title: "Extended Portfolio"
     type: "folder"
     description: "View my additional documents (certificates, transcripts, and reference letters) here"
