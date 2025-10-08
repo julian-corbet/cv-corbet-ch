@@ -95,5 +95,19 @@ const { timeframe, title, description, url, tags, url_name, location, subtitle, 
         })}
       </div>
     )}
+
+    <script define:vars={{ tags }}>
+      if (Array.isArray(tags) && tags.length > 0) {
+        tags.forEach((item, index) => {
+          console.log(`Tag ${index}:`, item, 'Type:', typeof item);
+          if (item.includes(':')) {
+            const [label, link_id] = item.split(':');
+            console.log('Split - Label:', label, 'Link ID:', link_id.trim(), 'Target:', `#${link_id.trim()}`);
+          }
+        });
+      } else {
+        console.log('Tags not rendered:', tags, 'Type:', typeof tags);
+      }
+    </script>
   </div>
 </div>
