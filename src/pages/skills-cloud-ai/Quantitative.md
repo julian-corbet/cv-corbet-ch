@@ -1,7 +1,6 @@
 ---
-title: Cloud & AI Skills
-date: 2025
+title: Quantitative & Risk
 tags: ["Cloud Computing", "Artificial Intelligence", "Machine Learning", "Data Science"]
 ---
 
-Coming soon - technical cloud and AI capabilities will be demonstrated here.
+Applies forecasting, time series & stochastic models; familiar with option pricing, volatility & risk tools (VaR, Monte Carlo)
