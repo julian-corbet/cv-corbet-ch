@@ -1,7 +1,6 @@
 ---
-title: Strategy Skills
-date: 2025
+title: Executive Materials
 tags: ["Business Strategy", "AI Strategy", "Digital Transformation", "Stakeholder Management"]
 ---
 
-Coming soon - comprehensive strategy and consulting skills will be detailed here.
+Prepares board & investment decks; presents options, trade-offs & recommendations for steerings & executive reviews
