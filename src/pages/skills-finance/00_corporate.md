@@ -1,6 +1,6 @@
 ---
 title: Corporate Finance
-tags: ["Financial Analysis", "Investment Banking", "Strategy"]
+tags: ["Financial Analysis:covendit", "Investment Banking:covendit", "Strategy"]
 link_id: "corporate finance"
 ---
 
