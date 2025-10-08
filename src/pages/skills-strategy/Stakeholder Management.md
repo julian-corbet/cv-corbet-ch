@@ -1,7 +1,6 @@
 ---
-title: Strategy Skills
-date: 2025
+title:  Stakeholder Management
 tags: ["Business Strategy", "AI Strategy", "Digital Transformation", "Stakeholder Management"]
 ---
 
-Coming soon - comprehensive strategy and consulting skills will be detailed here.
+ Aligns functions and manages senior expectations; balances priorities and drives accountable, timely resolutions
