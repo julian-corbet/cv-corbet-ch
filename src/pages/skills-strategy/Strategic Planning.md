@@ -1,7 +1,6 @@
 ---
-title: Strategy Skills
-date: 2025
+title: Strategic Planning
 tags: ["Business Strategy", "AI Strategy", "Digital Transformation", "Stakeholder Management"]
 ---
 
-Coming soon - comprehensive strategy and consulting skills will be detailed here.
+Builds TOMs, roadmaps and KPI | OKR frameworks; establishes high-level dashboards for portfolio cadence & execution
