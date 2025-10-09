@@ -1,10 +1,11 @@
 ---
-title: Bachelor & Master of Science in Physics
-location: Frankfurt, Germany
-url: https://www.goethe-university-frankfurt.de/
-institute: Goethe University Frankfurt
-date: 2024
+title:  Scholarships
+location: Various, Germany
+url: https://www.studienstiftung.de/
+institute: Studienstiftung
 tags:
   ["Physics","AI","Neuroscience"]
-link_id: "bachelor-master-physics"
+link_id: "scholarships"
 ---
+
+debug
