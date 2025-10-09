@@ -1,7 +1,7 @@
 ---
 downloads:
   - title: "CV"
-    description: "CV"
+    description: "Download my CV for a detailed overview of my professional background, skills, and experience"
     button: "Download PDF"
     filename: "downloads/cv_corbet.pdf"
   - title: "Master Certificate Physics"
