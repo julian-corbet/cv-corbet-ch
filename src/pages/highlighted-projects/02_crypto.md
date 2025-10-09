@@ -1,9 +1,10 @@
 ---
-title: DataAir
-url: http://dan.ma/humbe
+title: Crypto Advisory & Mining – Multiple
 tags: ["react", "javaScript", "axios", "HTML", "SCSS", "CSS"]
-date: 2022
-link_id: "dataair"
+date: 2021
+link_id: "crypto"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Blubdiwuoopp.
+Context: 2021 pre-Merge ETH mining viable & very-high ROI; innovative structures & lax regulation allowed crypto boon while minimizing (energy) tax
+Action: Educated stakeholders on crypto, designed technical operating model; sized | costed operation; dealt with rising GPU scarcity & quality issues
+Result: Quick pilot, delivery in time & on budget, optimized operation even further using custom firmware, ensured monitoring & stability while online
