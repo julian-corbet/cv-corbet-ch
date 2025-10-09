@@ -1,5 +1,9 @@
 ---
 downloads:
+  - title: "CV"
+    description: "CV"
+    button: "Download PDF"
+    filename: "downloads/cv_corbet.pdf"
   - title: "Master Certificate Physics"
     description: "Master of Science Certificate in Physics"
     button: "Download PDF"
