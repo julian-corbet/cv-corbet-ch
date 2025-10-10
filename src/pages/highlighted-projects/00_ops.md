@@ -1,5 +1,5 @@
 ---
-title:  Ops Recovery & Cloud Migration – Solar SME Scale-up
+title: Scaling Solar: Cloud Migration & Ops Recovery
 tags: ["react", "javaScript", "axios", "HTML", "SCSS", "CSS"]
 date: 2022
 link_id: "solar"
