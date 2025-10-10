@@ -1,5 +1,5 @@
 ---
-title: Scaling Solar: Cloud Migration & Ops Recovery
+title: Scaling Solar Cloud Migration & Ops Recovery
 tags: ["react", "javaScript", "axios", "HTML", "SCSS", "CSS"]
 date: 2022
 link_id: "solar"
