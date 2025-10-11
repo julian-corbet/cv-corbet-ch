@@ -1,5 +1,5 @@
 ---
-title: AI Literacy & Digital Enablement
+title: Digital Enablement
 tags: ["Cloud Computing", "Artificial Intelligence", "Machine Learning", "Data Science"]
 ---
 
