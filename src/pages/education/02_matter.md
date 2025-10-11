@@ -1,7 +1,5 @@
 ---
-title: Matura
-location: Bad Vilbel, Germany
-url: https://www.gbg-bv.de/
+title: Bridging Mind & Matter
 institute: Georg Büchner Gymnasium
 tags: ["chemistry","physics", "scholarship for high-achieving students"]
 link_id: "matura"
