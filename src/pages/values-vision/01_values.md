@@ -3,23 +3,23 @@ title: Values
 link_id: "values"
 ---
 
-
+Connecting with a team that shares my values is essential for me to deliver my best work. In my experience, breaking those principles only ever leads to subpar outcomes (see the science behind it) - and I’ve regretted every single time that happened.
 
 <ul class="list-disc pl-5">
   <li>
-    <span class="text-green-600 dark:text-green-400">Trust & Loyalty</span> — I show up, protect the team, and speak plainly. Trust keeps focus on the work (not politics) and lets us take smart risks together.
+    <span class="text-accent-light dark:text-accent-dark">Trust & Loyalty</span> — I show up, protect the team, and speak plainly. Mutual trust enables a team to focus on real work (not politics) and inspires to take smart bets together.
   </li>
   <li>
-    <span class="text-green-600 dark:text-green-400">Curiosity & Experimentation</span> — I budget <span class="text-green-600 dark:text-green-400">at least 20%</span> for learning loops and small bets. Technology opens doors tomorrow we can’t try today; we test, measure, adopt what works.
+    <span class="text-accent-light dark:text-accent-dark">Curiosity & Experimentation</span> — I budget <span class="text-accent-light dark:text-accent-dark">at least 20%</span> for learning loops and experiments. Technology is ever evolving and with it the cost to trap oneself in suboptimal systems.
   </li>
   <li>
-    <span class="text-green-600 dark:text-green-400">Humility & Learning</span> — we assume incomplete knowledge. I invite challenge, share credit, own missteps without blame, and turn insights into faster improvement.
+    <span class="text-accent-light dark:text-accent-dark">Humility & Learning</span> — we all are human & failable. I invite challenge, share credit, own missteps without blame, and turn insights into faster improvement.
   </li>
   <li>
-    <span class="text-green-600 dark:text-green-400">Simplicity & Modularity</span> — prefer simple, composable parts; they’re easier to monitor, repair, and replicate. Let complexity live at the system level—individual pieces stay simple.
+    <span class="text-accent-light dark:text-accent-dark">Simplicity & Modularity</span> — prefer simple, composable parts; they’re easier to monitor, repair, and replicate. Let complexity live at the system level—individual pieces stay simple.
   </li>
   <li>
-    <span class="text-green-600 dark:text-green-400">Teamship & Collective Intelligence</span> — the best team answer beats the best solo answer. I facilitate balanced participation, clear roles, and respectful debate so diverse strengths compound.
+    <span class="text-accent-light dark:text-accent-dark">Teamship & Collective Intelligence</span> — the best team answer beats the best solo answer. I facilitate balanced participation, clear roles, and respectful debate so diverse strengths compound.
   </li>
 </ul>
 

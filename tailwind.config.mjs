@@ -22,11 +22,15 @@ export default {
 		],
 	},
 	theme: {
-		extend: {
-			fontFamily: {
-				'sans': ["DM Sans", "Inter", ...defaultTheme.fontFamily.sans],
-			},
+	extend: {
+		colors: {
+			'accent-light': 'rgb(22,163,74)',
+			'accent-dark': 'rgb(74,222,128)',
 		},
+		fontFamily: {
+			'sans': ["DM Sans", "Inter", ...defaultTheme.fontFamily.sans],
+		},
+	},
 	},
 	plugins: [require("@tailwindcss/typography"), require("daisyui")],
 }
