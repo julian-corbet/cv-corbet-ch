@@ -10,4 +10,5 @@ Known for <span style="color:#C5A880">intellectual velocity</span> & <span class
 <span style="color:#9C8564">Excellence</span> proven
 <span style="color:#5EF1D8">Excellence</span> proven
 <span style="color:#5A7D7C">Excellence</span> 
-
+<span style="color:#10B981">Excellence</span>
+<span style="color:#F59E0B">Excellence</span>
