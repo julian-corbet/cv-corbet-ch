@@ -4,7 +4,7 @@ location: Various, Germany
 url: https://www.studienstiftung.de/
 institute: Studienstiftung
 tags:
-  ["high-achieving student"]
+  ["nnn"]
 link_id: "scholarships"
 ---
 
