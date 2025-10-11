@@ -13,7 +13,7 @@ const skillsCloudAi = Object.values(await import.meta.glob("../pages/skills-clou
 const experiments = Object.values(await import.meta.glob("../pages/experiments/*.md", { eager: true })) as any[];
 const highlightedProjects = Object.values(await import.meta.glob("../pages/highlighted-projects/*.md", { eager: true })) as any[];
 const jobHistory = Object.values(await import.meta.glob("../pages/job-history/*.md", { eager: true })) as any[];
-const education = Object.values(await import.meta.glob("../pages/education/*.md", { eager: true })) as any[];
+const education = Object.values(await import.meta.glob("../pages/academic-excellence/*.md", { eager: true })) as any[];
 const personalBackground = Object.values(await import.meta.glob("../pages/personal-background/*.md", { eager: true })) as any[];
 const references = Object.values(await import.meta.glob("../pages/references/*.md", { eager: true })) as any[];
 
@@ -161,7 +161,7 @@ const PDF = "/corbet-cv-2025.pdf";
     }
   </AccordionLayout>
 
-  <AccordionLayout title={"Education"} icon={"carbon:education"}>
+  <AccordionLayout title={"Academic Excellence"} icon={"carbon:education"}>
     {
       education.map((item) => {
         return (
