@@ -7,19 +7,19 @@ Connecting with a team that shares my values is essential for me to deliver my b
 
 <ul class="list-disc pl-5">
   <li>
-    <span class="text-accent-light dark:text-accent-dark">Trust & Loyalty</span> — I show up, protect the team, and speak plainly. Mutual trust enables a team to focus on real work (not politics) and inspires to take smart bets together.
+    ***Trust & Loyalty*** — I show up, protect the team, and speak plainly. Mutual trust enables a team to focus on real work (not politics) and inspires to take smart bets together.
   </li>
   <li>
-    <span class="text-accent-light dark:text-accent-dark">Curiosity & Experimentation</span> — I budget <span class="text-accent-light dark:text-accent-dark">at least 20%</span> for learning loops and experiments. Technology is ever evolving and with it the cost to trap oneself in suboptimal systems.
+    ***Curiosity & Experimentation*** — I budget ***at least 20%*** for learning loops and experiments. Technology is ever evolving and with it the cost to trap oneself in suboptimal systems.
   </li>
   <li>
-    <span class="text-accent-light dark:text-accent-dark">Humility & Learning</span> — we all are human & failable. I invite challenge, share credit, own missteps without blame, and turn insights into faster improvement.
+    ***Humility & Learning*** — we all are human & failable. I invite challenge, share credit, own missteps without blame, and turn insights into faster improvement.
   </li>
   <li>
-    <span class="text-accent-light dark:text-accent-dark">Simplicity & Modularity</span> — prefer simple, composable parts; they’re easier to monitor, repair, and replicate. Let complexity live at the system level—individual pieces stay simple.
+    ***Simplicity & Modularity*** — prefer simple, composable parts; they’re easier to monitor, repair, and replicate. Let complexity live at the system level—individual pieces stay simple.
   </li>
   <li>
-    <span class="text-accent-light dark:text-accent-dark">Teamship & Collective Intelligence</span> — the best team answer beats the best solo answer. I facilitate balanced participation, clear roles, and respectful debate so diverse strengths compound.
+    ***Teamship & Collective Intelligence*** — the best team answer beats the best solo answer. I facilitate balanced participation, clear roles, and respectful debate so diverse strengths compound.
   </li>
 </ul>
 

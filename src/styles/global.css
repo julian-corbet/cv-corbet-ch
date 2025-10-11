@@ -1,0 +1,31 @@
+:root {
+  --md-hl-color: #0ea5e9;           /* Textfarbe */
+  --md-hl-bg: rgba(14,165,233,.22); /* Marker-Hintergrund */
+}
+
+[data-theme="black"] {
+  --md-hl-color: #7dd3fc;
+  --md-hl-bg: rgba(125,211,252,.22);
+}
+
+.md-hl {
+  color: var(--md-hl-color);
+  background: var(--md-hl-bg);
+  border-radius: .25em;
+  padding: .05em .25em;
+  animation: hl-fade .8s ease-out;
+}
+
+@keyframes hl-fade {
+  from { background: color-mix(in srgb, var(--md-hl-bg) 180%, transparent); }
+  to   { background: var(--md-hl-bg); }
+}
+
+.md-hl:hover {
+  animation: hl-pulse 1s infinite alternate;
+}
+
+@keyframes hl-pulse {
+  from { background: color-mix(in srgb, var(--md-hl-bg) 120%, transparent); }
+  to   { background: color-mix(in srgb, var(--md-hl-bg) 180%, transparent); }
+}

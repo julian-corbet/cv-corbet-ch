@@ -13,6 +13,11 @@ import { Icon } from "astro-icon/components";
       const initTheme = () => {
         const theme = localStorage.getItem('theme') || 'black'; // Default dark
         document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'black') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
         return theme;
       };
 
@@ -31,6 +36,11 @@ import { Icon } from "astro-icon/components";
       window.changeTheme = (checked) => {
         const theme = checked ? 'lofi' : 'black'; // Checked = Light, Unchecked = Dark
         document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'black') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
         localStorage.setItem('theme', theme);
       };
 
@@ -85,6 +95,7 @@ import { Icon } from "astro-icon/components";
     <link rel="preload" href="/corbet-cv-2025.pdf" as="document" />
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style is:global>@import "/src/styles/global.css";</style>
     <title>Corbet CV</title>
   </head>
   <body class="flex flex-col min-h-screen">
@@ -174,4 +185,13 @@ import { Icon } from "astro-icon/components";
 
   [data-theme=black] .threema-dark {
     display: block;
+  }
+
+  strong em {
+    color: rgb(255,0,0);
+    font-weight: bold;
+    font-style: normal;
+  }
+  .dark strong em {
+    color: rgb(255,100,100);
   }</style>

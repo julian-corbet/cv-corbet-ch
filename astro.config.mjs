@@ -2,10 +2,16 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import compress from "astro-compress";
+import remarkHighlight from "./src/lib/remarkHighlight.js";
 
 export default defineConfig({
   output: "static",
   compressHTML: true,
+  markdown: {
+    remarkPlugins: [
+      remarkHighlight,
+    ],
+  },
   build: {
     inlineStylesheets: 'auto',
   },
