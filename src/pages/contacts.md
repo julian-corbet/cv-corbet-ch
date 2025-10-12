@@ -12,7 +12,7 @@ social:
   whatsapp: "https://wa.me/+4179303796"
   telegram: "https://t.me/rich_co"
   linkedin: "https://www.linkedin.com/in/julian-corbet/"
-  threema: "https://threema.id/USER"
+  threema: "https://threema.id/7C59AZ8P"
   x: "https://x.com/USER"
   matrix: "@USER:matrix.org"
 ---
