@@ -7,3 +7,5 @@ date: 2017
 tags: ["Psychology","quantitative research"]
 link_id: "bachelor-psychology"
 ---
+Relevant coursework: work and organizational psychology (1.0), clinical psychology (1.0), social psychology (1.3)
+Research: Conducted AI research @FIAS (9 month full-time internship), performed market research interviewing 50+ CEOs, analyzing 1,000+ calls, Development of automated quantitative empathy assessment & standardized AR | VR employee trainings
