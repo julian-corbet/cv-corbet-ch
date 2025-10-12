@@ -4,7 +4,7 @@ location: Frankfurt, Germany
 header_url: https://www.green-fc.de/
 institute: Goethe University Frankfurt
 tags:
-  ["Physics","AI","Neuroscience"]
+  ["physics:bachelor-master-physics","psychology:bachelor-psychology","corporate finance:corporate finance"]
 link_id: "extracurricular"
 ---
 * Pro bono consulting for Roland Berger via GREEN Finance Consulting
