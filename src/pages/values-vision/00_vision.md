@@ -4,7 +4,7 @@ date: 2025
 link_id: "vision"
 ---
 
-I’m a child of the Internet - I built my first PC at the age of 12. Today, in my 30s a growing consensus among leading consultancies envisions a world driven by ***Agentic AI***, where work shifts from people executing tasks to leaders ***designing systems*** that prioritize frictionless and scalable end-to-end execution. Over the next decade, this might extend the winner-takes-most dynamic that is inherent to digital spaces to even more professions and industries as ownership becomes ever more concentrated. I aim to shape that future from within a sector where digital capabilities translate into measurable ***ROI*** for my sponsor - and durable career-capital for me.
+I’m a child of the Internet - I built my first PC at the age of 12. Today, in my 30s a growing consensus among leading consultancies envisions a world driven by ==Agentic AI==, where work shifts from people executing tasks to leaders ==designing systems== that prioritize frictionless and scalable end-to-end execution. Over the next decade, this might extend the winner-takes-most dynamic that is inherent to digital spaces to even more professions and industries as ownership becomes ever more concentrated. I aim to shape that future from within a sector where digital capabilities translate into measurable ==ROI== for my sponsor - and durable career-capital for me.
 
 ---
 
