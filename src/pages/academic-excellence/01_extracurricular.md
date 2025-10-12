@@ -1,6 +1,5 @@
 ---
 title: Extracurricular
-location: Frankfurt, Germany
 header_url: https://www.green-fc.de/
 institute: Goethe University Frankfurt
 tags:
