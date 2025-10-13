@@ -1,11 +1,11 @@
 :root {
-  --md-hl-color: #0ea5e9;           /* Textfarbe */
-  --md-hl-bg: rgba(14,165,233,.22); /* Marker-Hintergrund */
+  --md-hl-color: #166534;           /* Textfarbe */
+  --md-hl-bg: rgba(220,252,231,.22); /* Marker-Hintergrund */
 }
 
 [data-theme="black"] {
-  --md-hl-color: #7dd3fc;
-  --md-hl-bg: rgba(125,211,252,.22);
+  --md-hl-color: #166534;
+  --md-hl-bg: rgba(220,252,231,.22);
 }
 
 .md-hl {
