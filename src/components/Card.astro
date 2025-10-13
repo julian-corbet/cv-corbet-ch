@@ -1,16 +1,36 @@
 ---
 import { Icon } from "astro-icon/components";
-const { timeframe, title, description, url, tags, url_name, location, subtitle, header_url, id } =
-  Astro.props;
+
+const { frontmatter = {}, content = "", ...directProps } = Astro.props;
+const mergedData = { ...frontmatter, ...directProps };
+
+const cardId = mergedData.id ?? mergedData.link_id ?? undefined;
+const title = mergedData.title ?? undefined;
+const subtitle = mergedData.subtitle ?? undefined;
+const timeframe = mergedData.timeframe ?? mergedData.date ?? undefined;
+const location = mergedData.location ?? undefined;
+const tags = Array.isArray(mergedData.tags) ? mergedData.tags : [];
+const titleUrl = mergedData.header_url ?? mergedData.title_url ?? undefined;
+const linkUrl = mergedData.url ?? mergedData.link ?? mergedData.cta_url ?? undefined;
+const linkLabel =
+  mergedData.url_name ??
+  mergedData.url_label ??
+  mergedData.cta_label ??
+  mergedData.cta ??
+  mergedData.org ??
+  undefined;
+const description = typeof content === "string" ? content : "";
+const hasSideLink = Boolean(linkUrl && title);
+const shouldShowStandaloneMeta = !title && (timeframe || linkUrl);
 ---
 
-<div id={id} class="card card-compact card-bordered bg-transparent w-full md:w-128 lg:w-160 hover:shadow-lg transition-all my-4">
-  <div class={`card-body ${url ? 'grid grid-cols-[1fr_160px] gap-4' : ''}`}>
+<div id={cardId} class="card card-compact card-bordered bg-transparent w-full md:w-128 lg:w-160 hover:shadow-lg transition-all my-4">
+  <div class={`card-body ${hasSideLink ? 'grid grid-cols-[1fr_160px] gap-4' : ''}`}>
     {title && (
-      <div class={`mb-2 ${url ? 'col-span-2' : ''}`}>
+      <div class={`mb-2 ${hasSideLink ? 'col-span-2' : ''}`}>
         <div class="flex justify-between items-center prose">
-          {header_url ? (
-            <a href={header_url} target="_blank" class="inline-block uppercase card-title font-extrabold tracking-tighter md:text-2xl hover:underline">
+          {titleUrl ? (
+            <a href={titleUrl} target="_blank" class="inline-block uppercase card-title font-extrabold tracking-tighter md:text-2xl hover:underline">
               {title}
               <Icon name="carbon:link" class="w-4 h-4 ml-2 inline" />
             </a>
@@ -36,39 +56,39 @@ const { timeframe, title, description, url, tags, url_name, location, subtitle, 
     )}
 
     <div class="flex items-center">
-      <div class={`flex-1 text-left ${url ? 'max-w-prose' : 'max-w-none'}`}>
+      <div class={`flex-1 text-left ${hasSideLink ? 'max-w-prose' : 'max-w-none'}`}>
         <article class="prose prose-lg md:prose-xl text-base leading-relaxed max-w-none font-normal text-justify hyphens-auto prose-p:last:mb-0">
           <Fragment set:html={description}></Fragment>
         </article>
       </div>
-      {(!title && (timeframe || url)) && (
+      {shouldShowStandaloneMeta && (
         <div class="flex items-center gap-2 ml-4">
           {!title && timeframe && (
             <div class="badge w-max text-center font-mono">
               {timeframe}
             </div>
           )}
-          {!title && url && (
-            <a href={url} target="_blank" class="link link-hover text-sm flex items-center">
-              {url_name}
-              {url && url !== "#" && url.trim() !== "" && <Icon name="carbon:link" class="w-4 h-4 ml-2" />}
+          {!title && linkUrl && (
+            <a href={linkUrl} target="_blank" class="link link-hover text-sm flex items-center">
+              {linkLabel || "Open link"}
+              {linkUrl && linkUrl !== "#" && linkUrl.trim() !== "" && <Icon name="carbon:link" class="w-4 h-4 ml-2" />}
             </a>
           )}
         </div>
       )}
     </div>
 
-    {url && title && (
+    {hasSideLink && (
       <div class="flex flex-col h-full justify-center items-end">
-        <a href={url} target="_blank" class="link link-hover text-sm flex items-center">
-          {url_name}
-          {url && url !== "#" && url.trim() !== "" && <Icon name="carbon:link" class="w-4 h-4 ml-2" />}
+        <a href={linkUrl} target="_blank" class="link link-hover text-sm flex items-center">
+          {linkLabel || "Open link"}
+          {linkUrl && linkUrl !== "#" && linkUrl.trim() !== "" && <Icon name="carbon:link" class="w-4 h-4 ml-2" />}
         </a>
       </div>
     )}
 
     {Array.isArray(tags) && tags.length > 0 && (
-      <div class={`flex flex-wrap content-around gap-2 my-4 ${url ? 'col-span-2' : ''}`}>
+      <div class={`flex flex-wrap content-around gap-2 my-4 ${hasSideLink ? 'col-span-2' : ''}`}>
         {tags.map((item) => {
           if (item.includes(':')) {
             const [label, link_id] = item.split(':');
@@ -95,19 +115,5 @@ const { timeframe, title, description, url, tags, url_name, location, subtitle, 
         })}
       </div>
     )}
-
-    <script define:vars={{ tags }}>
-      if (Array.isArray(tags) && tags.length > 0) {
-        tags.forEach((item, index) => {
-          console.log(`Tag ${index}:`, item, 'Type:', typeof item);
-          if (item.includes(':')) {
-            const [label, link_id] = item.split(':');
-            console.log('Split - Label:', label, 'Link ID:', link_id.trim(), 'Target:', `#${link_id.trim()}`);
-          }
-        });
-      } else {
-        console.log('Tags not rendered:', tags, 'Type:', typeof tags);
-      }
-    </script>
   </div>
 </div>

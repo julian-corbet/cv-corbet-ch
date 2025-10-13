@@ -7,32 +7,62 @@ import Card from "./Card.astro";
 const configData = await import.meta.glob("../pages/config/headers.md", { eager: true });
 const sectionConfig = configData["../pages/config/headers.md"]?.frontmatter || { sections: [] };
 
-
-// Pre-defined content sections (can't use dynamic import.meta.glob)
-const contentMap: Record<string, any[]> = {
-  "executive-summary": Object.values(await import.meta.glob("../pages/executive-summary/*.md", { eager: true })) as any[],
-  "values": Object.values(await import.meta.glob("../pages/values/*.md", { eager: true })) as any[],
-  "skills-finance": Object.values(await import.meta.glob("../pages/skills-finance/*.md", { eager: true })) as any[],
-  "skills-strategy": Object.values(await import.meta.glob("../pages/skills-strategy/*.md", { eager: true })) as any[],
-  "skills-cloud-ai": Object.values(await import.meta.glob("../pages/skills-cloud-ai/*.md", { eager: true })) as any[],
-  "thoughts": Object.values(await import.meta.glob("../pages/thoughts/*.md", { eager: true })) as any[],
-  "projects": Object.values(await import.meta.glob("../pages/projects/*.md", { eager: true })) as any[],
-  "jobs": Object.values(await import.meta.glob("../pages/jobs/*.md", { eager: true })) as any[],
-  "education": Object.values(await import.meta.glob("../pages/education/*.md", { eager: true })) as any[],
-  "social": Object.values(await import.meta.glob("../pages/social/*.md", { eager: true })) as any[],
+// Collect all markdown content once and organise it per folder defined in the config
+type SectionEntry = {
+  frontmatter: Record<string, any>;
+  content: string;
+  sortKey: string;
 };
 
-// Special sections
-const contact = Object.values(await import.meta.glob("../pages/config/contacts.md", { eager: true })) as any[];
+const markdownModules = await import.meta.glob("../pages/**/*.md", { eager: true });
+const sectionContentMap = new Map<string, SectionEntry[]>();
+
+Object.entries(markdownModules)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .forEach(([path, mod]) => {
+    if (path.includes("/config/")) return;
+
+    const folderSegment = path.split("/pages/")[1];
+    if (!folderSegment) return;
+
+    const folder = folderSegment.split("/")[0];
+    const frontmatter = mod?.frontmatter ?? {};
+    const compiled = typeof mod?.compiledContent === "function" ? mod.compiledContent() : "";
+
+    if (!sectionContentMap.has(folder)) {
+      sectionContentMap.set(folder, []);
+    }
+
+    sectionContentMap.get(folder)?.push({
+      frontmatter,
+      content: compiled,
+      sortKey: path,
+    });
+  });
+
 const fileMeta = Object.values(await import.meta.glob("../pages/config/downloads.md", { eager: true })) as any[];
 
-const PDF = "/corbet-cv-2025.pdf";
+const sortSectionItems = (items: SectionEntry[]) =>
+  items
+    .slice()
+    .sort((a, b) => {
+      const orderA = typeof a.frontmatter?.order === "number" ? a.frontmatter.order : Number.POSITIVE_INFINITY;
+      const orderB = typeof b.frontmatter?.order === "number" ? b.frontmatter.order : Number.POSITIVE_INFINITY;
+
+      if (orderA !== orderB) {
+        return orderA - orderB;
+      }
+
+      return a.sortKey.localeCompare(b.sortKey);
+    });
 ---
 
 <div class="join join-vertical gap-1">
 {
   (sectionConfig.sections || []).map((section: any) => {
-    const sectionItems = contentMap[section.folder] || [];
+    const sectionItems = sectionContentMap.has(section.folder)
+      ? sortSectionItems(sectionContentMap.get(section.folder)!)
+      : [];
 
     if (sectionItems.length === 0) return null;
 
@@ -40,53 +70,9 @@ const PDF = "/corbet-cv-2025.pdf";
       <AccordionLayout title={section.title} icon={section.icon}>
         {
           sectionItems.map((item: any) => {
-            if (section.cardType === "summary") {
-              return (
-                <Card
-                  description={item.compiledContent()}
-                />
-              );
-            } else if (section.cardType === "project") {
-              return (
-                <Card
-                  title={item.frontmatter.title}
-                  timeframe={item.frontmatter.date}
-                  description={item.compiledContent()}
-                  tags={item.frontmatter.tags}
-                  url={item.frontmatter.url}
-                  url_name={"View project"}
-                  header_url={item.frontmatter.header_url}
-                  id={item.frontmatter.link_id}
-                />
-              );
-            } else if (section.cardType === "job") {
-              return (
-                <Card
-                  title={item.frontmatter.title}
-                  subtitle={item.frontmatter.subtitle}
-                  timeframe={item.frontmatter.date}
-                  description={item.compiledContent()}
-                  tags={item.frontmatter.tags}
-                  url={item.frontmatter.url}
-                  url_name={item.frontmatter.org}
-                  location={item.frontmatter.location}
-                  header_url={item.frontmatter.header_url}
-                  id={item.frontmatter.link_id}
-                />
-              );
-            } else {
-              // standard card type
-              return (
-                <Card
-                  title={item.frontmatter.title}
-                  timeframe={item.frontmatter.date}
-                  description={item.compiledContent()}
-                  tags={item.frontmatter.tags}
-                  header_url={item.frontmatter.header_url}
-                  id={item.frontmatter.link_id}
-                />
-              );
-            }
+            return (
+              <Card frontmatter={item.frontmatter} content={item.content} />
+            );
           })
         }
       </AccordionLayout>
@@ -114,86 +100,91 @@ const PDF = "/corbet-cv-2025.pdf";
 
 
 
-  <AccordionLayout title={sectionConfig.special?.downloads?.title || "Downloads"} icon={sectionConfig.special?.downloads?.icon || "carbon:volume-file-storage"} id={"downloads"}>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {
-        fileMeta.map((meta) => {
-          return meta.frontmatter.downloads.map((file) => {
-            if (file.type === "folder") {
-              return (
-                <div class="h-full">
-                  <div class="collapse collapse-arrow bg-base-100 border border-[oklch(var(--s))] w-full rounded-box h-full text-base-content folder-collapse">
-                    <input type="checkbox" />
-                    <figure class="collapse-open:hidden flex flex-col items-center justify-center h-[150px] bg-base-100 rounded-t-box">
-                      <div class="text-center">
-                        <Icon name="carbon:folder" class="w-36 h-36 text-base-content mb-2" />
-                        <h2 class="text-base-content font-bold text-center">{file.title} <br/> {file.children.length} Files</h2>
-                      </div>
-                    </figure>
-                    <div class="collapse-title font-extrabold tracking-tight px-4"></div>
-                    <div class="collapse-content px-4 pb-4">
-                      {file.children.map((child) => {
-                        const childPdfUrl = `/${child.filename}`;
-                        return (
-                          <div class="card card-compact card-bordered border-[oklch(var(--s))] w-full hover:shadow-lg transition-all mb-4">
-                            <div class="card-body p-3">
-                              <h3 class="card-title text-lg">{child.title}</h3>
-                              <p class="text-sm">{child.description}</p>
-                              <div class="card-actions justify-center">
-                                <a target="_blank" href={childPdfUrl}>
-                                  <button class="btn btn-sm btn-outline">
-                                    {child.button}
-                                    <Icon name="carbon:document-pdf" class="w-4 h-4 ml-1" />
-                                  </button>
-                                </a>
-                              </div>
-                            </div>
+  {fileMeta.length > 0 && (
+    <Fragment>
+      <AccordionLayout title={sectionConfig.special?.downloads?.title || "Downloads"} icon={sectionConfig.special?.downloads?.icon || "carbon:volume-file-storage"} id={"downloads"}>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {
+            fileMeta.map((meta) => {
+              return meta.frontmatter.downloads.map((file) => {
+                if (file.type === "folder") {
+                  return (
+                    <div class="h-full">
+                      <div class="collapse collapse-arrow bg-base-100 border border-[oklch(var(--s))] w-full rounded-box h-full text-base-content folder-collapse">
+                        <input type="checkbox" />
+                        <figure class="collapse-open:hidden flex flex-col items-center justify-center h-[150px] bg-base-100 rounded-t-box">
+                          <div class="text-center">
+                            <Icon name="carbon:folder" class="w-36 h-36 text-base-content mb-2" />
+                            <h2 class="text-base-content font-bold text-center">{file.title} <br/> {file.children.length} Files</h2>
                           </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              );
-            } else {
-              const pdfUrl = `/${file.filename}`;
-              return (
-                <div class="h-full">
-                  <div
-                    class="card card-compact card-bordered border-[oklch(var(--s))] w-full hover:shadow-lg transition-all h-full"
-                  >
-                    <figure>
-                      <object data={pdfUrl} type="application/pdf" width="100%" height="150px"></object>
-                    </figure>
-                    <div class="card-body">
-                      <h2 class="card-title">{file.title}</h2>
-                      <p>{file.description}</p>
-                      <div class="card-actions justify-center">
-                        <a target="_blank" href={pdfUrl}>
-                          <button class="btn btn-outline">
-                            {file.button}
-                            <Icon name="carbon:document-pdf" class="w-4 h-4 ml-1" />
-                          </button>
-                        </a>
+                        </figure>
+                        <div class="collapse-title font-extrabold tracking-tight px-4"></div>
+                        <div class="collapse-content px-4 pb-4">
+                          {file.children.map((child) => {
+                            const childPdfUrl = `/${child.filename}`;
+                            return (
+                              <div class="card card-compact card-bordered border-[oklch(var(--s))] w-full hover:shadow-lg transition-all mb-4">
+                                <div class="card-body p-3">
+                                  <h3 class="card-title text-lg">{child.title}</h3>
+                                  <p class="text-sm">{child.description}</p>
+                                  <div class="card-actions justify-center">
+                                    <a target="_blank" href={childPdfUrl}>
+                                      <button class="btn btn-sm btn-outline">
+                                        {child.button}
+                                        <Icon name="carbon:document-pdf" class="w-4 h-4 ml-1" />
+                                      </button>
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              );
-            }
-          });
-        })
-      }
-</div>
+                  );
+                } else {
+                  const pdfUrl = `/${file.filename}`;
+                  return (
+                    <div class="h-full">
+                      <div
+                        class="card card-compact card-bordered border-[oklch(var(--s))] w-full hover:shadow-lg transition-all h-full"
+                      >
+                        <figure>
+                          <object data={pdfUrl} type="application/pdf" width="100%" height="150px"></object>
+                        </figure>
+                        <div class="card-body">
+                          <h2 class="card-title">{file.title}</h2>
+                          <p>{file.description}</p>
+                          <div class="card-actions justify-center">
+                            <a target="_blank" href={pdfUrl}>
+                              <button class="btn btn-outline">
+                                {file.button}
+                                <Icon name="carbon:document-pdf" class="w-4 h-4 ml-1" />
+                              </button>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+              });
+            })
+          }
+        </div>
+      </AccordionLayout>
 
-<script is:inline>
-  document.querySelectorAll('.folder-collapse input').forEach((input) => {
-    const figure = input.closest('.folder-collapse').querySelector('figure');
-    input.addEventListener('change', () => {
-      figure.style.display = input.checked ? 'none' : 'flex';
-    });
-  });
-</script>
+      <script is:inline>
+        document.querySelectorAll('.folder-collapse input').forEach((input) => {
+          const figure = input.closest('.folder-collapse').querySelector('figure');
+          input.addEventListener('change', () => {
+            figure.style.display = input.checked ? 'none' : 'flex';
+          });
+        });
+      </script>
+    </Fragment>
+  )}
 
 
 
