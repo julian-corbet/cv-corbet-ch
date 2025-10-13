@@ -15,7 +15,6 @@ Corbet CV - smart CV page
      ┣ 📂src
      ┃ ┣ 📂components
      ┃ ┃ ┣ 📜Card.astro
-     ┃ ┃ ┣ 📜ContactCard.astro
      ┃ ┃ ┣ 📜Container.astro
      ┃ ┃ ┣ 📜Footer.astro
      ┃ ┃ ┗ 📜Header.astro

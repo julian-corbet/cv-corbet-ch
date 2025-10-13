@@ -17,7 +17,7 @@ type SectionEntry = {
 
 // Load section configuration
 const configData = await import.meta.glob("../pages/config/headers.md", { eager: true });
-const sectionConfig = configData["../pages/config/headers.md"]?.frontmatter || { sections: [] };
+const sectionConfig = (configData["../pages/config/headers.md"] as { frontmatter?: { sections?: SectionConfig[]; special?: { downloads?: { title?: string; icon?: string } } } })?.frontmatter || { sections: [] };
 
 const normaliseOrder = (value: unknown) =>
   typeof value === "number" && Number.isFinite(value) ? value : Number.POSITIVE_INFINITY;
@@ -94,26 +94,6 @@ const fileMeta = Object.values(await import.meta.glob("../pages/config/downloads
     );
   })
 }
-
-  <!-- Temporarily hidden: References section
-  <AccordionLayout title={"References"} icon={"carbon:task"}>
-    {
-      references.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
-            description={item.compiledContent()}
-            header_url={item.frontmatter.header_url}
-            id={item.frontmatter.link_id}
-          />
-        );
-      })
-    }
-  </AccordionLayout>
-  -->
-
-
 
   {fileMeta.length > 0 && (
     <Fragment>
@@ -200,8 +180,4 @@ const fileMeta = Object.values(await import.meta.glob("../pages/config/downloads
       </script>
     </Fragment>
   )}
-
-
-
-
 </div>
