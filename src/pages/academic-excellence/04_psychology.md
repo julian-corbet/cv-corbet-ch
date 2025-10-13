@@ -4,7 +4,7 @@ location: Frankfurt, Germany
 header_url: https://www.uni-frankfurt.de/35791087/Psychologie__Bachelor_of_Science
 institute: Goethe University Frankfurt
 date: 2017
-tags: ["Psychology","quantitative research"]
+tags: ["psychology","AI:ai", "transformation:leadership", "organizational learning:values", "cross-cultural agility:agility"]
 link_id: "bachelor-psychology"
 ---
 **Relevant coursework:** work and organizational psychology (1.0), clinical psychology (1.0), social psychology (1.3)<br>
