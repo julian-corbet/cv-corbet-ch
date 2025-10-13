@@ -11,7 +11,7 @@ const headersModule = configModules["../pages/config/headers.md"];
 console.log('DEBUG: headersModule:', headersModule);
 console.log('DEBUG: headersModule?.frontmatter:', (headersModule as any)?.frontmatter);
 
-const sectionConfig = (headersModule as any)?.frontmatter || { sections: [] };
+const sectionConfig = (headersModule as any).frontmatter || { sections: [] };
 
 const normaliseOrder = (v: unknown) =>
   (typeof v === "number" && Number.isFinite(v)) ? v : Number.POSITIVE_INFINITY;
