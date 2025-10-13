@@ -1,5 +1,6 @@
 ---
 title: Executive Materials
+link_id: "executive"
 tags: ["Business Strategy", "AI Strategy", "Digital Transformation", "Stakeholder Management"]
 ---
 
