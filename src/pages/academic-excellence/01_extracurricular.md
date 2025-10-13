@@ -1,11 +1,11 @@
 ---
 title: Extracurricular
-location: Frankfurt, Germany
-url: https://www.green-fc.de/
+header_url: https://www.green-fc.de/
 institute: Goethe University Frankfurt
-date: 2024
 tags:
-  ["Physics","AI","Neuroscience"]
-link_id: "bachelor-master-physics"
+  ["physics:bachelor-master-physics","psychology:bachelor-psychology","corporate finance:corporate", "cross cultural agility:agility", "stakeholder management:stakeholder"]
+link_id: "extracurricular"
 ---
-blubb
+* Pro bono consulting for Roland Berger via GREEN Finance Consulting
+* Co-managed incoming global talent at AIESEC Frankfurt
+* Co-created a mentoring program enlisting all undergrads, elected as independent tutor for applied statistics (3 years | SPSS | R)

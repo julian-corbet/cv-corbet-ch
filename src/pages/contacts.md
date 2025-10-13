@@ -8,13 +8,13 @@ header:
 
 social:
   calendar: "https://connect.corbet.ch/time"
-  signal: "https://signal.me/#p/USER"
-  whatsapp: "https://wa.me/+4179303796"
+  signal: "https://signal.me/#p/+41799303796"
+  whatsapp: "https://wa.me/+41799303796"
   telegram: "https://t.me/rich_co"
   linkedin: "https://www.linkedin.com/in/julian-corbet/"
-  threema: "https://threema.id/USER"
+  threema: "https://threema.id/7C59AZ8P"
   x: "https://x.com/USER"
-  matrix: "@USER:matrix.org"
+  matrix: "@richc:corbet.ch"
 ---
 
 # Contact Information

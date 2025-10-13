@@ -1,8 +1,8 @@
 ---
 title: Bridging Mind & Matter
-institute: Georg Büchner Gymnasium
-tags: ["chemistry","physics", "scholarship for high-achieving students"]
-link_id: "matura"
+institute: Goethe University Frankfurt
+tags: ["physics:bachelor-master-physics","psychology:bachelor-psychology"]
+link_id: "link"
 ---
 
-Matura (Abitur): Grade: 1.0 – CH: 6.0 (best student, best grade)
+connection between physics and psychology
