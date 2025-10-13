@@ -5,6 +5,7 @@ date: 01/2018 - 06/2023
 header_url: https://asofterspace.com/
 location: CH, DE, IS, UK
 org: A Softer Space
+link_id: "independent"
 tags:
   [
     "Startup",
