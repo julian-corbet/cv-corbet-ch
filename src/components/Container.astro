@@ -3,51 +3,63 @@ import { Icon } from "astro-icon/components";
 import AccordionLayout from "../layouts/AccordionLayout.astro";
 import Card from "./Card.astro";
 
-// Load section configuration
-const configData = await import.meta.glob("../pages/config/headers.md", { eager: true });
-const sectionConfig = configData["../pages/config/headers.md"]?.frontmatter || { sections: [] };
+type SectionConfig = {
+  folder: string;
+  title: string;
+  icon?: string;
+};
 
-// Collect all markdown content once and organise it per folder defined in the config
 type SectionEntry = {
   frontmatter: Record<string, any>;
   content: string;
   sortKey: string;
 };
 
-const markdownModules = await import.meta.glob("../pages/**/*.md", { eager: true });
+// Load section configuration
+const configData = await import.meta.glob("../pages/config/headers.md", { eager: true });
+const sectionConfig = configData["../pages/config/headers.md"]?.frontmatter || { sections: [] };
+
+const normaliseOrder = (value: unknown) =>
+  typeof value === "number" && Number.isFinite(value) ? value : Number.POSITIVE_INFINITY;
+
+const markdownModules = await Astro.glob("../pages/**/*.md");
+
 const sectionContentMap = new Map<string, SectionEntry[]>();
 
-Object.entries(markdownModules)
-  .sort(([a], [b]) => a.localeCompare(b))
-  .forEach(([path, mod]) => {
-    if (path.includes("/config/")) return;
+await Promise.all(
+  markdownModules.map(async (mod) => {
+    const filePath = typeof mod?.file === "string" ? mod.file : typeof mod?.url === "string" ? mod.url : "";
 
-    const folderSegment = path.split("/pages/")[1];
+    if (!filePath || filePath.includes("/pages/config/")) return;
+
+    const folderSegment = filePath.split("/pages/")[1];
     if (!folderSegment) return;
 
     const folder = folderSegment.split("/")[0];
-    const frontmatter = mod?.frontmatter ?? {};
-    const compiled = typeof mod?.compiledContent === "function" ? mod.compiledContent() : "";
+    if (!folder) return;
+
+    const content = typeof mod?.compiledContent === "function" ? await mod.compiledContent() : "";
+
+    const entry: SectionEntry = {
+      frontmatter: mod?.frontmatter ?? {},
+      content,
+      sortKey: filePath,
+    };
 
     if (!sectionContentMap.has(folder)) {
       sectionContentMap.set(folder, []);
     }
 
-    sectionContentMap.get(folder)?.push({
-      frontmatter,
-      content: compiled,
-      sortKey: path,
-    });
-  });
+    sectionContentMap.get(folder)!.push(entry);
+  })
+);
 
-const fileMeta = Object.values(await import.meta.glob("../pages/config/downloads.md", { eager: true })) as any[];
-
-const sortSectionItems = (items: SectionEntry[]) =>
-  items
-    .slice()
+const sortEntries = (entries: SectionEntry[]) =>
+  entries
+    .filter((entry) => entry.frontmatter?.hidden !== true)
     .sort((a, b) => {
-      const orderA = typeof a.frontmatter?.order === "number" ? a.frontmatter.order : Number.POSITIVE_INFINITY;
-      const orderB = typeof b.frontmatter?.order === "number" ? b.frontmatter.order : Number.POSITIVE_INFINITY;
+      const orderA = normaliseOrder(a.frontmatter?.order);
+      const orderB = normaliseOrder(b.frontmatter?.order);
 
       if (orderA !== orderB) {
         return orderA - orderB;
@@ -55,25 +67,28 @@ const sortSectionItems = (items: SectionEntry[]) =>
 
       return a.sortKey.localeCompare(b.sortKey);
     });
+
+const sectionsWithContent = (sectionConfig.sections || [])
+  .filter((section: SectionConfig) => typeof section?.folder === "string" && section.folder.length > 0)
+  .map((section: SectionConfig) => ({
+    ...section,
+    items: sortEntries(sectionContentMap.get(section.folder) || []),
+  }));
+
+const fileMeta = Object.values(await import.meta.glob("../pages/config/downloads.md", { eager: true })) as any[];
 ---
 
 <div class="join join-vertical gap-1">
 {
-  (sectionConfig.sections || []).map((section: any) => {
-    const sectionItems = sectionContentMap.has(section.folder)
-      ? sortSectionItems(sectionContentMap.get(section.folder)!)
-      : [];
-
-    if (sectionItems.length === 0) return null;
+  sectionsWithContent.map((section) => {
+    if (!section?.items || section.items.length === 0) return null;
 
     return (
       <AccordionLayout title={section.title} icon={section.icon}>
         {
-          sectionItems.map((item: any) => {
-            return (
-              <Card frontmatter={item.frontmatter} content={item.content} />
-            );
-          })
+          section.items.map((item) => (
+            <Card frontmatter={item.frontmatter} content={item.content} />
+          ))
         }
       </AccordionLayout>
     );
