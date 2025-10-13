@@ -2,78 +2,38 @@
 import { Icon } from "astro-icon/components";
 import AccordionLayout from "../layouts/AccordionLayout.astro";
 import Card from "./Card.astro";
+import { getCollection } from "astro:content";
 
-type SectionConfig = {
-  folder: string;
-  title: string;
-  icon?: string;
-};
+// Load section configuration - try broader import first
+const configModules = await import.meta.glob("../pages/config/*.md", { eager: true });
+const headersModule = configModules["../pages/config/headers.md"];
 
-type SectionEntry = {
-  frontmatter: Record<string, any>;
-  content: string;
-  sortKey: string;
-};
+console.log('DEBUG: headersModule:', headersModule);
+console.log('DEBUG: headersModule?.frontmatter:', (headersModule as any)?.frontmatter);
 
-// Load section configuration
-const configData = await import.meta.glob("../pages/config/headers.md", { eager: true });
-const sectionConfig = (configData["../pages/config/headers.md"] as { frontmatter?: { sections?: SectionConfig[]; special?: { downloads?: { title?: string; icon?: string } } } })?.frontmatter || { sections: [] };
+const sectionConfig = (headersModule as any)?.frontmatter || { sections: [] };
 
-const normaliseOrder = (value: unknown) =>
-  typeof value === "number" && Number.isFinite(value) ? value : Number.POSITIVE_INFINITY;
+const normaliseOrder = (v: unknown) =>
+  (typeof v === "number" && Number.isFinite(v)) ? v : Number.POSITIVE_INFINITY;
 
-const markdownModules = await Astro.glob("../pages/**/*.md");
-
-const sectionContentMap = new Map<string, SectionEntry[]>();
-
-await Promise.all(
-  markdownModules.map(async (mod) => {
-    const filePath = typeof mod?.file === "string" ? mod.file : typeof mod?.url === "string" ? mod.url : "";
-
-    if (!filePath || filePath.includes("/pages/config/")) return;
-
-    const folderSegment = filePath.split("/pages/")[1];
-    if (!folderSegment) return;
-
-    const folder = folderSegment.split("/")[0];
-    if (!folder) return;
-
-    const content = typeof mod?.compiledContent === "function" ? await mod.compiledContent() : "";
-
-    const entry: SectionEntry = {
-      frontmatter: mod?.frontmatter ?? {},
-      content,
-      sortKey: filePath,
-    };
-
-    if (!sectionContentMap.has(folder)) {
-      sectionContentMap.set(folder, []);
-    }
-
-    sectionContentMap.get(folder)!.push(entry);
-  })
-);
-
-const sortEntries = (entries: SectionEntry[]) =>
-  entries
-    .filter((entry) => entry.frontmatter?.hidden !== true)
+const sectionsWithContent = [];
+for (const section of sectionConfig.sections ?? []) {
+  const items = await getCollection(section.folder);
+  const visible = items
+    .filter((e) => e.data?.hidden !== true)
     .sort((a, b) => {
-      const orderA = normaliseOrder(a.frontmatter?.order);
-      const orderB = normaliseOrder(b.frontmatter?.order);
+      const aO = normaliseOrder(a.data?.order);
+      const bO = normaliseOrder(b.data?.order);
+      if (aO !== bO) return aO - bO;
+      return a.slug.localeCompare(b.slug);
+    })
+    .map((e) => ({ frontmatter: e.data, content: e.body }));
 
-      if (orderA !== orderB) {
-        return orderA - orderB;
-      }
+  sectionsWithContent.push({ ...section, items: visible });
+}
 
-      return a.sortKey.localeCompare(b.sortKey);
-    });
-
-const sectionsWithContent = (sectionConfig.sections || [])
-  .filter((section: SectionConfig) => typeof section?.folder === "string" && section.folder.length > 0)
-  .map((section: SectionConfig) => ({
-    ...section,
-    items: sortEntries(sectionContentMap.get(section.folder) || []),
-  }));
+// Log debug info
+console.log("DEBUG sections:", sectionsWithContent.map(s => [s.title, s.items.length]));
 
 const fileMeta = Object.values(await import.meta.glob("../pages/config/downloads.md", { eager: true })) as any[];
 ---
