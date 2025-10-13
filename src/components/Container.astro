@@ -1,201 +1,98 @@
 ---
 import { Icon } from "astro-icon/components";
 import AccordionLayout from "../layouts/AccordionLayout.astro";
-import * as about from "../pages/about/about.md";
 import Card from "./Card.astro";
-import ContactCard from "./ContactCard.astro";
 
-const executiveSummary = Object.values(await import.meta.glob("../pages/executive-summary/*.md", { eager: true })) as any[];
-const valuesVision = Object.values(await import.meta.glob("../pages/values-vision/*.md", { eager: true })) as any[];
-const skillsFinance = Object.values(await import.meta.glob("../pages/skills-finance/*.md", { eager: true })) as any[];
-const skillsStrategy = Object.values(await import.meta.glob("../pages/skills-strategy/*.md", { eager: true })) as any[];
-const skillsCloudAi = Object.values(await import.meta.glob("../pages/skills-cloud-ai/*.md", { eager: true })) as any[];
-const experiments = Object.values(await import.meta.glob("../pages/experiments/*.md", { eager: true })) as any[];
-const highlightedProjects = Object.values(await import.meta.glob("../pages/highlighted-projects/*.md", { eager: true })) as any[];
-const jobHistory = Object.values(await import.meta.glob("../pages/job-history/*.md", { eager: true })) as any[];
-const education = Object.values(await import.meta.glob("../pages/academic-excellence/*.md", { eager: true })) as any[];
-const personalBackground = Object.values(await import.meta.glob("../pages/personal-background/*.md", { eager: true })) as any[];
-const references = Object.values(await import.meta.glob("../pages/references/*.md", { eager: true })) as any[];
+// Load section configuration
+const configData = await import.meta.glob("../pages/config/headers.md", { eager: true });
+const sectionConfig = configData["../pages/config/headers.md"]?.frontmatter || { sections: [] };
 
-const contact = Object.values(await import.meta.glob("../pages/contact/*.md", { eager: true })) as any[];
-const fileMeta = Object.values(await import.meta.glob("../pages/downloads.md", { eager: true })) as any[];
+
+// Pre-defined content sections (can't use dynamic import.meta.glob)
+const contentMap: Record<string, any[]> = {
+  "executive-summary": Object.values(await import.meta.glob("../pages/executive-summary/*.md", { eager: true })) as any[],
+  "values": Object.values(await import.meta.glob("../pages/values/*.md", { eager: true })) as any[],
+  "skills-finance": Object.values(await import.meta.glob("../pages/skills-finance/*.md", { eager: true })) as any[],
+  "skills-strategy": Object.values(await import.meta.glob("../pages/skills-strategy/*.md", { eager: true })) as any[],
+  "skills-cloud-ai": Object.values(await import.meta.glob("../pages/skills-cloud-ai/*.md", { eager: true })) as any[],
+  "thoughts": Object.values(await import.meta.glob("../pages/thoughts/*.md", { eager: true })) as any[],
+  "projects": Object.values(await import.meta.glob("../pages/projects/*.md", { eager: true })) as any[],
+  "jobs": Object.values(await import.meta.glob("../pages/jobs/*.md", { eager: true })) as any[],
+  "education": Object.values(await import.meta.glob("../pages/education/*.md", { eager: true })) as any[],
+  "social": Object.values(await import.meta.glob("../pages/social/*.md", { eager: true })) as any[],
+};
+
+// Special sections
+const contact = Object.values(await import.meta.glob("../pages/config/contacts.md", { eager: true })) as any[];
+const fileMeta = Object.values(await import.meta.glob("../pages/config/downloads.md", { eager: true })) as any[];
 
 const PDF = "/corbet-cv-2025.pdf";
 ---
 
 <div class="join join-vertical gap-1">
-  <AccordionLayout title={"Executive Summary"} icon={"carbon:identification"}>
-    {
-      executiveSummary.map((item) => {
-        return (
-          <Card
-            description={item.compiledContent()}
-          />
-        );
-      })
-    }
-  </AccordionLayout>
+{
+  (sectionConfig.sections || []).map((section: any) => {
+    const sectionItems = contentMap[section.folder] || [];
 
-  <AccordionLayout title={"Values & Vision"} icon={"carbon:sprout"}>
-    {
-      valuesVision.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
-            description={item.compiledContent()}
-            header_url={item.frontmatter.header_url}
-            id={item.frontmatter.link_id}
-          />
-        );
-      })
-    }
-  </AccordionLayout>
+    if (sectionItems.length === 0) return null;
 
-  <AccordionLayout title={"Skills: Finance"} icon={"carbon:chart-line"}>
-  {
-    skillsFinance.map((item) => {
-      return (
-          <Card
-            title={item.frontmatter.title}
-            subtitle={item.frontmatter.subtitle}
-            timeframe={item.frontmatter.date}
-            description={item.compiledContent()}
-            tags={item.frontmatter.tags}
-            header_url={item.frontmatter.header_url}
-            id={item.frontmatter.link_id}
-          />
-      );
-    })
-  }
-</AccordionLayout>
-
-  <AccordionLayout title={"Skills: Strategy"} icon={"carbon:strategy-play"}>
-    {
-      skillsStrategy.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
-            description={item.compiledContent()}
-            tags={item.frontmatter.tags}
-            header_url={item.frontmatter.header_url}
-            id={item.frontmatter.link_id}
-          />
-        );
-      })
-    }
-  </AccordionLayout>
-
-  <AccordionLayout title={"Skills: Cloud & AI"} icon={"carbon:chip"}>
-    {
-      skillsCloudAi.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
-            description={item.compiledContent()}
-            tags={item.frontmatter.tags}
-            header_url={item.frontmatter.header_url}
-            id={item.frontmatter.link_id}
-          />
-        );
-      })
-    }
-  </AccordionLayout>
-
-  <AccordionLayout title={"Thoughts"} icon={"carbon:chemistry"}>
-    {
-      experiments.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
-            description={item.compiledContent()}
-            tags={item.frontmatter.tags}
-            header_url={item.frontmatter.header_url}
-            id={item.frontmatter.link_id}
-          />
-        );
-      })
-    }
-  </AccordionLayout>
-
-  <AccordionLayout title={"Key Projects"} icon={"carbon:code"}>
-    {
-      highlightedProjects.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
-            description={item.compiledContent()}
-            tags={item.frontmatter.tags}
-            url={item.frontmatter.url}
-            url_name={"View project"}
-            header_url={item.frontmatter.header_url}
-            id={item.frontmatter.link_id}
-          />
-        );
-      })
-    }
-  </AccordionLayout>
-
-  <AccordionLayout title={"Job History"} icon={"carbon:portfolio"}>
-    {
-      jobHistory.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            subtitle={item.frontmatter.subtitle}
-            timeframe={item.frontmatter.date}
-            description={item.compiledContent()}
-            tags={item.frontmatter.tags}
-            url={item.frontmatter.url}
-            url_name={item.frontmatter.org}
-            location={item.frontmatter.location}
-            header_url={item.frontmatter.header_url}
-            id={item.frontmatter.link_id}
-          />
-        );
-      })
-    }
-  </AccordionLayout>
-
-  <AccordionLayout title={"Academic Excellence"} icon={"carbon:education"}>
-    {
-      education.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
-            location={item.frontmatter.location}
-            description={item.compiledContent()}
-            tags={item.frontmatter.tags}
-            url={item.frontmatter.url}
-            url_name={item.frontmatter.institute}
-            header_url={item.frontmatter.header_url}
-            id={item.frontmatter.link_id}
-          />
-        );
-      })
-    }
-  </AccordionLayout>
-
-  <AccordionLayout title={"Social & Impact"} icon={"carbon:share"}>
-    {
-      personalBackground.map((item) => {
-        return (
-          <Card
-            title={item.frontmatter.title}
-            timeframe={item.frontmatter.date}
-            description={item.compiledContent()}
-            header_url={item.frontmatter.header_url}
-            id={item.frontmatter.link_id}
-          />
-        );
-      })
-    }
-  </AccordionLayout>
+    return (
+      <AccordionLayout title={section.title} icon={section.icon}>
+        {
+          sectionItems.map((item: any) => {
+            if (section.cardType === "summary") {
+              return (
+                <Card
+                  description={item.compiledContent()}
+                />
+              );
+            } else if (section.cardType === "project") {
+              return (
+                <Card
+                  title={item.frontmatter.title}
+                  timeframe={item.frontmatter.date}
+                  description={item.compiledContent()}
+                  tags={item.frontmatter.tags}
+                  url={item.frontmatter.url}
+                  url_name={"View project"}
+                  header_url={item.frontmatter.header_url}
+                  id={item.frontmatter.link_id}
+                />
+              );
+            } else if (section.cardType === "job") {
+              return (
+                <Card
+                  title={item.frontmatter.title}
+                  subtitle={item.frontmatter.subtitle}
+                  timeframe={item.frontmatter.date}
+                  description={item.compiledContent()}
+                  tags={item.frontmatter.tags}
+                  url={item.frontmatter.url}
+                  url_name={item.frontmatter.org}
+                  location={item.frontmatter.location}
+                  header_url={item.frontmatter.header_url}
+                  id={item.frontmatter.link_id}
+                />
+              );
+            } else {
+              // standard card type
+              return (
+                <Card
+                  title={item.frontmatter.title}
+                  timeframe={item.frontmatter.date}
+                  description={item.compiledContent()}
+                  tags={item.frontmatter.tags}
+                  header_url={item.frontmatter.header_url}
+                  id={item.frontmatter.link_id}
+                />
+              );
+            }
+          })
+        }
+      </AccordionLayout>
+    );
+  })
+}
 
   <!-- Temporarily hidden: References section
   <AccordionLayout title={"References"} icon={"carbon:task"}>
@@ -217,7 +114,7 @@ const PDF = "/corbet-cv-2025.pdf";
 
 
 
-  <AccordionLayout title={"Downloads"} icon={"carbon:volume-file-storage"} id={"downloads"}>
+  <AccordionLayout title={sectionConfig.special?.downloads?.title || "Downloads"} icon={sectionConfig.special?.downloads?.icon || "carbon:volume-file-storage"} id={"downloads"}>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       {
         fileMeta.map((meta) => {
@@ -275,7 +172,7 @@ const PDF = "/corbet-cv-2025.pdf";
                         <a target="_blank" href={pdfUrl}>
                           <button class="btn btn-outline">
                             {file.button}
-                            <Icon name="carbon:document-pdf" class="w-6 h-6 ml-1" />
+                            <Icon name="carbon:document-pdf" class="w-4 h-4 ml-1" />
                           </button>
                         </a>
                       </div>
