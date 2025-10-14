@@ -1,12 +1,14 @@
 ---
-title: Agentic AI in Personal Cloud
+title: Digital Sovereignity & Private Cloud
 date: 2025
-title_url: "/strategy-play.svg"
+title_url: "https://apps.corbet.ch"
 id: "agentic_ai_personal_cloud"
+order: 0
 ---
 
-**Current Status**: Experimenting with autonomous AI agents in personal cloud environments.
+Understanding requires touch. I believe you can’t truly grasp software until you’ve built or broken it yourself. ==Doing sharpens intuition== in a way no theory can. Creating something tangible also attracts feedback — and feedback accelerates learning faster than any course or certification ever could.  
 
-In my homelab, I'm exploring how AI agents can self-manage cloud infrastructure, handle routine tasks, and even contribute to open source projects. This involves setting up agent workflows that can interpret natural language requests, execute infrastructure as code, and provide intelligent monitoring.
+> What I cannot create, I do not understand.
+> <footer>— <cite>Richard Feynman</cite></footer>
 
-The goal is to understand how to design agentic systems that are reliable, secure, and contextually aware - paving the way for more advanced automation in enterprise settings through hands-on learning and community collaboration.
+In my homelab, I operate a full stack of self-hosted & cloud-based apps — from CRM and AI workbenches to automation pipelines — infrastructure that would cost a four-figure sum per month commercially, but runs for electricity cost on my own systems. This lab isn’t just for me: about a dozen others rely on it sparking creating another business from my passion projects. Besides it’s my way to test Open Source tools, explore ==digital sovereignty==, and ==validate ideas== before I ever recommend them professionally — going from 0 to 1 in private, and scaling at work. This way every employer benefits from countless lessons on my own dime.

@@ -1,12 +1,14 @@
 ---
-title: Network Topologies & Zero Trust
+title: Communities & Networking
 date: 2025
-title_url: "/strategy-play.svg"
-id: "networks_zero_trust"
+id: "networks"
+order: 1
 ---
+Ideas grow faster in conversation. I learn best through exchange — by engaging with practitioners who see the world from different angles. 
 
-**Current Status**: Deep diving into modern network architectures and zero-trust security principles.
+> “Show me your friends and I’ll show you your future.”  
+> <footer>— <cite>Proverb</cite></footer>  
 
-My homelab serves as a testing ground for implementing various network topologies - from traditional hierarchical designs to software-defined networking (SDN) approaches. I'm particularly focused on zero-trust networking, where no device or user is inherently trusted, and all network traffic is continuously validated.
+In business, I’m connected across consulting and finance communities: **Bain Spark**, **BCG Emeralds**, and alumni networks like **BDSU**, **AIESEC**, and **Enactus** keep me close to peers in strategy and operations. Through **SECA (Young Member)** and Swiss **private-equity**, **venture**, and **corporate-development** circles, I stay aligned with the evolving landscape and business opportunities. On the tech side, I collaborate with developer and digital-rights communities — from **CCC** and **Linux User Groups** to **DigiGes**, **digitalswitzerland**, and **Impact Hub**. I regularly join **Agile Breakfasts** and online DACH meetups, where engineers and designers discuss open tools and responsible innovation.  
 
-Community discussions around these implementations have been invaluable, helping refine my understanding of how these concepts translate to enterprise environments. This hands-on experience is crucial for evaluating security technologies and understanding their operational impact.
+These circles keep me ==honest, curious, and updated==. They make sure that what I build or recommend isn’t shaped by echo chambers but by people who challenge my assumptions early.
