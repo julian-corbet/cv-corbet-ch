@@ -2,38 +2,39 @@
 import { Icon } from "astro-icon/components";
 import { getCollection, getEntry } from "astro:content";
 
-const normalizeOrder = (v: unknown) =>
-  typeof v === "number" && Number.isFinite(v) ? (v as number) : Number.POSITIVE_INFINITY;
-
+// === Load Executive Summary ===
 const execAll = await getCollection("executive-summary");
-const execVisible = execAll
-  .filter((e) => e.data?.hidden !== true)
-  .sort((a, b) => normalizeOrder(a.data?.order) - normalizeOrder(b.data?.order));
-
-const exec = execVisible[0] ?? null;
+const exec = execAll.find((e) => e.data?.hidden !== true) ?? null;
 const name = exec?.data?.name ?? exec?.data?.title ?? "";
 const designation = exec?.data?.designation ?? exec?.data?.subtitle ?? "";
 
+// === Load Contacts (YAML config) ===
 let contacts: any = null;
 try {
   const c = await getEntry("config", "contacts");
   contacts = c?.data ?? null;
 } catch (e) {
-  console.warn("[Header] contacts not found at content/config/contacts.yaml");
+  console.warn("[Header] Could not load contacts.yaml", e);
 }
-const phone = contacts?.header?.phone ?? "";
-const email = contacts?.header?.email ?? "";
-const location = contacts?.header?.location ?? "";
+const header = contacts?.header ?? {};
 const social = contacts?.social ?? {};
 ---
 
 <header class="mx-auto pt-6 pb-2 relative">
-  <article class="flex flex-col md:flex-row items-center md:items-start gap-4 w-full max-w-2xl">
-    <div class="flex-shrink-0 w-20 md:w-24 rounded-full shadow-sm overflow-hidden">
-      <img alt="avatar" src="/profile.webp" class="grayscale-[50] hover:grayscale-0" />
+  <article
+    class="flex flex-col md:flex-col items-center gap-4 w-full max-w-2xl"
+  >
+    <div
+      class="flex-shrink-0 w-20 md:w-24 rounded-full shadow-sm overflow-hidden"
+    >
+      <img
+        alt="avatar"
+        src="/profile.webp"
+        class="grayscale-[50] hover:grayscale-0"
+      />
     </div>
 
-    <div class="text-left md:max-w-md mx-auto md:mx-0 md:flex-1">
+    <div class="text-left md:max-w-md mx-auto">
       <h1 class="text-3xl font-extrabold tracking-tight md:text-3xl relative">
         {name}
       </h1>
@@ -41,75 +42,55 @@ const social = contacts?.social ?? {};
         {designation}
       </h2>
 
-      <!-- Row 1: phone | location | email -->
-      <div class="flex flex-wrap items-center md:justify-between mt-1 text-sm text-secondary gap-x-3 gap-y-1">
+      <div class="flex items-center md:justify-between mt-1 text-sm text-secondary">
         <span class="flex items-center">
           <Icon name="carbon:phone" class="w-4 h-4 mr-1" />
-          {phone ? (
-            <a href={`tel:${phone}`} class="hover:underline">{phone}</a>
-          ) : (
-            <span>-</span>
-          )}
+          <a href={`tel:${header.phone}`} class="hover:underline">{header.phone}</a>
         </span>
-
-        <span class="hidden md:inline mx-2">|</span>
-
+        <span class="mx-2">|</span>
         <span class="flex items-center">
           <Icon name="carbon:location" class="w-4 h-4 mr-1" />
-          {location || "-"}
+          {header.location}
         </span>
-
-        <span class="hidden md:inline mx-2">|</span>
-
+        <span class="mx-2">|</span>
         <span class="flex items-center">
           <Icon name="carbon:email" class="w-4 h-4 mr-1" />
-          {email ? (
-            <a href={`mailto:${email}`} class="hover:underline">{email}</a>
-          ) : (
-            <span>-</span>
-          )}
+          <a href={`mailto:${header.email}`} class="hover:underline">{header.email}</a>
         </span>
       </div>
 
-      <!-- Row 2: calendar + socials -->
-      <div class="flex flex-wrap items-center justify-between mt-1 text-sm text-secondary gap-x-2 gap-y-1">
+      <div class="flex items-center justify-between mt-1 text-sm text-secondary">
         <div class="flex items-center">
           <span class="mr-2">Let's grab coffee:</span>
           <Icon name="carbon:calendar" class="w-4 h-4 mr-1" />
-          {social?.calendar ? (
-            <a href={social.calendar} class="underline hover:no-underline text-green-600 mr-3" target="_blank" rel="noopener">connect.corbet.ch</a>
-          ) : (
-            <span class="mr-3">—</span>
-          )}
-          <span class="hidden md:inline mr-2">|</span>
+          <a href={social.calendar} class="underline hover:no-underline text-green-600 mr-3" target="_blank">connect.corbet.ch</a>
+          <span class="mr-2">|</span>
         </div>
 
-        <div class="flex items-center gap-1">
+        <div class="flex items-center">
           {
             Object.entries(social)
-              .filter(([key]) => key !== "calendar")
+              .filter(([key]) => key !== 'calendar')
               .sort(([a], [b]) => a.localeCompare(b))
-              .map(([platform, url]) => {
-                if (typeof url !== "string" || !url) return null;
-
-                const iconMap: Record<string, string> = {
-                  whatsapp: "mdi:whatsapp",
-                  telegram: "mdi:telegram",
-                  linkedin: "mdi:linkedin",
-                  x: "carbon:logo-x",
+              .map(([platform, url]: [string, string]) => {
+                if (!url) return null;
+                const iconMap = {
+                  whatsapp: 'mdi:whatsapp',
+                  telegram: 'mdi:telegram',
+                  linkedin: 'mdi:linkedin',
+                  x: 'carbon:logo-x',
                 };
-                const iconName = iconMap[platform] || "carbon:add";
-
+                const iconName = iconMap[platform as keyof typeof iconMap] || 'carbon:add';
                 return (
                   <a href={url} class="mr-1 hover:scale-105 transition-transform" target="_blank" rel="noopener">
-                    {platform === "signal" ? (
+                    {platform === 'signal' ? (
                       <img src="/signal.svg" alt="Signal Messenger" class="w-4 h-4 signal-icon" />
-                    ) : platform === "matrix" ? (
+                    ) : platform === 'matrix' ? (
                       <img src="/matrix.png" alt="Matrix" class="w-4 h-4 matrix-icon" />
-                    ) : platform === "threema" ? (
+                    ) : platform === 'threema' ? (
                       <>
-                        <img src="/threema.svg" alt="Threema" class="w-4 h-4 threema-light" />
-                        <img src="/threema-negative.svg" alt="Threema" class="w-4 h-4 threema-dark hidden" />
+                        <img src="/threema.svg" alt="Threema" class="w-4 h-4 threema-icon threema-light" />
+                        <img src="/threema-negative.svg" alt="Threema" class="w-4 h-4 threema-icon threema-dark hidden" />
                       </>
                     ) : (
                       <Icon name={iconName} class="w-4 h-4" />
