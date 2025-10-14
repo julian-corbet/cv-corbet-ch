@@ -20,7 +20,7 @@ sections:
     icon: "carbon:chip"
 
   - folder: "thoughts"
-    title: "Thoughts"
+    title: "Personal Development"
     icon: "carbon:chemistry"
 
   - folder: "projects"

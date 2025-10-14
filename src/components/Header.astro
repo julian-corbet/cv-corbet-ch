@@ -28,12 +28,12 @@ const social = contacts?.social ?? {};
 ---
 
 <header class="mx-auto pt-6 pb-2 relative">
-  <article class="flex flex-col md:flex-col items-center gap-4 w-full max-w-2xl">
+  <article class="flex flex-col md:flex-row items-center md:items-start gap-4 w-full max-w-2xl">
     <div class="flex-shrink-0 w-20 md:w-24 rounded-full shadow-sm overflow-hidden">
       <img alt="avatar" src="/profile.webp" class="grayscale-[50] hover:grayscale-0" />
     </div>
 
-    <div class="text-left md:max-w-md mx-auto">
+    <div class="text-left md:max-w-md mx-auto md:mx-0 md:flex-1">
       <h1 class="text-3xl font-extrabold tracking-tight md:text-3xl relative">
         {name}
       </h1>
@@ -41,7 +41,8 @@ const social = contacts?.social ?? {};
         {designation}
       </h2>
 
-      <div class="flex items-center md:justify-between mt-1 text-sm text-secondary">
+      <!-- Row 1: phone | location | email -->
+      <div class="flex flex-wrap items-center md:justify-between mt-1 text-sm text-secondary gap-x-3 gap-y-1">
         <span class="flex items-center">
           <Icon name="carbon:phone" class="w-4 h-4 mr-1" />
           {phone ? (
@@ -50,12 +51,16 @@ const social = contacts?.social ?? {};
             <span>-</span>
           )}
         </span>
-        <span class="mx-2">|</span>
+
+        <span class="hidden md:inline mx-2">|</span>
+
         <span class="flex items-center">
           <Icon name="carbon:location" class="w-4 h-4 mr-1" />
           {location || "-"}
         </span>
-        <span class="mx-2">|</span>
+
+        <span class="hidden md:inline mx-2">|</span>
+
         <span class="flex items-center">
           <Icon name="carbon:email" class="w-4 h-4 mr-1" />
           {email ? (
@@ -66,7 +71,8 @@ const social = contacts?.social ?? {};
         </span>
       </div>
 
-      <div class="flex items-center justify-between mt-1 text-sm text-secondary">
+      <!-- Row 2: calendar + socials -->
+      <div class="flex flex-wrap items-center justify-between mt-1 text-sm text-secondary gap-x-2 gap-y-1">
         <div class="flex items-center">
           <span class="mr-2">Let's grab coffee:</span>
           <Icon name="carbon:calendar" class="w-4 h-4 mr-1" />
@@ -75,10 +81,10 @@ const social = contacts?.social ?? {};
           ) : (
             <span class="mr-3">—</span>
           )}
-          <span class="mr-2">|</span>
+          <span class="hidden md:inline mr-2">|</span>
         </div>
 
-        <div class="flex items-center">
+        <div class="flex items-center gap-1">
           {
             Object.entries(social)
               .filter(([key]) => key !== "calendar")
@@ -86,7 +92,7 @@ const social = contacts?.social ?? {};
               .map(([platform, url]) => {
                 if (typeof url !== "string" || !url) return null;
 
-                const iconMap = {
+                const iconMap: Record<string, string> = {
                   whatsapp: "mdi:whatsapp",
                   telegram: "mdi:telegram",
                   linkedin: "mdi:linkedin",
@@ -102,8 +108,8 @@ const social = contacts?.social ?? {};
                       <img src="/matrix.png" alt="Matrix" class="w-4 h-4 matrix-icon" />
                     ) : platform === "threema" ? (
                       <>
-                        <img src="/threema.svg" alt="Threema" class="w-4 h-4 threema-icon threema-light" />
-                        <img src="/threema-negative.svg" alt="Threema" class="w-4 h-4 threema-icon threema-dark hidden" />
+                        <img src="/threema.svg" alt="Threema" class="w-4 h-4 threema-light" />
+                        <img src="/threema-negative.svg" alt="Threema" class="w-4 h-4 threema-dark hidden" />
                       </>
                     ) : (
                       <Icon name={iconName} class="w-4 h-4" />
