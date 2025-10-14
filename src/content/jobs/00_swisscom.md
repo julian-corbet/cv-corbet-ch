@@ -2,11 +2,11 @@
 title: Swisscom
 subtitle: Swisscom Financial Services via CDI (Talent Solutions Provider)
 date: 06/2024 - 03/2025
-header_url: https://www.swisscom.ch/
+title_url: https://www.swisscom.ch/
 location: Bern + Zürich, Switzerland
 org: Swisscom
 tags: ["Finance:financial-modelling", "Strategy:downloads", "Cloud", "AI"]
-link_id: "swisscom"
+id: "swisscom"
 ---
 Executive Assistant | Consultant to multiple departments (B2B & Infrastructure)
 - Responsibility: Supported cross-functional procurement and infrastructure units in strategic eight-figure multi-year investment decisions

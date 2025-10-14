@@ -2,7 +2,7 @@
 title:  Digital Pivot – Well-established regional leadership brand
 tags: ["react", "javaScript", "axios", "HTML", "SCSS", "CSS"]
 date: 2022
-link_id: "digital"
+id: "digital"
 ---
 
 * Context: COVID halted in-person seminars; revenues collapsed; brand built on personal contact & luxury at risk; clients sought scalable digital formats

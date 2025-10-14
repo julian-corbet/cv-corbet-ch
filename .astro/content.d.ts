@@ -162,7 +162,123 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		
+		"config": Record<string, {
+  id: string;
+  body?: string;
+  collection: "config";
+  data: InferEntrySchema<"config">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
+"education": Record<string, {
+  id: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
+  collection: "education";
+  data: InferEntrySchema<"education">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
+"executive-summary": Record<string, {
+  id: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
+  collection: "executive-summary";
+  data: InferEntrySchema<"executive-summary">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
+"jobs": Record<string, {
+  id: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
+  collection: "jobs";
+  data: InferEntrySchema<"jobs">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
+"projects": Record<string, {
+  id: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
+"references": Record<string, {
+  id: string;
+  body?: string;
+  collection: "references";
+  data: any;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
+"skills-cloud-ai": Record<string, {
+  id: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
+  collection: "skills-cloud-ai";
+  data: InferEntrySchema<"skills-cloud-ai">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
+"skills-finance": Record<string, {
+  id: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
+  collection: "skills-finance";
+  data: InferEntrySchema<"skills-finance">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
+"skills-strategy": Record<string, {
+  id: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
+  collection: "skills-strategy";
+  data: InferEntrySchema<"skills-strategy">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
+"social": Record<string, {
+  id: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
+  collection: "social";
+  data: InferEntrySchema<"social">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
+"thoughts": Record<string, {
+  id: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
+  collection: "thoughts";
+  data: InferEntrySchema<"thoughts">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
+"values": Record<string, {
+  id: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
+  collection: "values";
+  data: InferEntrySchema<"values">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
+
 	};
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
@@ -194,6 +310,6 @@ declare module 'astro:content' {
 		LiveContentConfig['collections'][C]['loader']
 	>;
 
-	export type ContentConfig = typeof import("./../src/content.config.mjs");
+	export type ContentConfig = typeof import("./../src/content/config.js");
 	export type LiveContentConfig = never;
 }

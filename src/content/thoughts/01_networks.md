@@ -1,8 +1,8 @@
 ---
 title: Network Topologies & Zero Trust
 date: 2025
-header_url: "/strategy-play.svg"
-link_id: "networks_zero_trust"
+title_url: "/strategy-play.svg"
+id: "networks_zero_trust"
 ---
 
 **Current Status**: Deep diving into modern network architectures and zero-trust security principles.

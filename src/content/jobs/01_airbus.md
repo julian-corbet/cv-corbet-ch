@@ -2,7 +2,7 @@
 title: AIRBUS
 subtitle: Defense & Space
 date: 07/2023 - 03/2024
-header_url: https://www.airbus.com/en/products-services/defence
+title_url: https://www.airbus.com/en/products-services/defence
 location: Ingolstadt, Germany
 org: AIRBUS
 tags:
@@ -10,7 +10,7 @@ tags:
     "Defense",
     "Air Power Branch",
   ]
-link_id: "airbus"
+id: "airbus"
 ---
 Certification Engineer | Master thesis Airworthiness
 - Responsibility: Owned technical analysis of decades of unstructured aircraft maintenance data to identify cost overruns and compliance exposures

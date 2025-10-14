@@ -1,8 +1,8 @@
 ---
 title: Thought Leadership & Content Strategy
 date: 2025
-header_url: "/strategy-play.svg"
-link_id: "thought_leadership"
+title_url: "/strategy-play.svg"
+id: "thought_leadership"
 ---
 
 **Current Status**: Developing a voice in technology leadership through writing, speaking, and community contribution.

@@ -2,24 +2,16 @@
 import { Icon } from "astro-icon/components";
 
 const { frontmatter = {}, content = "", ...directProps } = Astro.props;
-const mergedData = { ...frontmatter, ...directProps };
-
-const cardId = mergedData.id ?? mergedData.link_id ?? undefined;
-const title = mergedData.title ?? undefined;
-const subtitle = mergedData.subtitle ?? undefined;
-const timeframe = mergedData.timeframe ?? mergedData.date ?? undefined;
-const location = mergedData.location ?? undefined;
-const tags = Array.isArray(mergedData.tags) ? mergedData.tags : [];
-const titleUrl = mergedData.header_url ?? mergedData.title_url ?? undefined;
-const linkUrl = mergedData.url ?? mergedData.link ?? mergedData.cta_url ?? undefined;
-const linkLabel =
-  mergedData.url_name ??
-  mergedData.url_label ??
-  mergedData.cta_label ??
-  mergedData.cta ??
-  mergedData.org ??
-  undefined;
-const description = typeof content === "string" ? content : "";
+const d = { ...frontmatter, ...directProps };
+const cardId   = d.id ?? undefined;
+const title    = d.title ?? undefined;
+const subtitle = d.subtitle ?? undefined;
+const timeframe = d.timeframe ?? d.date ?? undefined;
+const location  = d.location ?? undefined;
+const tags      = Array.isArray(d.tags) ? d.tags : [];
+const titleUrl  = d.title_url ?? undefined;
+const linkUrl   = d.link_url ?? undefined;
+const linkLabel = d.link_label ?? undefined;
 const hasSideLink = Boolean(linkUrl && title);
 const shouldShowStandaloneMeta = !title && (timeframe || linkUrl);
 ---
@@ -58,7 +50,7 @@ const shouldShowStandaloneMeta = !title && (timeframe || linkUrl);
     <div class="flex items-center">
       <div class={`flex-1 text-left ${hasSideLink ? 'max-w-prose' : 'max-w-none'}`}>
         <article class="prose prose-lg md:prose-xl text-base leading-relaxed max-w-none font-normal text-justify hyphens-auto prose-p:last:mb-0">
-          <Fragment set:html={description}></Fragment>
+          <slot />
         </article>
       </div>
       {shouldShowStandaloneMeta && (
@@ -91,10 +83,10 @@ const shouldShowStandaloneMeta = !title && (timeframe || linkUrl);
       <div class={`flex flex-wrap content-around gap-2 my-4 ${hasSideLink ? 'col-span-2' : ''}`}>
         {tags.map((item) => {
           if (item.includes(':')) {
-            const [label, link_id] = item.split(':');
-            if (link_id.trim()) {
+            const [label, cardId] = item.split(':');
+            if (cardId.trim()) {
               return (
-                <a href={`#${link_id.trim()}`} class="badge text-center inline-block align-middle w-max h-max text-sm badge-outline shadow-md mb-1 link link-hover">
+                <a href={`#${cardId.trim()}`} class="badge text-center inline-block align-middle w-max h-max text-sm badge-outline shadow-md mb-1 link link-hover">
                   {label}
                 </a>
               );

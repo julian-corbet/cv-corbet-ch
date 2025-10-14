@@ -1,8 +1,8 @@
 ---
 title: Agentic AI in Personal Cloud
 date: 2025
-header_url: "/strategy-play.svg"
-link_id: "agentic_ai_personal_cloud"
+title_url: "/strategy-play.svg"
+id: "agentic_ai_personal_cloud"
 ---
 
 **Current Status**: Experimenting with autonomous AI agents in personal cloud environments.

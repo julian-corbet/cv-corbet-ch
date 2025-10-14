@@ -1,130 +1,191 @@
 ---
+import { getEntry, getCollection } from "astro:content";
+import type { ContentCollectionKey, CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
 import AccordionLayout from "../layouts/AccordionLayout.astro";
 import Card from "./Card.astro";
-import { getCollection } from "astro:content";
 
-// Load section configuration - try broader import first
-const configModules = await import.meta.glob("../pages/config/*.md", { eager: true });
-const headersModule = configModules["../pages/config/headers.md"];
+/* ---- allowed content collection keys (müssen zu src/content/config.ts passen) ---- */
+const VALID_KEYS = [
+  "executive-summary",
+  "values",
+  "skills-finance",
+  "skills-strategy",
+  "skills-cloud-ai",
+  "thoughts",
+  "projects",
+  "jobs",
+  "education",
+  "social",
+] as const;
+type Key = typeof VALID_KEYS[number];
+const isKey = (k: string): k is Key => (VALID_KEYS as readonly string[]).includes(k as Key);
 
-console.log('DEBUG: headersModule:', headersModule);
-console.log('DEBUG: headersModule?.frontmatter:', (headersModule as any)?.frontmatter);
-
-const sectionConfig = (headersModule as any).frontmatter || { sections: [] };
-
-const normaliseOrder = (v: unknown) =>
-  (typeof v === "number" && Number.isFinite(v)) ? v : Number.POSITIVE_INFINITY;
-
-const sectionsWithContent = [];
-for (const section of sectionConfig.sections ?? []) {
-  const items = await getCollection(section.folder);
-  const visible = items
-    .filter((e) => e.data?.hidden !== true)
-    .sort((a, b) => {
-      const aO = normaliseOrder(a.data?.order);
-      const bO = normaliseOrder(b.data?.order);
-      if (aO !== bO) return aO - bO;
-      return a.slug.localeCompare(b.slug);
-    })
-    .map((e) => ({ frontmatter: e.data, content: e.body }));
-
-  sectionsWithContent.push({ ...section, items: visible });
+/* ---- load headers (sections + special) from content/config/headers.yaml ---- */
+let headers: any = null;
+try {
+  headers = await getEntry("config", "headers");
+  console.log("[Container] headers loaded:", Boolean(headers));
+} catch (e) {
+  console.error("[Container] FAILED to load headers (content/config/headers.yaml).", e);
 }
 
-// Log debug info
-console.log("DEBUG sections:", sectionsWithContent.map(s => [s.title, s.items.length]));
+type SectionFromConfig = { folder: string; title: string; icon: string };
+const rawSections: SectionFromConfig[] = headers?.data?.sections ?? [];
+// narrow: nur Sektionen mit gültigem Collection-Key
+const sections: Array<SectionFromConfig & { folder: Key }> = rawSections.filter(
+  (s): s is SectionFromConfig & { folder: Key } => {
+    const ok = isKey(s.folder);
+    if (!ok) console.warn(`[Container] skipping unknown section folder '${s.folder}'`);
+    return ok;
+  }
+);
+const special  = headers?.data?.special ?? {};
+console.log("[Container] sections count:", sections.length);
+console.table?.(sections.map((s, i) => ({ idx: i, folder: s.folder, title: s.title })));
 
-const fileMeta = Object.values(await import.meta.glob("../pages/config/downloads.md", { eager: true })) as any[];
----
+/* ---- helpers ---- */
+const normalizeOrder = (v: unknown) =>
+  typeof v === "number" && Number.isFinite(v) ? v : Number.POSITIVE_INFINITY;
 
-<div class="join join-vertical gap-1">
-{
-  sectionsWithContent.map((section) => {
-    if (!section?.items || section.items.length === 0) return null;
+/* ---- load & render items per section (preserve YAML order) ---- */
+type Item<K extends Key> = { data: CollectionEntry<K>["data"]; Content: any };
+const sectionsWithContent: Array<{ title: string; icon: string; folder: Key; items: Item<Key>[] }> = [];
 
-    return (
-      <AccordionLayout title={section.title} icon={section.icon}>
-        {
-          section.items.map((item) => (
-            <Card frontmatter={item.frontmatter} content={item.content} />
-          ))
+for (const s of sections) {
+  try {
+    // Nach dem Guard ist s.folder ein Key → getCollection ist korrekt typisiert
+    const all = await getCollection(s.folder); // CollectionEntry<Key>[]
+    const visible = all
+      .filter((e) => (e as CollectionEntry<Key>).data?.hidden !== true)
+      .sort(
+        (a, b) =>
+          normalizeOrder((a as CollectionEntry<Key>).data?.order) -
+          normalizeOrder((b as CollectionEntry<Key>).data?.order)
+      ) as CollectionEntry<Key>[];
+
+    console.log(`[Container] section '${s.folder}' items total=${all.length} visible=${visible.length}`);
+
+    const items: Item<Key>[] = await Promise.all(
+      visible.map(async (e) => {
+        try {
+          const { Content } = await e.render();
+          return { data: e.data, Content };
+        } catch (err) {
+          console.error(`[Container] render failed for entry '${e.id}' in '${s.folder}'`, err);
+          return null as unknown as Item<Key>;
         }
-      </AccordionLayout>
+      })
     );
-  })
+
+    sectionsWithContent.push({ ...s, items: items.filter(Boolean) as Item<Key>[] });
+  } catch (err) {
+    console.error(`[Container] FAILED to load collection '${s.folder}'`, err);
+    sectionsWithContent.push({ ...s, items: [] as Item<Key>[] });
+  }
 }
 
-  {fileMeta.length > 0 && (
+/* ---- downloads from content/config/downloads.yaml (optional) ---- */
+let downloadsData: any = null;
+try {
+  const downloads = await getEntry("config", "downloads");
+  downloadsData = downloads?.data ?? null;
+  console.log("[Container] downloads loaded, items:", downloadsData?.downloads?.length ?? 0);
+} catch {
+  console.warn("[Container] downloads not found (content/config/downloads.yaml). This is fine if unused.");
+}
+---
+<div class="join join-vertical gap-1">
+  {
+    sectionsWithContent.map((section) => {
+      if (!section?.items || section.items.length === 0) {
+        console.warn(`[Container] section '${section?.folder}' has no visible items; skipping render.`);
+        return null;
+      }
+      return (
+        <AccordionLayout title={section.title} icon={section.icon}>
+          {section.items.map(({ data, Content }) => (
+            <Card frontmatter={data}>
+              <Content />
+            </Card>
+          ))}
+        </AccordionLayout>
+      );
+    })
+  }
+
+  {downloadsData?.downloads?.length > 0 && (
     <Fragment>
-      <AccordionLayout title={sectionConfig.special?.downloads?.title || "Downloads"} icon={sectionConfig.special?.downloads?.icon || "carbon:volume-file-storage"} id={"downloads"}>
+      <AccordionLayout
+        title={special?.downloads?.title ?? "Downloads"}
+        icon={special?.downloads?.icon ?? "carbon:volume-file-storage"}
+        id={"downloads"}
+      >
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           {
-            fileMeta.map((meta) => {
-              return meta.frontmatter.downloads.map((file) => {
-                if (file.type === "folder") {
-                  return (
-                    <div class="h-full">
-                      <div class="collapse collapse-arrow bg-base-100 border border-[oklch(var(--s))] w-full rounded-box h-full text-base-content folder-collapse">
-                        <input type="checkbox" />
-                        <figure class="collapse-open:hidden flex flex-col items-center justify-center h-[150px] bg-base-100 rounded-t-box">
-                          <div class="text-center">
-                            <Icon name="carbon:folder" class="w-36 h-36 text-base-content mb-2" />
-                            <h2 class="text-base-content font-bold text-center">{file.title} <br/> {file.children.length} Files</h2>
-                          </div>
-                        </figure>
-                        <div class="collapse-title font-extrabold tracking-tight px-4"></div>
-                        <div class="collapse-content px-4 pb-4">
-                          {file.children.map((child) => {
-                            const childPdfUrl = `/${child.filename}`;
-                            return (
-                              <div class="card card-compact card-bordered border-[oklch(var(--s))] w-full hover:shadow-lg transition-all mb-4">
-                                <div class="card-body p-3">
-                                  <h3 class="card-title text-lg">{child.title}</h3>
-                                  <p class="text-sm">{child.description}</p>
-                                  <div class="card-actions justify-center">
-                                    <a target="_blank" href={childPdfUrl}>
-                                      <button class="btn btn-sm btn-outline">
-                                        {child.button}
-                                        <Icon name="carbon:document-pdf" class="w-4 h-4 ml-1" />
-                                      </button>
-                                    </a>
-                                  </div>
+            downloadsData.downloads.map((item: any) => {
+              if (item?.type === "folder") {
+                return (
+                  <div class="h-full">
+                    <div class="collapse collapse-arrow bg-base-100 border border-[oklch(var(--s))] w-full rounded-box h-full text-base-content folder-collapse">
+                      <input type="checkbox" />
+                      <figure class="collapse-open:hidden flex flex-col items-center justify-center h-[150px] bg-base-100 rounded-t-box">
+                        <div class="text-center">
+                          <Icon name="carbon:folder" class="w-36 h-36 text-base-content mb-2" />
+                          <h2 class="text-base-content font-bold text-center">
+                            {item.title} <br /> {item.children?.length ?? 0} Files
+                          </h2>
+                        </div>
+                      </figure>
+                      <div class="collapse-title font-extrabold tracking-tight px-4"></div>
+                      <div class="collapse-content px-4 pb-4">
+                        {Array.isArray(item.children) && item.children.map((child: any) => {
+                          const childPdfUrl = `/${child.filename}`;
+                          return (
+                            <div class="card card-compact card-bordered border-[oklch(var(--s))] w-full hover:shadow-lg transition-all mb-4">
+                              <div class="card-body p-3">
+                                <h3 class="card-title text-lg">{child.title}</h3>
+                                {child.description && <p class="text-sm">{child.description}</p>}
+                                <div class="card-actions justify-center">
+                                  <a target="_blank" href={childPdfUrl}>
+                                    <button class="btn btn-sm btn-outline">
+                                      {child.button ?? "Download PDF"}
+                                      <Icon name="carbon:document-pdf" class="w-4 h-4 ml-1" />
+                                    </button>
+                                  </a>
                                 </div>
                               </div>
-                            );
-                          })}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                );
+              } else {
+                const pdfUrl = `/${item.filename}`;
+                return (
+                  <div class="h-full">
+                    <div class="card card-compact card-bordered border-[oklch(var(--s))] w-full hover:shadow-lg transition-all h-full">
+                      <figure>
+                        <object data={pdfUrl} type="application/pdf" width="100%" height="150px"></object>
+                      </figure>
+                      <div class="card-body">
+                        <h2 class="card-title">{item.title}</h2>
+                        {item.description && <p>{item.description}</p>}
+                        <div class="card-actions justify-center">
+                          <a target="_blank" href={pdfUrl}>
+                            <button class="btn btn-outline">
+                              {item.button ?? "Download PDF"}
+                              <Icon name="carbon:document-pdf" class="w-4 h-4 ml-1" />
+                            </button>
+                          </a>
                         </div>
                       </div>
                     </div>
-                  );
-                } else {
-                  const pdfUrl = `/${file.filename}`;
-                  return (
-                    <div class="h-full">
-                      <div
-                        class="card card-compact card-bordered border-[oklch(var(--s))] w-full hover:shadow-lg transition-all h-full"
-                      >
-                        <figure>
-                          <object data={pdfUrl} type="application/pdf" width="100%" height="150px"></object>
-                        </figure>
-                        <div class="card-body">
-                          <h2 class="card-title">{file.title}</h2>
-                          <p>{file.description}</p>
-                          <div class="card-actions justify-center">
-                            <a target="_blank" href={pdfUrl}>
-                              <button class="btn btn-outline">
-                                {file.button}
-                                <Icon name="carbon:document-pdf" class="w-4 h-4 ml-1" />
-                              </button>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                }
-              });
+                  </div>
+                );
+              }
             })
           }
         </div>
@@ -132,11 +193,13 @@ const fileMeta = Object.values(await import.meta.glob("../pages/config/downloads
 
       <script is:inline>
         document.querySelectorAll('.folder-collapse input').forEach((input) => {
-          const figure = input.closest('.folder-collapse').querySelector('figure');
+          const figure = input.closest('.folder-collapse')?.querySelector('figure');
+          if (!figure) return;
           input.addEventListener('change', () => {
             figure.style.display = input.checked ? 'none' : 'flex';
           });
         });
+        console.log("[Container] downloads UI script initialized.");
       </script>
     </Fragment>
   )}

@@ -2,7 +2,7 @@
 title: Scaling Solar Cloud Migration & Ops Recovery
 tags: ["cloud computing:cloud", "ai:ai", "business development", "start-up:independent"]
 date: 2022
-link_id: "solar"
+id: "solar"
 ---
 
 * Context: Multi-site scale-up in 2022; core system crashed mid-projects, halting field crews and sales; client’s reputation & further expansion at stake

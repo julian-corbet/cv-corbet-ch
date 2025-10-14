@@ -1,6 +1,6 @@
 ---
 title: Cloud Excellence
-link_id: "cloud"
+id: "cloud"
 tags: ["Cloud Computing", "Artificial Intelligence", "Machine Learning", "Data Science"]
 ---
 

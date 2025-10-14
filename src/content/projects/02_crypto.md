@@ -2,7 +2,7 @@
 title: Crypto Advisory & Mining – Multiple
 tags: ["react", "javaScript", "axios", "HTML", "SCSS", "CSS"]
 date: 2021
-link_id: "crypto"
+id: "crypto"
 ---
 
 * Context: 2021 pre-Merge ETH mining viable & very-high ROI; innovative structures & lax regulation allowed crypto boon while minimizing (energy) tax
