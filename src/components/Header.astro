@@ -2,95 +2,96 @@
 import { Icon } from "astro-icon/components";
 import { getCollection, getEntry } from "astro:content";
 
-// === Load Executive Summary ===
+/* ---- executive summary ---- */
 const execAll = await getCollection("executive-summary");
 const exec = execAll.find((e) => e.data?.hidden !== true) ?? null;
-const name = exec?.data?.name ?? exec?.data?.title ?? "";
-const designation = exec?.data?.designation ?? exec?.data?.subtitle ?? "";
+const executiveSummary = {
+  frontmatter: {
+    name: exec?.data?.name ?? exec?.data?.title ?? "",
+    designation: exec?.data?.designation ?? exec?.data?.subtitle ?? "",
+  },
+};
 
-// === Load Contacts (YAML config) ===
-let contacts: any = null;
+/* ---- contacts ---- */
+let contactsData: any = null;
 try {
   const c = await getEntry("config", "contacts");
-  contacts = c?.data ?? null;
+  contactsData = c?.data ?? null;
 } catch (e) {
-  console.warn("[Header] Could not load contacts.yaml", e);
+  console.warn("[Header] contacts not found (content/config/contacts.yaml)", e);
 }
-const header = contacts?.header ?? {};
-const social = contacts?.social ?? {};
+const contacts = {
+  frontmatter: contactsData ?? { header: { phone: "", email: "", location: "" }, social: {} },
+};
+
+/* ---- icon mapping ---- */
+const iconMap = {
+  whatsapp: "mdi:whatsapp",
+  telegram: "mdi:telegram",
+  linkedin: "mdi:linkedin",
+  x: "carbon:logo-x",
+} as const;
 ---
 
 <header class="mx-auto pt-6 pb-2 relative">
-  <article
-    class="flex flex-col md:flex-col items-center gap-4 w-full max-w-2xl"
-  >
-    <div
-      class="flex-shrink-0 w-20 md:w-24 rounded-full shadow-sm overflow-hidden"
-    >
-      <img
-        alt="avatar"
-        src="/profile.webp"
-        class="grayscale-[50] hover:grayscale-0"
-      />
+  <article class="flex flex-col md:flex-col items-center gap-4 w-full max-w-2xl">
+    <div class="flex-shrink-0 w-20 md:w-24 rounded-full shadow-sm overflow-hidden">
+      <img alt="avatar" src="/profile.webp" class="grayscale-[50] hover:grayscale-0" />
     </div>
 
     <div class="text-left md:max-w-md mx-auto">
-      <h1 class="text-3xl font-extrabold tracking-tight md:text-3xl relative">
-        {name}
+      <h1 class="hdr-title text-3xl font-extrabold tracking-tight md:text-3xl relative">
+        {executiveSummary.frontmatter.name}
       </h1>
-      <h2 class="text-lg mb-2 text-secondary">
-        {designation}
+      <h2 class="hdr-sub text-lg mb-2 text-secondary">
+        {executiveSummary.frontmatter.designation}
       </h2>
 
-      <div class="flex items-center md:justify-between mt-1 text-sm text-secondary">
+      <!-- CONTACT LINE -->
+      <div class="hdr-row flex items-center md:justify-between mt-1 text-sm text-secondary">
         <span class="flex items-center">
           <Icon name="carbon:phone" class="w-4 h-4 mr-1" />
-          <a href={`tel:${header.phone}`} class="hover:underline">{header.phone}</a>
+          <a href={`tel:${contacts.frontmatter.header.phone}`} class="hover:underline">{contacts.frontmatter.header.phone}</a>
         </span>
         <span class="mx-2">|</span>
         <span class="flex items-center">
           <Icon name="carbon:location" class="w-4 h-4 mr-1" />
-          {header.location}
+          {contacts.frontmatter.header.location}
         </span>
         <span class="mx-2">|</span>
         <span class="flex items-center">
           <Icon name="carbon:email" class="w-4 h-4 mr-1" />
-          <a href={`mailto:${header.email}`} class="hover:underline">{header.email}</a>
+          <a href={`mailto:${contacts.frontmatter.header.email}`} class="hover:underline">{contacts.frontmatter.header.email}</a>
         </span>
       </div>
 
-      <div class="flex items-center justify-between mt-1 text-sm text-secondary">
+      <!-- SOCIAL LINE -->
+      <div class="hdr-row flex items-center justify-between mt-1 text-sm text-secondary">
         <div class="flex items-center">
           <span class="mr-2">Let's grab coffee:</span>
           <Icon name="carbon:calendar" class="w-4 h-4 mr-1" />
-          <a href={social.calendar} class="underline hover:no-underline text-green-600 mr-3" target="_blank">connect.corbet.ch</a>
+          <a href={contacts.frontmatter.social.calendar} class="underline hover:no-underline text-green-600 mr-3" target="_blank">connect.corbet.ch</a>
           <span class="mr-2">|</span>
         </div>
 
         <div class="flex items-center">
           {
-            Object.entries(social)
-              .filter(([key]) => key !== 'calendar')
+            Object.entries(contacts.frontmatter.social)
+              .filter(([key]) => key !== "calendar")
               .sort(([a], [b]) => a.localeCompare(b))
-              .map(([platform, url]: [string, string]) => {
+              .map(([platform, url]) => {
                 if (!url) return null;
-                const iconMap = {
-                  whatsapp: 'mdi:whatsapp',
-                  telegram: 'mdi:telegram',
-                  linkedin: 'mdi:linkedin',
-                  x: 'carbon:logo-x',
-                };
-                const iconName = iconMap[platform as keyof typeof iconMap] || 'carbon:add';
+                const iconName = iconMap[platform] || "carbon:add";
                 return (
                   <a href={url} class="mr-1 hover:scale-105 transition-transform" target="_blank" rel="noopener">
-                    {platform === 'signal' ? (
+                    {platform === "signal" ? (
                       <img src="/signal.svg" alt="Signal Messenger" class="w-4 h-4 signal-icon" />
-                    ) : platform === 'matrix' ? (
+                    ) : platform === "matrix" ? (
                       <img src="/matrix.png" alt="Matrix" class="w-4 h-4 matrix-icon" />
-                    ) : platform === 'threema' ? (
+                    ) : platform === "threema" ? (
                       <>
-                        <img src="/threema.svg" alt="Threema" class="w-4 h-4 threema-icon threema-light" />
-                        <img src="/threema-negative.svg" alt="Threema" class="w-4 h-4 threema-icon threema-dark hidden" />
+                        <img src="/threema.svg" alt="Threema" class="w-4 h-4 threema-light" />
+                        <img src="/threema-negative.svg" alt="Threema" class="w-4 h-4 threema-dark hidden" />
                       </>
                     ) : (
                       <Icon name={iconName} class="w-4 h-4" />
@@ -106,12 +107,45 @@ const social = contacts?.social ?? {};
 </header>
 
 <style>
+  /* Desktop behaviour unchanged */
   @media (max-width: 768px) {
     .flex-col.justify-end {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+    }
+  }
+
+  /* MOBILE ONLY FIX */
+  @media (max-width: 767.98px) {
+    /* Contact & social lines */
+    .hdr-row {
+      white-space: nowrap;
+      font-size: clamp(10px, 3.4vw, 14px);
+      line-height: 1.25;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .hdr-row .w-4, .hdr-row .h-4 {
+      width: 1em;
+      height: 1em;
+    }
+    .hdr-row .mx-2 {
+      margin-left: 0.35rem;
+      margin-right: 0.35rem;
+    }
+
+    /* Title & subtitle — shrink only on *very* narrow phones */
+    @media (max-width: 420px) {
+      .hdr-title {
+        font-size: clamp(1.1rem, 6vw, 1.8rem);
+        white-space: nowrap;
+      }
+      .hdr-sub {
+        font-size: clamp(0.85rem, 4.5vw, 1rem);
+        white-space: nowrap;
+      }
     }
   }
 </style>
