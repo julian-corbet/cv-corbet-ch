@@ -6,12 +6,12 @@ import Header from "../components/Header.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<html lang="gl">
+<html lang="en">
   <head>
     <script is:inline>
-      // Custom theme management - no external dependencies
+      // Theme init + toggle (unverändert im Verhalten)
       const initTheme = () => {
-        const theme = localStorage.getItem('theme') || 'black'; // Default dark
+        const theme = localStorage.getItem('theme') || 'black';
         document.documentElement.setAttribute('data-theme', theme);
         if (theme === 'black') {
           document.documentElement.classList.add('dark');
@@ -20,21 +20,14 @@ import { Icon } from "astro-icon/components";
         }
         return theme;
       };
-
       const updateToggle = (theme) => {
         const toggle = document.querySelector('input[data-toggle-theme]');
-        if (toggle) toggle.checked = theme === 'lofi'; // Checked = Light mode now
+        if (toggle) toggle.checked = theme === 'lofi';
       };
-
-      // Initialize theme
       const currentTheme = initTheme();
-
-      // Update toggle state
       updateToggle(currentTheme);
-
-      // Theme change function
       window.changeTheme = (checked) => {
-        const theme = checked ? 'lofi' : 'black'; // Checked = Light, Unchecked = Dark
+        const theme = checked ? 'lofi' : 'black';
         document.documentElement.setAttribute('data-theme', theme);
         if (theme === 'black') {
           document.documentElement.classList.add('dark');
@@ -43,155 +36,81 @@ import { Icon } from "astro-icon/components";
         }
         localStorage.setItem('theme', theme);
       };
-
-      // Event delegation for toggle
       document.addEventListener('change', (e) => {
         if (e.target.matches('input[data-toggle-theme]')) {
           window.changeTheme(e.target.checked);
         }
       });
     </script>
+
     <script is:inline>
-      // Handle hash links to open accordions and scroll to cards
+      // Hash-Links: Akkordeon öffnen & scrollen
       function handleHash() {
         const hash = window.location.hash.substring(1);
-        if (hash) {
-          let targetElement = document.getElementById(hash);
-          if (targetElement) {
-            // Check if target is inside a collapse-content (accordion content)
-            const collapseContent = targetElement.closest('.collapse-content');
-            if (collapseContent) {
-              // Find the checkbox inside the parent collapse
-              const collapse = collapseContent.closest('.collapse');
-              if (collapse) {
-                const checkbox = collapse.querySelector('input[type="checkbox"]');
-                if (checkbox && !checkbox.checked) {
-                  checkbox.checked = true;
-                }
-              }
-            } else if (targetElement.classList.contains('collapse')) {
-              // If target is the accordion itself
-              const checkbox = targetElement.querySelector('input[type="checkbox"]');
-              if (checkbox && !checkbox.checked) {
-                checkbox.checked = true;
-              }
-            }
-            // Scroll to the target
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
+        if (!hash) return;
+        const targetElement = document.getElementById(hash);
+        if (!targetElement) return;
+
+        const collapseContent = targetElement.closest('.collapse-content');
+        if (collapseContent) {
+          const collapse = collapseContent.closest('.collapse');
+          const checkbox = collapse?.querySelector('input[type="checkbox"]');
+          if (checkbox && !checkbox.checked) checkbox.checked = true;
+        } else if (targetElement.classList.contains('collapse')) {
+          const checkbox = targetElement.querySelector('input[type="checkbox"]');
+          if (checkbox && !checkbox.checked) checkbox.checked = true;
         }
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-
-      // Handle initial hash on page load
       window.addEventListener('DOMContentLoaded', handleHash);
-
-      // Handle hash changes (e.g., browser back/forward)
       window.addEventListener('hashchange', handleHash);
     </script>
+
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/favicon.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="preload" href="/corbet-cv-2025.pdf" as="document" />
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <style is:global>@import "/src/styles/global.css";</style>
     <title>Corbet CV</title>
   </head>
+
   <body class="flex flex-col min-h-screen">
     <Header />
-    <div
-      class="flex items-center absolute top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 xl:top-10 xl:right-10 z-10"
-    >
+
+    <div class="flex items-center absolute top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 xl:top-10 xl:right-10 z-10">
       <Icon name="carbon:moon" class="w-4 h-4" />
       <input
         type="checkbox"
         data-toggle-theme="black,lofi"
-        data-act-class="ACTIVECLASS"
         class="toggle toggle-sm mx-1 bg-secondary"
       />
       <Icon name="carbon:light" class="w-4 h-4" />
     </div>
 
-    <div
-      class="divider mx-auto h-fit max-w-3xl w-[95vw] flex flex-nowrap bg-secondary"
-    >
-    </div>
-    <main
-      class="mx-auto flex-grow max-h-[90vh] md:max-h-[70vh] max-w-3xl overflow-y-scroll py-2 grid w-[95vw]"
-    >
+    <div class="divider mx-auto h-fit max-w-3xl w-[95vw] flex flex-nowrap bg-secondary"></div>
+
+    <main class="mx-auto flex-grow max-h-[90vh] md:max-h-[70vh] max-w-3xl overflow-y-scroll py-2 grid w-[95vw]">
       <div class="container">
         <Container />
       </div>
     </main>
+
     <Footer class="flex justify-center items-center py-4" />
   </body>
 </html>
 
 <style is:global>
-  body {
-    font-family: "DM Sans Variable", sans-serif;
-  }
+  body { font-family: "DM Sans Variable", sans-serif; }
 
-  @media (min-width: 768px) {
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-    }
-  }
+  .overflow-y-scroll::-webkit-scrollbar { width: 3px; }
+  .overflow-y-scroll::-webkit-scrollbar-thumb { background-color: oklch(var(--s)); }
+  .overflow-y-scroll { scrollbar-width: 1px; }
 
-  @media only screen and (max-width: 480px) {
-    * {
-      font-size: 12px;
-    }
-  }
+  @media (max-width: 768px) { .container { flex-direction: column; } }
+  @media (min-width: 768px) { .container { display: flex; flex-wrap: wrap; } }
 
-  .overflow-y-scroll::-webkit-scrollbar {
-    width: 3px;
-  }
-
-  .overflow-y-scroll::-webkit-scrollbar-thumb {
-    background-color: oklch(var(--s));
-  }
-
-  .overflow-y-scroll {
-    scrollbar-width: 1px;
-  }
-
-  @media (max-width: 768px) {
-    .container {
-      flex-direction: column;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-    }
-  }
-
-  [data-theme=black] .signal-icon {
-    filter: invert(1);
-  }
-
-  [data-theme=black] .matrix-icon {
-    filter: invert(1);
-  }
-
-  [data-theme=black] .threema-light {
-    display: none;
-  }
-
-  [data-theme=black] .threema-dark {
-    display: block;
-  }
-
-  strong em {
-    color: rgb(255,0,0);
-    font-weight: bold;
-    font-style: normal;
-  }
-  .dark strong em {
-    color: rgb(255,100,100);
-  }</style>
+  [data-theme=black] .signal-icon { filter: invert(1); }
+  [data-theme=black] .matrix-icon { filter: invert(1); }
+  [data-theme=black] .threema-light { display: none; }
+  [data-theme=black] .threema-dark { display: block; }
+</style>
