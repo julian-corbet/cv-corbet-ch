@@ -1,6 +1,5 @@
 ---
 title: Volunteering
-date: 2025
 ---
 
 Coming soon - volunteering experiences and impact will be shared here.
