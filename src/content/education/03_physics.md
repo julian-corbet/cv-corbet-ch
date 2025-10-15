@@ -8,6 +8,6 @@ tags:
   ["physics","AI:ai","data science:risk", "cloud computing:cloud", "technical analysis:airbus"]
 id: "bachelor-master-physics"
 ---
-**GPA/CH/DE: 5.0, Grade: 1.0 (CH: 6.0)
+**GPA:** 5.0, Grade: 1.0 (CH: 6.0)<br>
 **Relevant Coursework:** AI & ML (1.0), applied electronics (1.3), biophysics (1.3), Applied Physics focus<br>
 **Research:** Near infrared spectroscopy (Neuroscience), Non-destructive terahertz imaging (contributed electronics), Accelerator physics (LINAC)
