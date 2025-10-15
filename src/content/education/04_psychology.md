@@ -7,5 +7,6 @@ date: 2017
 tags: ["psychology","AI:ai", "transformation:leadership", "organizational learning:values", "situational awareness"]
 id: "bachelor-psychology"
 ---
+**GPA: 4.5, Grade: 1.6 (CH: 5.6)
 **Relevant coursework:** work and organizational psychology (1.0), clinical psychology (1.0), social psychology (1.3), chemistry (1.0), IP & high-tech startups (1.15)<br>
 **Research:** Conducted AI research @FIAS (9 month full-time internship), performed market research interviewing 50+ CEOs, analyzing 1,000+ calls, Development of automated quantitative empathy assessment & standardized AR | VR employee trainings
