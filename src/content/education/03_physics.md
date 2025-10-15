@@ -8,5 +8,5 @@ tags:
   ["physics","AI:ai","data science:risk", "cloud computing:cloud", "technical analysis:airbus"]
 id: "bachelor-master-physics"
 ---
-**Relevant Coursework:** AI & ML (1.0), applied electronics (1.3), biophysics (1.3), chemistry (1.0), IP & high-tech startups (1.15), Applied Physics focus<br>
+**Relevant Coursework:** AI & ML (1.0), applied electronics (1.3), biophysics (1.3), Applied Physics focus<br>
 **Research:** Near infrared spectroscopy (Neuroscience), Non-destructive terahertz imaging (contributed electronics), Accelerator physics (LINAC)
