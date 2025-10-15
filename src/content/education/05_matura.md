@@ -7,5 +7,5 @@ tags: ["chemistry","physics:bachelor-master-physics", "learning:values", "academ
 id: "matura"
 ---
 
-Matura (Abitur): Grade: 1.0 – CH: 6.0 (best student, best grade)
+Matura (Abitur): GPA 5.0, Grade: 1.0 – CH: 6.0 (best student, best grade)
 * selected for math. olympiad (Hesse | 2x) and student academy 

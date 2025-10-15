@@ -8,4 +8,3 @@ id: "extracurricular"
 ---
 * Pro bono consulting for Roland Berger via GREEN Finance Consulting
 * Co-managed incoming global talent at AIESEC Frankfurt
-* Co-created a mentoring program enlisting all undergrads, elected as independent tutor for applied statistics (3 years | SPSS | R)
