@@ -1,6 +1,5 @@
 ---
 title: The bigger picture
-date: 2025
 ---
 
 Coming soon - broader worldview, perspectives, and long-term thinking will be shared here.
