@@ -1,5 +1,5 @@
 ---
-title: Bachelor & Master of Science in Physics
+title: Master of Science in Physics
 location: Frankfurt, Germany
 title_url: https://www.uni-frankfurt.de/35791801/Physik__Master_of_Science 
 institute: Goethe University Frankfurt
