@@ -1,5 +1,5 @@
 ---
-title: Bachelor of Science in Psychology, <br> Bachelor of Science in Physics and Minor in Chemistry
+title: Bachelor of Science in Psychology, Bachelor of Science in Physics and Minor in Chemistry
 location: Frankfurt, Germany
 title_url: https://www.uni-frankfurt.de/35791087/Psychologie__Bachelor_of_Science
 institute: Goethe University Frankfurt
