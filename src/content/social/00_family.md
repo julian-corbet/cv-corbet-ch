@@ -1,6 +1,7 @@
 ---
 title: Upbringing
-id: "upbringing"
+id: "family"
+order: 2
 ---
 Often I get asked what my CV does not reveal about me. I tend to think that my upbringing is key to understanding who I am.
 
