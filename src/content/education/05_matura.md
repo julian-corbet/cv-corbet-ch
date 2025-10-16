@@ -3,7 +3,7 @@ title: Matura
 location: Bad Vilbel, Germany
 title_url: https://www.gbg-bv.de/
 institute: Georg Büchner Gymnasium
-tags: ["chemistry","physics:bachelor-master-physics", "learning:values", "academic excellence:scholarship", "psychology:bachelor-psychology"]
+tags: ["chemistry","physics:bachelor-master-physics", "Humility & Learning:values", "academic excellence:scholarship", "psychology:bachelor-psychology"]
 id: "matura"
 ---
 
