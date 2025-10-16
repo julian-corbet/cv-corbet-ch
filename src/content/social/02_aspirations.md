@@ -1,5 +1,7 @@
 ---
-title: The bigger picture
+title: Aspirations
+id: "aspirations"
+order: 0
 ---
 
 Coming soon - broader worldview, perspectives, and long-term thinking will be shared here.
