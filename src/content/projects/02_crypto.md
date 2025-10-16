@@ -1,5 +1,5 @@
 ---
-title: Crypto Advisory & Mining – Multiple
+title: Crypto advisory and mining projects across multiple ventures
 tags: ["react", "javaScript", "axios", "HTML", "SCSS", "CSS"]
 date: 2021
 id: "crypto"
