@@ -1,6 +1,6 @@
 ---
 title: Crypto advisory and mining projects across multiple ventures
-tags: ["react", "javaScript", "axios", "HTML", "SCSS", "CSS"]
+tags: ["transformation:leadership", "AI:ai", "organizational learning:values", "stakeholder communication", "risk management"]
 date: 2021
 id: "crypto"
 ---
