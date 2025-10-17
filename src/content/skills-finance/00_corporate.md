@@ -1,6 +1,6 @@
 ---
 title: Corporate Finance
-tags: ["Financial Analysis:covendit", "Investment Banking:downloads", "Strategy:swisscom", "M&A Advisory"]
+tags: ["Financial Analysis:covendit", "Investment Banking:covendit", "Strategy:swisscom", "M&A Advisory:swisscom"]
 id: "corporate"
 ---
 
