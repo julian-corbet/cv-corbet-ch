@@ -1,6 +1,6 @@
 ---
 title: Transactions
-tags: ["Financial Analysis", "Investment Banking", "Strategy"]
+tags: ["Financial Analysis:covendit", "Investment Banking:covendit", "Strategy:swisscom", stakeholder communication:crypto", data science:bachelor-master-physics"]
 id: "transactions"
 ---
 
