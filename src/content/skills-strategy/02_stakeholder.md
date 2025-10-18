@@ -1,6 +1,6 @@
 ---
 title:  Stakeholder Management
-tags: ["Business Strategy", "AI Strategy", "Digital Transformation", "Stakeholder Management"]
+tags: ["Trust & Loyality:values", "leadership:leadership", "cross-cultural agility:agility", "Conflict Resolution & Negotiation:achelor-psychology"]
 id: "stakeholder"
 ---
 
