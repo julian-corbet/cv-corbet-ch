@@ -9,7 +9,7 @@ tags:
   [
     "Startup",
     "Freelance",
-	"Management Consulting:skills-strategy",
+	"cross-cultural agility:agility", "Teamship & Collective Stewardship:values", business development"
   ]
 id: "independent"
 ---
