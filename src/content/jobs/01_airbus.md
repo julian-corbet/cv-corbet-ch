@@ -8,7 +8,7 @@ org: AIRBUS
 tags:
   [
     "Defense",
-    "Air Power Branch",
+    "Air Power Branch","technical analysis:bachelor-master-physics", "data science:bachelor-master-physics", "AI:ai" 
   ]
 id: "airbus"
 ---
