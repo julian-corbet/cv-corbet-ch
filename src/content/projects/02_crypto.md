@@ -1,6 +1,6 @@
 ---
 title: Crypto advisory and mining projects across multiple ventures
-tags: ["transformation:leadership", "AI:ai", "organizational learning:values", "stakeholder communication:stakeholder", "risk management:covendit"]
+tags: ["transformation:change", "AI:ai", "organizational learning:values", "stakeholder communication:stakeholder", "risk management:covendit"]
 date: 2021
 id: "crypto"
 ---
