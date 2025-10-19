@@ -9,7 +9,7 @@ tags:
   [
     "Startup",
     "Freelance",
-	"cross-cultural agility:agility", "Teamship & Collective Stewardship:values", business development"
+	"cross-cultural agility:agility", "Teamship & Collective Stewardship:values", "business development"
   ]
 id: "independent"
 ---
