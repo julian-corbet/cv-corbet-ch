@@ -1,6 +1,6 @@
 ---
 title:  Stakeholder Management
-tags: ["Trust & Loyality:values", "leadership:leadership", "cross-cultural agility:agility", "Conflict Resolution & Negotiation:bachelor-psychology"]
+tags: ["Trust & Loyality:values", "leadership:extracurricular", "cross-cultural agility:agility", "Conflict Resolution & Negotiation:bachelor-psychology"]
 id: "stakeholder"
 ---
 
