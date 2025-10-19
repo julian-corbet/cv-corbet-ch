@@ -1,6 +1,6 @@
 ---
 title: Financial Modelling
-tags: ["Financial Analysis:covendit", "Investment Banking:covendit", "Strategy:swisscom", "data science:bachelor-master-physics"]
+tags: ["Financial Analysis:covendit", "Investment Banking:covendit", "Strategic Insight:swisscom", "data science:bachelor-master-physics", "Cross-functional Collaboration:swisscom"]
 id: "financial-modelling"
 ---
 
