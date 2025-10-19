@@ -1,6 +1,6 @@
 ---
 title: Leading Change
-tags: ["Strategy:swisscom", "AI:ai", "transformation:bachelor-psychology", "stakeholder communication:crypto", change:digital"]
+tags: ["Strategic Insight:swisscom", "AI:ai", "transformation:bachelor-psychology", "stakeholder communication:crypto", "change:digital"]
 id: "change"
 ---
 
