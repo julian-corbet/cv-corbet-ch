@@ -1,6 +1,6 @@
 ---
 title: Cross-Cultural Agility
-tags: ["Financial Analysis", "Investment Banking", "Strategy"]
+tags: ["global talent at AIESEC Frankfurt:extracurricular", "Investment Banking:covendit", "Interpersonal Sensitivity:bachelor-psychology", "global mindset:independent", "Teamship & Collective Stewardship:values"]
 id: "agility"
 ---
 

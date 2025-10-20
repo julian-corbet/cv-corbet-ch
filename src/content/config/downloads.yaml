@@ -22,7 +22,7 @@ downloads:
   - title: "Highschool Diploma"
     description: "Matura (Abitur): Grade: 1.0 – CH: 6.0 (best student, best grade)"
     button: "Download PDF"
-    filename: "downloads/education/highschool.pdf"
+    filename: "downloads/education/highschool_corbet.pdf"
 
   - title: "Extended Portfolio"
     type: "folder"

@@ -7,9 +7,9 @@ location: Frankfurt, Germany
 org: NEXGEN
 tags:
   [
-    "Fintech:transactions",
+    "risk management:corporate",
     "Regulation of securities",
-	"Cloud:dataair",
+	"Cloud Migration:cloud","performance analysis:strategic", "leadership:bachelor-psychology"
   ]
 id: "nexgen"
 ---

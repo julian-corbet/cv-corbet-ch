@@ -1,6 +1,6 @@
 ---
 title: Quantitative & Risk
-tags: ["Cloud Computing", "Artificial Intelligence", "Machine Learning", "Data Science"]
+tags: ["Quantitative Analysis:bachelor-master-physics", "risk management:covendit", "Market Dynamics Understanding:independent", "performance analysis:nexgen", "AI:ai"]
 id: "risk"
 ---
 

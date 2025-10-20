@@ -1,6 +1,6 @@
 ---
 title: Scaling Solar Cloud Migration & Ops Recovery
-tags: ["cloud computing:cloud", "ai:ai", "business development", "start-up:independent"]
+tags: ["cloud computing:cloud", "ai:ai", "business development:independent", "start-up:independent", "Programming & OOP:agentic_ai_personal_cloud"]
 date: 2022
 id: "solar"
 ---

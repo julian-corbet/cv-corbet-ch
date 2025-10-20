@@ -1,6 +1,6 @@
 ---
 title:  Stakeholder Management
-tags: ["Business Strategy", "AI Strategy", "Digital Transformation", "Stakeholder Management"]
+tags: ["Trust & Loyality:values", "leadership:change", "cross-cultural agility:agility", "work and organizational psychology:bachelor-psychology", "Execution under Pressure:covendit"]
 id: "stakeholder"
 ---
 

@@ -1,6 +1,6 @@
 ---
-title:  Digital Pivot – Well-established regional leadership brand
-tags: ["react", "javaScript", "axios", "HTML", "SCSS", "CSS"]
+title:  Digital transformation of a well-established regional leadership brand
+tags: ["transformation:leadership", "organizational learning:values", "AI:ai", "Simplicity & Modularity:values", "change:change"]
 date: 2022
 id: "digital"
 ---
