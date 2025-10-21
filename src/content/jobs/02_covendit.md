@@ -7,8 +7,8 @@ location: Frankfurt, Germany
 org: COVENDIT
 tags:
   [
-    "Investment Banking:financial-modelling",
-    "MidCap M&A Advisory", "AI:ai", "Transactions:transactions", "Corporate Finance:corporate"
+    "→ Investment Banking:financial-modelling",
+    "MidCap M&A Advisory", "→ AI:ai", "→ Transactions:transactions", "→ Corporate Finance:corporate"
   ]
 id: "covendit"
 ---
