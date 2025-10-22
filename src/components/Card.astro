@@ -14,6 +14,7 @@ const linkUrl   = d.link_url ?? undefined;
 const linkLabel = d.link_label ?? undefined;
 const hasSideLink = Boolean(linkUrl && title);
 const shouldShowStandaloneMeta = !title && (timeframe || linkUrl);
+const LINK_ICON = "carbon:link";
 ---
 
 <div id={cardId} class="card card-compact card-bordered bg-transparent w-full md:w-128 lg:w-160 hover:shadow-lg transition-all my-4">
@@ -86,8 +87,8 @@ const shouldShowStandaloneMeta = !title && (timeframe || linkUrl);
             const [label, cardId] = item.split(':');
             if (cardId.trim()) {
               return (
-                <a href={`#${cardId.trim()}`} class="badge text-center inline-block align-middle w-max h-max text-sm badge-outline shadow-md mb-1 link link-hover">
-                  {label}
+                <a href={`#${cardId.trim()}`} class="badge flex items-center text-center align-middle w-max h-max text-sm badge-outline shadow-md mb-1 link link-hover">
+                  <Icon name={LINK_ICON} class="w-4 h-4 mr-1 flex-shrink-0" /> {label}
                 </a>
               );
             } else {

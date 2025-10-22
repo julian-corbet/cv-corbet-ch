@@ -29,3 +29,19 @@
   from { background: color-mix(in srgb, var(--md-hl-bg) 120%, transparent); }
   to   { background: color-mix(in srgb, var(--md-hl-bg) 180%, transparent); }
 }
+
+/* Connect link styling using markdown highlight color */
+.connect-link {
+  color: var(--md-hl-color);
+  transition: color 0.2s ease;
+}
+
+/* Light mode: darker variant on hover using color-mix */
+:root .connect-link:hover {
+  color: color-mix(in srgb, var(--md-hl-color) 85%, black);
+}
+
+/* Dark mode: subtle fade on hover using color-mix */
+[data-theme="black"] .connect-link:hover {
+  color: color-mix(in srgb, var(--md-hl-color) 75%, transparent);
+}
