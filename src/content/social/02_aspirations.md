@@ -1,7 +1,7 @@
 ---
 title: Aspirations
 id: "aspirations"
-order: 0
+order: 2
 ---
 
 Coming soon - broader worldview, perspectives, and long-term thinking will be shared here.

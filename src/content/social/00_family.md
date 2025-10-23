@@ -1,13 +1,12 @@
 ---
 title: Upbringing
 id: "family"
-order: 2
+order: 0
 ---
 Often I get asked what my CV does not reveal about me. I tend to think that my upbringing is key to understanding who I am.
 
-We are all born innocent, but not all of us are born equal.
-
-<footer>— <cite>Nelson Mandela</cite></footer>
+> We are all born innocent, but not all of us are born equal.
+> <footer>— <cite>Nelson Mandela</cite></footer>
 
 While our society likes to think of itself as a meritocracy, it is not. Some inherit a ladder; others are born into a pit. My parents did everything they could to avoid a negative public perception. However, from the inside it was different. Before I was born, my mother had wanted to abort me because I was conceived out of wedlock (a "child of the 90s"). Yet, through a miracle, my twin brother died in the womb and the pregnancy continued with me. When I was finally born, I lacked oxygen, but again I survived, albeit with slight disabilities that took decades to overcome.
 
