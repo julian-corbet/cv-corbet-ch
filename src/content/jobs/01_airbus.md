@@ -1,16 +1,22 @@
 ---
 title: AIRBUS
-subtitle: Defense & Space
+id: "airbus"
+order: 1
+
 date: 07/2023 - 03/2024
-title_url: https://www.airbus.com/en/products-services/defence
 location: Ingolstadt, Germany
 org: AIRBUS
+subtitle: Defense & Space
+title_url: https://www.airbus.com/en/products-services/defence
+
 tags:
   [
-    "Defense",
-    "Air Power Branch","technical analysis:bachelor-master-physics", "data science:bachelor-master-physics", "AI:ai" 
+    "AI:ai",
+    "Air Power Branch:summary",
+    "Data science:bachelor-master-physics",
+    "Defense:summary",
+    "Technical analysis:bachelor-master-physics"
   ]
-id: "airbus"
 ---
 Certification Engineer | Master thesis Airworthiness
 - Responsibility: Owned technical analysis of decades of unstructured aircraft maintenance data to identify cost overruns and compliance exposures

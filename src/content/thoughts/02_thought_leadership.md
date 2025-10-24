@@ -1,9 +1,19 @@
 ---
 title: Content Strategy & Thought Leadership
-date: 2025
-title_url: "apps.corbet.ch"
 id: "thought_leadership"
 order: 2
+
+date: 2025
+title_url: "apps.corbet.ch"
+
+tags:
+  [
+    "Placeholder1:summary",
+    "Placeholder2:summary",
+    "Placeholder3:summary",
+    "Placeholder4:summary",
+    "Placeholder5:summary"
+  ]
 ---
 I’ve learned that influence grows from ==doing, reflecting, and sharing==. Building on my experiences in **technology**, **corporates**, and **freelancing**, I focus on turning practice into perspective — translating hands-on work into stories, frameworks, and takeaways others can build on. My goal is to connect the *how* of technology and computer systems with the *why* of leadership and human systems (organizations).  
 

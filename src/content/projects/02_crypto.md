@@ -1,8 +1,18 @@
 ---
 title: Crypto advisory and mining projects across multiple ventures
-tags: ["transformation:change", "AI:ai", "organizational learning:values", "stakeholder communication:stakeholder", "risk management:covendit"]
-date: 2021
 id: "crypto"
+order: 2
+
+date: 2021
+
+tags:
+  [
+    "AI:ai",
+    "Organizational learning:values",
+    "Risk management:covendit",
+    "Stakeholder communication:stakeholder",
+    "Transformation:change"
+  ]
 ---
 
 * Context: 2021 pre-Merge ETH mining viable & very-high ROI; innovative structures & lax regulation allowed crypto boon while minimizing (energy) tax

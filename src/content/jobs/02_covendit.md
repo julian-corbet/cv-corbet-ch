@@ -1,16 +1,22 @@
 ---
 title: COVENDIT
-subtitle: Corporate Finance
+id: "covendit"
+order: 2
+
 date: 04/2022 - 06/2022
-title_url: https://covendit.de/
 location: Frankfurt, Germany
 org: COVENDIT
+subtitle: Corporate Finance
+title_url: https://covendit.de/
+
 tags:
   [
+    "AI:ai",
+    "Corporate Finance:corporate",
     "Investment Banking:financial-modelling",
-    "MidCap M&A Advisory", "AI:ai", "Transactions:transactions", "Corporate Finance:corporate"
+    "MidCap M&A Advisory:summary",
+    "Transactions:transactions"
   ]
-id: "covendit"
 ---
 Investment Banking Analyst | working student
 - Responsibility: Supported seven-figure client-facing M&A deals, prepared teasers, information memorandums and financial models (multiples, DCF)

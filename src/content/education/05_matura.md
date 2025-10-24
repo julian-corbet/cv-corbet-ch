@@ -1,11 +1,21 @@
 ---
 title: Matura
+id: "matura"
+order: 5
+
+institute: Georg Büchner Gymnasium
 location: Bad Vilbel, Germany
 title_url: https://www.gbg-bv.de/
-institute: Georg Büchner Gymnasium
-tags: ["chemistry","physics:bachelor-master-physics", "Humility & Learning:values", "academic excellence:scholarship", "psychology:bachelor-psychology"]
-id: "matura"
+
+tags:
+  [
+    "Academic excellence:scholarship",
+    "Chemistry:summary",
+    "Humility & Learning:values",
+    "Physics:bachelor-master-physics",
+    "Psychology:bachelor-psychology"
+  ]
 ---
 
 Matura (Abitur): GPA 5.0, Grade: 1.0 – CH: 6.0 (best student, best grade)
-* selected for math. olympiad (Hesse | 2x) and student academy 
+* selected for math. olympiad (Hesse | 2x) and student academy

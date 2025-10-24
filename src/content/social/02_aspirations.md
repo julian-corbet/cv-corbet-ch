@@ -2,6 +2,15 @@
 title: Aspirations
 id: "aspirations"
 order: 2
+
+tags:
+  [
+    "Placeholder1:summary",
+    "Placeholder2:summary",
+    "Placeholder3:summary",
+    "Placeholder4:summary",
+    "Placeholder5:summary"
+  ]
 ---
 
 Solving challenges within my personal circle and working with others taught me the importance of investing time in initiatives that scale. Real ==change happens where technology and capital meet==, and I believe joining those forces is how I can give my ideas a real chance to matter.
