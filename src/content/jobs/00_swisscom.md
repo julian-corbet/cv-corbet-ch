@@ -14,7 +14,7 @@ tags:
     "AI:ai",
     "Cloud Computing:cloud",
     "Cross-functional Collaboration:change",
-    "Financial Analysis:financial-modelling",
+    "Financial Analysis:modelling",
     "Strategic Planning:strategic"
   ]
 ---

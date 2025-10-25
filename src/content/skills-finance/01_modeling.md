@@ -1,6 +1,6 @@
 ---
 title: Financial Modelling
-id: "financial-modelling"
+id: "modelling"
 order: 1
 
 tags:

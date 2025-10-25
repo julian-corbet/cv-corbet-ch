@@ -13,7 +13,7 @@ tags:
   [
     "AI:ai",
     "Corporate Finance:corporate",
-    "Investment Banking:financial-modelling",
+    "Investment Banking:modelling",
     "MidCap M&A Advisory:summary",
     "Transactions:transactions"
   ]
