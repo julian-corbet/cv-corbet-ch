@@ -1,17 +1,22 @@
 ---
 title: Independent
-subtitle: A Softer Space & Corbet Consulting (Freelance Management Consulting)
+id: "independent"
+order: 4
+
 date: 01/2018 - 06/2023
-title_url: https://asofterspace.com/
 location: CH, DE, IS, UK
 org: A Softer Space
+subtitle: A Softer Space & Corbet Consulting (Freelance Management Consulting)
+title_url: https://asofterspace.com/
+
 tags:
   [
-    "Startup",
-    "Freelance",
-	"cross-cultural agility:agility", "Teamship & Collective Stewardship:values", "business development"
+    "Business development:summary",
+    "Cross-cultural agility:agility",
+    "Freelance:summary",
+    "Startup:summary",
+    "Teamship & Collective Stewardship:values"
   ]
-id: "independent"
 ---
 Co-Founder | Head of Business Development | Freelance Management Consultant 
 - Responsibility: Led business development; built distributed team and client base across Europe with emphasis on long-term customer relationships

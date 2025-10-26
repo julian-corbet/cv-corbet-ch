@@ -1,7 +1,16 @@
 ---
 title: Strategic Planning
 id: "strategic"
-tags: ["transformation:leadership", "Financial Analysis:covendit", "framework design:covendit", "Performance Management:swisscom", "Data-driven Decision-making:swisscom"]
+order: 1
+
+tags:
+  [
+    "Data-driven Decision-making:swisscom",
+    "Financial Analysis:covendit",
+    "Framework design:covendit",
+    "Performance Management:swisscom",
+    "Transformation:leadership"
+  ]
 ---
 
 Builds TOMs, roadmaps and KPI | OKR frameworks; establishes high-level dashboards for portfolio cadence & execution

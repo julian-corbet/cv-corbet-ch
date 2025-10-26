@@ -1,9 +1,19 @@
 ---
 title: Digital Sovereignity & Private Cloud
-date: 2025
-title_url: "https://apps.corbet.ch"
 id: "agentic_ai_personal_cloud"
 order: 0
+
+date: 2025
+title_url: "https://apps.corbet.ch"
+
+tags:
+  [
+    "Placeholder1:summary",
+    "Placeholder2:summary",
+    "Placeholder3:summary",
+    "Placeholder4:summary",
+    "Placeholder5:summary"
+  ]
 ---
 
 Understanding requires touch. I believe you can’t truly grasp software until you’ve built or broken it yourself. ==Doing sharpens intuition== in a way no theory can. Creating something tangible also attracts feedback — and feedback accelerates learning faster than any course or certification ever could.  

@@ -1,10 +1,10 @@
 :root {
-  --md-hl-color: ##008351;           /* text color */
+  --md-hl-color: #008351;           /* text color */
   --md-hl-bg: rgba(220,252,231,.99); /* marker-background */
 }
 
 [data-theme="black"] {
-  --md-hl-color: ##008351;
+  --md-hl-color: #008351;
   --md-hl-bg: rgba(220,252,231,.99);
 }
 

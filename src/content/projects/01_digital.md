@@ -1,8 +1,18 @@
 ---
 title:  Digital transformation of a well-established regional leadership brand
-tags: ["transformation:leadership", "organizational learning:values", "AI:ai", "Simplicity & Modularity:values", "change:change"]
-date: 2022
 id: "digital"
+order: 1
+
+date: 2022
+
+tags:
+  [
+    "AI:ai",
+    "Change:change",
+    "Organizational learning:values",
+    "Simplicity & Modularity:values",
+    "Transformation:leadership"
+  ]
 ---
 
 * Context: COVID halted in-person seminars; revenues collapsed; brand built on personal contact & luxury at risk; clients sought scalable digital formats

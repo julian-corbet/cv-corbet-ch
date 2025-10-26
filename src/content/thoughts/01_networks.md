@@ -1,8 +1,18 @@
 ---
 title: Communities & Networking
-date: 2025
 id: "networks"
 order: 1
+
+date: 2025
+
+tags:
+  [
+    "Placeholder1:summary",
+    "Placeholder2:summary",
+    "Placeholder3:summary",
+    "Placeholder4:summary",
+    "Placeholder5:summary"
+  ]
 ---
 Ideas grow faster in conversation. I learn best through exchange — by engaging with practitioners who see the world from different angles. 
 

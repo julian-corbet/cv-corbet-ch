@@ -1,17 +1,22 @@
 ---
 title: NEXGEN
-subtitle: Business Consultants (meanwhile part of cofinpro)
+id: "nexgen"
+order: 3
+
 date: 04/2022 - 06/2022
-title_url: https://cofinpro.de/
 location: Frankfurt, Germany
 org: NEXGEN
+subtitle: Business Consultants (meanwhile part of Cofinpro)
+title_url: https://cofinpro.de/
+
 tags:
   [
-    "risk management:corporate",
-    "Regulation of securities",
-	"Cloud Migration:cloud","performance analysis:strategic", "leadership:bachelor-psychology"
+    "Cloud Migration:cloud",
+    "Leadership:bachelor-psychology",
+    "Performance analysis:strategic",
+    "Regulation of securities:summary",
+    "Risk management:corporate"
   ]
-id: "nexgen"
 ---
 Junior Consultant | working student 
 - Responsibility: Evaluated regulatory exposure and performance bottlenecks in Tier 1 banking IT systems for T+1 securities settlement

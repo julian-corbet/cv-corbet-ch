@@ -1,11 +1,21 @@
 ---
 title: Bachelor of Science in Psychology, Bachelor of Science in Physics and Minor in Chemistry
+id: "bachelor-psychology"
+order: 4
+
+date: 2017
+institute: Goethe University Frankfurt
 location: Frankfurt, Germany
 title_url: https://www.uni-frankfurt.de/35791087/Psychologie__Bachelor_of_Science
-institute: Goethe University Frankfurt
-date: 2017
-tags: ["psychology","AI:ai", "transformation:leadership", "organizational learning:values", "situational awareness"]
-id: "bachelor-psychology"
+
+tags:
+  [
+    "AI:ai",
+    "Organizational learning:values",
+    "Psychology:summary",
+    "Situational awareness:summary",
+    "Transformation:leadership"
+  ]
 ---
 **GPA:** 4.5, Grade: 1.6 (CH: 5.6)<br>
 **Relevant coursework:** work and organizational psychology (1.0), clinical psychology (1.0), social psychology (1.3), chemistry (1.0), IP & high-tech startups (1.15)<br>
