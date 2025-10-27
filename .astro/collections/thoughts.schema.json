@@ -7,6 +7,9 @@
         "id": {
           "type": "string"
         },
+        "id_label": {
+          "type": "string"
+        },
         "title": {
           "type": "string"
         },

@@ -3,6 +3,7 @@ import { defineCollection, z } from "astro:content";
 
 const sectionSchema = z.object({
   id: z.string().optional(),
+  id_label: z.string().optional(),
   title: z.string().optional(),
   subtitle: z.string().optional(),
   name: z.string().optional(),

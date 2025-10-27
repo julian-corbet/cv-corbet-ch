@@ -1,24 +1,28 @@
 ---
 import { Icon } from "astro-icon/components";
 
-const { frontmatter = {}, content = "", ...directProps } = Astro.props;
+const { frontmatter = {}, ...directProps } = Astro.props;
 const d = { ...frontmatter, ...directProps };
-const cardId   = d.id ?? undefined;
-const title    = d.title ?? undefined;
-const subtitle = d.subtitle ?? undefined;
-const timeframe = d.timeframe ?? d.date ?? undefined;
-const location  = d.location ?? undefined;
-const tags      = Array.isArray(d.tags) ? d.tags : [];
-const titleUrl  = d.title_url ?? undefined;
-const linkUrl   = d.link_url ?? undefined;
-const linkLabel = d.link_label ?? undefined;
+
+const cardId     = d.id ?? undefined;
+const cardLabel  = d.id_label ?? undefined;
+const title      = d.title ?? undefined;
+const subtitle   = d.subtitle ?? undefined;
+const timeframe  = d.timeframe ?? d.date ?? undefined;
+const location   = d.location ?? undefined;
+const tags       = Array.isArray(d.tags) ? d.tags : [];
+const titleUrl   = d.title_url ?? undefined;
+const linkUrl    = d.link_url ?? undefined;
+const linkLabel  = d.link_label ?? undefined;
 const hasSideLink = Boolean(linkUrl && title);
 const shouldShowStandaloneMeta = !title && (timeframe || linkUrl);
-const LINK_ICON = "carbon:link";
+const LINK_ICON  = "carbon:link";
+const labelIndex = (d as any).labelIndex ?? {};
 ---
 
 <div id={cardId} class="card card-compact card-bordered bg-transparent w-full md:w-128 lg:w-160 hover:shadow-lg transition-all my-4">
   <div class={`card-body ${hasSideLink ? 'grid grid-cols-[1fr_160px] gap-4' : ''}`}>
+
     {title && (
       <div class={`mb-2 ${hasSideLink ? 'col-span-2' : ''}`}>
         <div class="flex justify-between items-center prose">
@@ -30,18 +34,15 @@ const LINK_ICON = "carbon:link";
           ) : (
             <span class="inline-block uppercase card-title font-extrabold tracking-tighter md:text-2xl">{title}</span>
           )}
-          {timeframe && (
-            <span class="inline-block font-mono text-sm">
-              {timeframe}
-            </span>
-          )}
+          {timeframe && <span class="inline-block font-mono text-sm">{timeframe}</span>}
         </div>
+
         <div class="text-left -mt-0.5">
           {subtitle && <h2 class="italic text-base font-normal text-secondary m-0">{subtitle}</h2>}
           {location && (
             <div class="flex items-center mt-1">
               <Icon name="carbon:location" class="w-4 h-4 mr-1" />
-              <p class="text-sm  font-light text-secondary">{location}</p>
+              <p class="text-sm font-light text-secondary">{location}</p>
             </div>
           )}
         </div>
@@ -54,17 +55,18 @@ const LINK_ICON = "carbon:link";
           <slot />
         </article>
       </div>
+
       {shouldShowStandaloneMeta && (
         <div class="flex items-center gap-2 ml-4">
           {!title && timeframe && (
-            <div class="badge w-max text-center font-mono">
-              {timeframe}
-            </div>
+            <div class="badge w-max text-center font-mono">{timeframe}</div>
           )}
           {!title && linkUrl && (
             <a href={linkUrl} target="_blank" class="link link-hover text-sm flex items-center">
               {linkLabel || "Open link"}
-              {linkUrl && linkUrl !== "#" && linkUrl.trim() !== "" && <Icon name="carbon:link" class="w-4 h-4 ml-2" />}
+              {linkUrl && linkUrl !== "#" && linkUrl.trim() !== "" && (
+                <Icon name="carbon:link" class="w-4 h-4 ml-2" />
+              )}
             </a>
           )}
         </div>
@@ -75,36 +77,66 @@ const LINK_ICON = "carbon:link";
       <div class="flex flex-col h-full justify-center items-end">
         <a href={linkUrl} target="_blank" class="link link-hover text-sm flex items-center">
           {linkLabel || "Open link"}
-          {linkUrl && linkUrl !== "#" && linkUrl.trim() !== "" && <Icon name="carbon:link" class="w-4 h-4 ml-2" />}
+          {linkUrl && linkUrl !== "#" && linkUrl.trim() !== "" && (
+            <Icon name="carbon:link" class="w-4 h-4 ml-2" />
+          )}
         </a>
       </div>
     )}
 
     {Array.isArray(tags) && tags.length > 0 && (
       <div class={`flex flex-wrap content-around gap-2 my-4 ${hasSideLink ? 'col-span-2' : ''}`}>
-        {tags.map((item) => {
-          if (item.includes(':')) {
-            const [label, cardId] = item.split(':');
-            if (cardId.trim()) {
+        {tags.map((raw) => {
+          const item = typeof raw === "string" ? raw : String(raw);
+          const cap = (s: string) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
+
+          // New shorthand: ":targetId" → label from id_label, else Capitalized(id)
+          if (item.startsWith(":")) {
+            const targetId = item.slice(1).trim();
+            if (!targetId) return null;
+
+            const resolvedLabel =
+              (labelIndex?.[targetId] as string | undefined) ?? cap(targetId);
+
+            return (
+              <a
+                href={`#${targetId}`}
+                class="badge flex items-center text-center align-middle w-max h-max text-sm badge-outline shadow-md mb-1 link link-hover"
+                aria-label={`Jump to ${resolvedLabel}`}
+              >
+                <Icon name={LINK_ICON} class="w-4 h-4 mr-1 flex-shrink-0" /> {resolvedLabel}
+              </a>
+            );
+          }
+
+          // Existing "Label:targetId" and plain badge behavior unchanged
+          if (item.includes(":")) {
+            const [label, target] = item.split(":");
+            const targetId = target.trim();
+            if (targetId) {
               return (
-                <a href={`#${cardId.trim()}`} class="badge flex items-center text-center align-middle w-max h-max text-sm badge-outline shadow-md mb-1 link link-hover">
+                <a
+                  href={`#${targetId}`}
+                  class="badge flex items-center text-center align-middle w-max h-max text-sm badge-outline shadow-md mb-1 link link-hover"
+                  aria-label={`Jump to ${label}`}
+                >
                   <Icon name={LINK_ICON} class="w-4 h-4 mr-1 flex-shrink-0" /> {label}
                 </a>
               );
-            } else {
-              return (
-                <span class="badge text-center inline-block align-middle w-max h-max text-sm badge-outline shadow-md mb-1">
-                  {label}
-                </span>
-              );
             }
-          } else {
             return (
               <span class="badge text-center inline-block align-middle w-max h-max text-sm badge-outline shadow-md mb-1">
-                {item}
+                {label}
               </span>
             );
           }
+
+          // Plain tag (no colon)
+          return (
+            <span class="badge text-center inline-block align-middle w-max h-max text-sm badge-outline shadow-md mb-1">
+              {item}
+            </span>
+          );
         })}
       </div>
     )}
