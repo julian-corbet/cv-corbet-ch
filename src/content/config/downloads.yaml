@@ -3,7 +3,8 @@ downloads:
     description: "Download my CV for a detailed overview of my professional background, skills, and experience"
     button: "Download PDF"
     filename: "downloads/Corbet_CV_2025.pdf"
-- title: "One-Page CV"
+    
+  - title: "One-Page CV"
     description: "View my concise CV"
     button: "Download PDF"
     filename: "downloads/Corbet_CV_2025_one_page.pdf"
