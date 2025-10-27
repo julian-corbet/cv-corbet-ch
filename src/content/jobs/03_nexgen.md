@@ -15,7 +15,7 @@ tags:
     "Leadership:bachelor-psychology",
     "Performance analysis:strategic",
     "Regulation of securities:summary",
-    "Risk management:corporate"
+    ":corporate"
   ]
 ---
 Junior Consultant | working student 

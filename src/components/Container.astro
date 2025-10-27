@@ -40,7 +40,7 @@ const sections: Array<SectionFromConfig & { folder: Key }> = rawSections.filter(
     return ok;
   }
 );
-const special  = headers?.data?.special ?? {};
+const special = headers?.data?.special ?? {};
 console.log("[Container] sections count:", sections.length);
 console.table?.(sections.map((s, i) => ({ idx: i, folder: s.folder, title: s.title })));
 
@@ -85,6 +85,26 @@ for (const s of sections) {
   }
 }
 
+/* ---- build id → label index (prefer id_label, else Capitalized(id)) ---- */
+const idLabelIndex: Record<string, string> = {};
+const cap = (s: string) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
+
+for (const s of sectionsWithContent) {
+  for (const { data } of s.items) {
+    const id = (data as any)?.id;
+    if (!id || typeof id !== "string") {
+      console.warn(`[Container] item in '${s.folder}' is missing a string 'id'; skipping label index entry.`);
+      continue;
+    }
+    if (idLabelIndex[id]) {
+      console.warn(`[Container] duplicate id '${id}' encountered; label index entry will be overwritten.`);
+    }
+    const il = (data as any)?.id_label;
+    idLabelIndex[id] = (typeof il === "string" && il.trim()) ? il.trim() : cap(id);
+  }
+}
+console.log("[Container] labelIndex size:", Object.keys(idLabelIndex).length);
+
 /* ---- downloads from content/config/downloads.yaml (optional) ---- */
 let downloadsData: any = null;
 try {
@@ -105,7 +125,7 @@ try {
       return (
         <AccordionLayout title={section.title} icon={section.icon}>
           {section.items.map(({ data, Content }) => (
-            <Card frontmatter={data}>
+            <Card frontmatter={data} labelIndex={idLabelIndex}>
               <Content />
             </Card>
           ))}
