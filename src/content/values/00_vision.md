@@ -7,11 +7,9 @@ date: 2025
 
 tags:
   [
-    "Placeholder1:summary",
-    "Placeholder2:summary",
-    "Placeholder3:summary",
-    "Placeholder4:summary",
-    "Placeholder5:summary"
+    "AI:ai",
+    "digital sovereignty:agentic_ai_personal_cloud",
+    "Transformation:leadership",
   ]
 ---
 I’m a child of the Internet - I built my first PC at the age of 12. Today, in my 30s a growing consensus among leaders envisions a world driven by ==Agentic AI==<sup>1</sup>, where work shifts from people executing tasks to system architects ==designing systems==<sup>2</sup> that prioritize frictionless and scalable end-to-end execution<sup>3</sup>. Over the next decade, this might extend the winner-takes-most dynamic that is inherent to digital spaces to even more professions and industries<sup>4</sup>. I aim to shape that future & translate this insight into measurable ==ROI== for my sponsor<sup>5</sup> — and durable career-capital for me.
