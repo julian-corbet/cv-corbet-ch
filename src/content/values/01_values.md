@@ -5,11 +5,9 @@ order: 1
 
 tags:
   [
-    "Placeholder1:summary",
-    "Placeholder2:summary",
-    "Placeholder3:summary",
-    "Placeholder4:summary",
-    "Placeholder5:summary"
+    "personal development:family",
+    "social entrepreneurship:impact",
+    "scholarships & extracurricular:scholarships",
   ]
 ---
 
@@ -19,7 +17,7 @@ Connecting with a team that shares my values is essential for me to deliver my b
 - 💻 ==Curiosity & Experimentation== — I dedicate ***at least 20 %*** to exploring. Executives that invest in people and learning outperform. <sup>2</sup>  
 - 📖 ==Humility & Learning== — We’re all fallible. I invite challenge, own mistakes, and am not afraid to let everyone teach me. I hate pretenders. <sup>3</sup>
 - 🧩 ==Simplicity & Modularity== — Simple, composable parts are easier to evolve & change. Robust complexity emerges from combining simple systems. <sup>4</sup>  
-- �🦎 ==Teamship & Collective Stewardship== — Great teams always outperform great individuals. As a chameleon I facilitate balanced participation, clear roles, and respectful debate so diverse strengths compound. <sup>5</sup>
+- 🦎 ==Teamship & Collective Stewardship== — Great teams always outperform great individuals. As a chameleon I facilitate balanced participation, clear roles, and respectful debate so diverse strengths compound. <sup>5</sup>
 
 <small>
 
