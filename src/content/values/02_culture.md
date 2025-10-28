@@ -5,11 +5,11 @@ order: 2
 
 tags:
   [
-    "Placeholder1:summary",
-    "Placeholder2:summary",
-    "Placeholder3:summary",
-    "Placeholder4:summary",
-    "Placeholder5:summary"
+    "Transformation:bachelor-psychology",
+    "Communication & Networks:networks",
+    "AI:ai",
+    "Change:digital",
+    "system design:vision"
   ]
 ---
 
