@@ -8,7 +8,7 @@ designation: "AI | Investment Banking | Inventing the Future"
 
 tags:
   [
-    "Community service:summary",
+    "Volunteering:summary",
     "Cross-cultural agility:agility",
     "Humility & Learning:values",
     "Physics:bachelor-master-physics",
