@@ -8,7 +8,7 @@ title_url: https://www.studienstiftung.de/
 
 tags:
   [
-    "Community service:summary",
+    "Volunteering:summary",
     "Cross-cultural agility:agility",
     "Humility & Learning:values",
     "Physics:bachelor-master-physics",
