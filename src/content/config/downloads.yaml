@@ -38,12 +38,12 @@ downloads:
         
   - title: "Education"
     type: "folder"
-    description: "View my additional documents (certificates, transcripts, and reference letters) here"
+    description: "View my academic background for a detailed overview of my studies, degrees, and research focus"
     children:
-      - title: "Employment reference NexGen"
-        description: "Employment reference from NexGen (Focus on FinTech & Regulation of securities & Cloud) in Germany"
+      - title: "Master Certificate Physics"
+        description: "Master of Science Certificate in Physics"
         button: "Download PDF"
-        filename: "downloads/nexgen.pdf"
+        filename: "downloads/msc_physics.pdf" 
       - title: "Bachelor Certificate in Psychology"
         description: "Bachelor of Science Certificate in Psychology"
         button: "Download PDF"
