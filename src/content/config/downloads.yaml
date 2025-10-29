@@ -1,35 +1,42 @@
 downloads:
-  - title: "CV"
-    description: "Download my CV for a detailed overview of my professional background, skills, and experience"
-    button: "Download PDF"
-    filename: "downloads/Corbet_CV_2025.pdf"
-    
-  - title: "One-Page CV"
+  - title: "One Page CV"
     description: "View my concise CV"
     button: "Download PDF"
     filename: "downloads/Corbet_CV_2025_one_page.pdf"
     
-  - title: "Master Certificate Physics"
-    description: "Master of Science Certificate in Physics"
+  - title: "CV"
+    description: "Download my CV for a detailed overview of my professional background, skills, and experience" 
     button: "Download PDF"
-    filename: "downloads/education/msc_physics.pdf"
-
-  - title: "Employment reference Airbus"
-    description: "Employment reference from Airbus Defence & Space (Defense industry & Air Power branch) in Germany"
+    filename: "downloads/Corbet_CV_2025.pdf"
+    
+  - title: "References"
+    description: "Download my professional references" 
     button: "Download PDF"
-    filename: "downloads/employment/airbus.pdf"
-
-  - title: "Employment reference Covendit"
-    description: "Employment reference from Covendit (MidCap M&A Advisory) in Germany"
+    filename: "downloads/Corbet_references.pdf" 
+    
+  - title: "Education"
+    description: "Download my education summary for an overview of my studies and degrees" 
     button: "Download PDF"
-    filename: "downloads/employment/covendit.pdf"
+    filename: "downloads/Corbet_education.pdf"
 
-  - title: "Highschool Diploma"
-    description: "Matura (Abitur): Grade: 1.0 – CH: 6.0 (best student, best grade)"
-    button: "Download PDF"
-    filename: "downloads/education/highschool_corbet.pdf"
-
-  - title: "Extended Portfolio"
+  - title: "References"
+    type: "folder"
+    description: "View my references for verified documentation of my professional achievements and past roles"
+    children:
+      - title: "Employment reference NexGen"
+        description: "Employment reference from NexGen (Focus on FinTech & Regulation of securities & Cloud) in Germany"
+        button: "Download PDF"
+        filename: "downloads/nexgen.pdf"
+      - title: "Employment reference Airbus"
+        description: "Employment reference from Airbus (Focus on defense and machine learning) in Germany"
+        button: "Download PDF"
+        filename: "downloads/airbus.pdf" 
+      - title: "Employment reference Covendit"
+        description: "Employment reference from Covendit (Focus on Corporate Finance) in Germany"
+        button: "Download PDF"
+        filename: "downloads/covendit.pdf" 
+        
+  - title: "Education"
     type: "folder"
     description: "View my additional documents (certificates, transcripts, and reference letters) here"
     children:
