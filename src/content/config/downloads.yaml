@@ -17,7 +17,7 @@ downloads:
   - title: "Work References"
     description: "AI | Consulting | Corporate Finance" 
     button: "Download References"
-    filename: "downloads/Corbet_References.pdf" 
+    filename: "downloads/Corbet_references.pdf" 
 
   - title: "Education"
     type: "folder"
