@@ -2,12 +2,12 @@ downloads:
   - title: "CV (Onepager)"
     description: "For skimming the bare essentials"
     button: "Download CV"
-    filename: "downloads/Corbet_CV_Onepager.pdf"
+    filename: "downloads/Corbet_CV_2025_Onepager.pdf"
     
   - title: "CV (Twopager)"
     description: "To understand what I am about" 
     button: "Download CV"
-    filename: "downloads/Corbet_CV_Twopager.pdf"
+    filename: "downloads/Corbet_CV_2025_Twopager.pdf"
 
   - title: "Academic Excellence"
     description: "Multiple degrees | summa cum laude" 
