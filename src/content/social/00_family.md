@@ -6,10 +6,10 @@ order: 0
 tags:
   [
     ":values",
-    "Placeholder2:summary",
-    "Placeholder3:summary",
-    "Placeholder4:summary",
-    "Placeholder5:summary"
+    ":scholarships",
+    ":impact",
+    ":matura",
+    ":aspirations"
   ]
 ---
 Often I get asked what my CV does not reveal about me. I tend to think that my upbringing is key to understanding who I am.
