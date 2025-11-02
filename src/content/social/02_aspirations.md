@@ -7,9 +7,9 @@ tags:
   [
     ":vision",
     ":family",
-    "homelab:agentic_ai_personal_cloud",
+    "Homelab:agentic_ai_personal_cloud",
     ":networks",
-    "social media:thought_leadership"
+    "Social Media:thought_leadership"
   ]
 ---
 
