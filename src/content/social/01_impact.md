@@ -5,8 +5,8 @@ order: 1
 
 tags:
   [
-    "Placeholder1:summary",
-    "Placeholder2:summary",
+    ":extracurricular",
+    ":teaching",
     "Placeholder3:summary",
     "Placeholder4:summary",
     "Placeholder5:summary"
