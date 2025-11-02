@@ -8,11 +8,11 @@ title_url: "https://apps.corbet.ch"
 
 tags:
   [
-    "Placeholder1:summary",
-    "Placeholder2:summary",
-    "Placeholder3:summary",
-    "Placeholder4:summary",
-    "Placeholder5:summary"
+    ":independent",
+    ":airbus",
+    ":cloud",
+    ":ai",
+    ":literacy"
   ]
 ---
 
