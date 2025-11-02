@@ -7,7 +7,7 @@ tags:
   [
     ":extracurricular",
     ":teaching",
-    "Placeholder3:summary",
+    ":leadership",
     "Placeholder4:summary",
     "Placeholder5:summary"
   ]
