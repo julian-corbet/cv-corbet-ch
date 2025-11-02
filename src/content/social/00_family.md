@@ -5,7 +5,7 @@ order: 0
 
 tags:
   [
-    "Placeholder1:summary",
+    ":values",
     "Placeholder2:summary",
     "Placeholder3:summary",
     "Placeholder4:summary",
