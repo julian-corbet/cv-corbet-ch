@@ -8,8 +8,8 @@ tags:
     ":extracurricular",
     ":teaching",
     ":leadership",
-    "Placeholder4:summary",
-    "Placeholder5:summary"
+    ":aspirations",
+    ":psychology"
   ]
 ---
 
