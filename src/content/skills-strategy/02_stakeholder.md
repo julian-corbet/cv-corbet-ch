@@ -6,10 +6,10 @@ order: 2
 tags:
   [
     ":agility",
-    ":covendit",
     ":change",
-    ":values",
-    "Psychology:bachelor-psychology"
+    ":covendit",
+    ":bachelor-psychology",
+    ":values"
   ]
 ---
 
