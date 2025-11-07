@@ -5,9 +5,9 @@ order: 1
 
 tags:
   [
-    "personal development:family",
-    "social entrepreneurship:impact",
-    "scholarships & extracurricular:scholarships",
+    ":family",
+    ":impact",
+    ":scholarships",
   ]
 ---
 
