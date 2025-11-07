@@ -5,11 +5,11 @@ order: 2
 
 tags:
   [
-    ":vision",
     ":family",
-    "Homelab:agentic_ai_personal_cloud",
+    ":agentic_ai_personal_cloud",
     ":networks",
-    "Social Media:thought_leadership"
+    ":thought_leadership"
+    ":vision"
   ]
 ---
 
