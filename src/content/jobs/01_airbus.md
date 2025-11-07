@@ -12,7 +12,7 @@ title_url: https://www.airbus.com/en/products-services/defence
 tags:
   [
     ":ai",
-    "Executive Summary:summary",
+    ":summary",
     "Physics:bachelor-master-physics"
   ]
 ---
