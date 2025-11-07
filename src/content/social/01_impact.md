@@ -5,11 +5,11 @@ order: 1
 
 tags:
   [
-    ":extracurricular",
-    ":teaching",
-    ":leadership",
     ":aspirations",
-    ":psychology"
+    ":extracurricular"
+    ":leadership",
+    ":bachelor-psychology",
+    ":teaching"
   ]
 ---
 
