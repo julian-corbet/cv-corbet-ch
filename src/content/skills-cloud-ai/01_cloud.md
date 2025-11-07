@@ -5,11 +5,11 @@ order: 1
 
 tags:
   [
-    "Cloud Computing:nexgen",
-    "OPS:solar",
-    ":swisscom",
-    "Homelab:agentic_ai_personal_cloud",
     ":airbus"
+    ":agentic_ai_personal_cloud"
+    ":nexgen",
+    ":solar",
+    ":swisscom"
   ]
 ---
 
