@@ -6,8 +6,8 @@ order: 3
 tags:
   [
     ":ai",
-    ":values",
-    "Psychology:bachelor-psychology",
+    ":bachelor-psychology",
+    ":values"
   ]
 ---
 
