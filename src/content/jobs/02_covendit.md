@@ -12,9 +12,7 @@ title_url: https://covendit.de/
 tags:
   [
     ":ai",
-    ":corporate",
     ":modelling",
-    ":summary",
     ":transactions"
   ]
 ---
