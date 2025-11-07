@@ -9,10 +9,10 @@ title_url: "apps.corbet.ch"
 
 tags:
   [
-    ":independent",
-    ":nexgen",
-    ":networks",
     ":covendit",
+    ":independent",
+    ":networks",
+    ":nexgen",
     ":swisscom"
   ]
 ---
