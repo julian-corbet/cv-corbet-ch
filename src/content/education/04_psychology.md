@@ -10,11 +10,9 @@ title_url: https://www.uni-frankfurt.de/35791087/Psychologie__Bachelor_of_Scienc
 
 tags:
   [
-    "AI:ai",
-    "Organizational learning:values",
-    "Psychology:summary",
-    "Situational awareness:summary",
-    "Transformation:leadership"
+    ":ai",
+    ":values",
+    ":leadership"
   ]
 ---
 **GPA:** 4.5, Grade: 1.6 (CH: 5.6)<br>
