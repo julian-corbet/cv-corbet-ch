@@ -7,11 +7,11 @@ date: 2021
 
 tags:
   [
-    "AI:ai",
-    "Organizational learning:values",
-    "Risk management:covendit",
-    "Stakeholder communication:stakeholder",
-    "Transformation:change"
+    ":ai",
+    ":change"
+    ":covendit",
+    ":stakeholder",
+    ":values"
   ]
 ---
 
