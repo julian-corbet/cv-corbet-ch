@@ -5,11 +5,10 @@ order: 1
 
 tags:
   [
-    "Cross-functional Collaboration:swisscom",
-    "Data science:bachelor-master-physics",
-    "Financial Analysis:covendit",
-    "Investment Banking:covendit",
-    "Strategic Insight:swisscom"
+    ":swisscom",
+    "Physics:bachelor-master-physics",
+    ":covendit",
+    ":swisscom"
   ]
 ---
 
