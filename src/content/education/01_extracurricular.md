@@ -8,11 +8,11 @@ title_url: https://www.green-fc.de/
 
 tags:
   [
-    "Corporate finance:corporate",
-    "Cross-cultural agility:agility",
+    "Corporate Finance:corporate",
+    ":agility",
     "Physics:bachelor-master-physics",
     "Psychology:bachelor-psychology",
-    "Stakeholder management:stakeholder"
+    "Stakeholder Management:stakeholder"
   ]
 ---
 * Pro bono consulting for Roland Berger via GREEN Finance Consulting
