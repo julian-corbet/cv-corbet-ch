@@ -12,8 +12,8 @@ title_url: https://www.swisscom.ch/
 tags:
   [
     ":ai",
-    ":cloud",
     ":change",
+    ":cloud",
     ":modeling",
     "Strategic Planning:planning"
   ]
