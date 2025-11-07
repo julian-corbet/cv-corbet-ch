@@ -1,6 +1,7 @@
 ---
 title: Digital Sovereignity & Private Cloud
 id: "agentic_ai_personal_cloud"
+id_label: "Homelab"
 order: 0
 
 date: 2025
