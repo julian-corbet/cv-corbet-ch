@@ -9,9 +9,9 @@ title_url: https://www.gbg-bv.de/
 
 tags:
   [
-    "Academic excellence:scholarship",
-    "Chemistry:summary",
-    "Humility & Learning:values",
+    ":scholarships",
+    "Executive Summary:summary",
+    ":values",
     "Physics:bachelor-master-physics",
     "Psychology:bachelor-psychology"
   ]
