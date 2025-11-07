@@ -11,11 +11,11 @@ title_url: https://www.swisscom.ch/
 
 tags:
   [
-    "AI:ai",
-    "Cloud Computing:cloud",
-    "Cross-functional Collaboration:change",
-    "Financial Analysis:modelling",
-    "Strategic Planning:strategic"
+    ":ai",
+    ":cloud",
+    ":change",
+    ":modeling",
+    "Strategic Planning:planning"
   ]
 ---
 Executive Assistant | Consultant to multiple departments (B2B & Infrastructure)
