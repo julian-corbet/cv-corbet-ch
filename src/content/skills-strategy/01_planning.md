@@ -5,11 +5,9 @@ order: 1
 
 tags:
   [
-    "Data-driven Decision-making:swisscom",
-    "Financial Analysis:covendit",
-    "Framework design:covendit",
-    "Performance Management:swisscom",
-    "Transformation:leadership"
+    ":swisscom",
+    ":covendit",
+    ":leadership"
   ]
 ---
 
