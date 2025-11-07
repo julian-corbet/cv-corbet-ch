@@ -5,11 +5,11 @@ order: 2
 
 tags:
   [
-    "Transformation:bachelor-psychology",
-    "Communication & Networks:networks",
-    "AI:ai",
-    "Change:digital",
-    "system design:vision"
+    "Psychology:bachelor-psychology",
+    ":networks",
+    ":ai",
+    ":digital",
+    ":vision"
   ]
 ---
 
