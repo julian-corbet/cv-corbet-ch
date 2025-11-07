@@ -9,11 +9,9 @@ title_url: https://www.uni-frankfurt.de/59445746/SU
 
 tags:
   [
-    "Applied statistics:summary",
-    "Communities & Networking:networks",
-    "Curiosity & Experimentation:values",
-    "Humility & Learning:values",
-    "Teamship & Collective Stewardship:values"
+    ":values",
+    ":networks",
+    "Physics:Physics:bachelor-master-physics"
   ]
 ---
 
