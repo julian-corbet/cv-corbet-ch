@@ -8,10 +8,11 @@ date: 2022
 tags:
   [
     ":ai",
-    ":swisscom",
     ":cloud",
     "Homelab:agentic_ai_personal_cloud",
     ":independent"
+    ":swisscom"
+
   ]
 ---
 
