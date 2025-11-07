@@ -14,7 +14,7 @@ tags:
     ":ai",
     ":airbus",
     ":cloud",
-    "Physics:bachelor-master-physics",
+    ":bachelor-master-physics",
     ":risk"
   ]
 ---
