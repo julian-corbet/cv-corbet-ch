@@ -11,11 +11,9 @@ title_url: https://asofterspace.com/
 
 tags:
   [
-    "Business development:summary",
-    "Cross-cultural agility:agility",
-    "Freelance:summary",
-    "Startup:summary",
-    "Teamship & Collective Stewardship:values"
+    "Executive Summary:summary",
+    ":agility",
+    ":values"
   ]
 ---
 Co-Founder | Head of Business Development | Freelance Management Consultant 
