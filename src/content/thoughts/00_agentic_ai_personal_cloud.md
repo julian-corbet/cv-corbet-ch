@@ -9,10 +9,10 @@ title_url: "https://apps.corbet.ch"
 
 tags:
   [
-    ":independent",
+    ":ai",
     ":airbus",
     ":cloud",
-    ":ai",
+    ":independent",
     ":literacy"
   ]
 ---
