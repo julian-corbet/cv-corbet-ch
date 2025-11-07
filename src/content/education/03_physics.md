@@ -10,11 +10,11 @@ title_url: https://www.uni-frankfurt.de/35791801/Physik__Master_of_Science
 
 tags:
   [
-    "AI:ai",
-    "Cloud computing:cloud",
-    "Data science:risk",
-    "Physics:summary",
-    "Technical analysis:airbus"
+    ":ai",
+    ":cloud",
+    ":risk",
+    "Physics:bachelor-master-physics",
+    ":airbus"
   ]
 ---
 **GPA:** 5.0, Grade: 1.0 (CH: 6.0)<br>
