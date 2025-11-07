@@ -8,9 +8,9 @@ date: 2025
 tags:
   [
     ":extracurricular",
-    ":values",
     ":independent",
     ":literacy",
+    ":values",
     ":vision"
   ]
 ---
