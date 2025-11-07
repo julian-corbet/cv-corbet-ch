@@ -5,11 +5,11 @@ order: 3
 
 tags:
   [
-    "Global mindset:independent",
-    "Global talent at AIESEC Frankfurt:extracurricular",
-    "Interpersonal Sensitivity:bachelor-psychology",
-    "Investment Banking:covendit",
-    "Teamship & Collective Stewardship:values"
+    ":independent",
+    ":extracurricular",
+    "Psychology:bachelor-psychology",
+    ":covendit",
+    ":values"
   ]
 ---
 
