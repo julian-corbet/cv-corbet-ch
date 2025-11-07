@@ -8,9 +8,9 @@ title_url: https://www.studienstiftung.de/
 
 tags:
   [
-    "Volunteering:summary",
-    "Cross-cultural agility:agility",
-    "Humility & Learning:values",
+    ":impact",
+    ":agility",
+    ":values",
     "Physics:bachelor-master-physics",
     "Psychology:bachelor-psychology"
   ]
