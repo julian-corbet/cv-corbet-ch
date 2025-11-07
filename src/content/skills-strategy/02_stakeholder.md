@@ -5,11 +5,11 @@ order: 2
 
 tags:
   [
-    "Cross-cultural agility:agility",
-    "Execution under Pressure:covendit",
-    "Leadership:change",
-    "Trust & Loyality:values",
-    "Work and organizational psychology:bachelor-psychology"
+    ":agility",
+    ":covendit",
+    ":change",
+    ":values",
+    "Psychology:bachelor-psychology"
   ]
 ---
 
