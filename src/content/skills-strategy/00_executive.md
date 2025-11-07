@@ -5,11 +5,9 @@ order: 0
 
 tags:
   [
-    "Business storytelling:covendit",
-    "Cross-cultural agility:agility",
-    "Financial Analysis:covendit",
-    "Stakeholder communication:crypto",
-    "Strategic Insight:swisscom"
+    ":covendit",
+    ":agility",
+    ":swisscom"
   ]
 ---
 
