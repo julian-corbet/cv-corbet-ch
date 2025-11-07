@@ -8,11 +8,11 @@ title_url: https://www.studienstiftung.de/
 
 tags:
   [
-    ":impact",
     ":agility",
-    ":values",
+    "impact",
     "Physics:bachelor-master-physics",
     "Psychology:bachelor-psychology"
+    ":values"
   ]
 ---
  * German Academic Scholarship Foundation (Top 1% of students)

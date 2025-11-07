@@ -8,7 +8,6 @@ tags:
     ":swisscom",
     "Physics:bachelor-master-physics",
     ":covendit",
-    ":swisscom"
   ]
 ---
 
