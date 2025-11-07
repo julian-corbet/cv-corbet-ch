@@ -1,6 +1,7 @@
 ---
 title: Master of Science in Physics
 id: "bachelor-master-physics"
+id_label: "Physics"
 order: 3
 
 date: "2024"
@@ -11,10 +12,10 @@ title_url: https://www.uni-frankfurt.de/35791801/Physik__Master_of_Science
 tags:
   [
     ":ai",
+    ":airbus",
     ":cloud",
-    ":risk",
     "Physics:bachelor-master-physics",
-    ":airbus"
+    ":risk"
   ]
 ---
 **GPA:** 5.0, Grade: 1.0 (CH: 6.0)<br>

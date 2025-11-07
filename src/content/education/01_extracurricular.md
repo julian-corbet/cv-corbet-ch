@@ -8,8 +8,8 @@ title_url: https://www.green-fc.de/
 
 tags:
   [
-    "Corporate Finance:corporate",
     ":agility",
+    "Corporate Finance:corporate",
     "Physics:bachelor-master-physics",
     "Psychology:bachelor-psychology",
     "Stakeholder Management:stakeholder"

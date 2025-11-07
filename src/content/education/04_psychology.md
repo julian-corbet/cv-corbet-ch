@@ -1,6 +1,7 @@
 ---
 title: Bachelor of Science in Psychology, Bachelor of Science in Physics and Minor in Chemistry
 id: "bachelor-psychology"
+id_label: "Psychology"
 order: 4
 
 date: 2017
@@ -11,8 +12,8 @@ title_url: https://www.uni-frankfurt.de/35791087/Psychologie__Bachelor_of_Scienc
 tags:
   [
     ":ai",
-    ":values",
-    ":leadership"
+    ":leadership",
+    ":values"
   ]
 ---
 **GPA:** 4.5, Grade: 1.6 (CH: 5.6)<br>

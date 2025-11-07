@@ -9,11 +9,11 @@ title_url: https://www.gbg-bv.de/
 
 tags:
   [
+    ":summary",
     ":scholarships",
-    "Executive Summary:summary",
-    ":values",
-    "Physics:bachelor-master-physics",
-    "Psychology:bachelor-psychology"
+    ":bachelor-master-physics",
+    ":bachelor-psychology",
+    ":values"
   ]
 ---
 

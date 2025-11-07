@@ -9,9 +9,9 @@ title_url: https://www.uni-frankfurt.de/59445746/SU
 
 tags:
   [
-    ":values",
     ":networks",
-    "Physics:Physics:bachelor-master-physics"
+    "Physics:Physics:bachelor-master-physics",
+    ":values"
   ]
 ---
 
