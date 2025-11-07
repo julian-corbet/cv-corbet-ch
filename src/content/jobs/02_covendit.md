@@ -11,11 +11,11 @@ title_url: https://covendit.de/
 
 tags:
   [
-    "AI:ai",
-    "Corporate Finance:corporate",
-    "Investment Banking:modelling",
-    "MidCap M&A Advisory:summary",
-    "Transactions:transactions"
+    ":ai",
+    ":corporate",
+    ":modelling",
+    ":summary",
+    ":transactions"
   ]
 ---
 Investment Banking Analyst | working student

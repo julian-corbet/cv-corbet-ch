@@ -11,11 +11,9 @@ title_url: https://www.airbus.com/en/products-services/defence
 
 tags:
   [
-    "AI:ai",
-    "Air Power Branch:summary",
-    "Data science:bachelor-master-physics",
-    "Defense:summary",
-    "Technical analysis:bachelor-master-physics"
+    ":ai",
+    "Executive Summary:summary",
+    "Physics:bachelor-master-physics"
   ]
 ---
 Certification Engineer | Master thesis Airworthiness
