@@ -8,7 +8,7 @@ tags:
     "Financial Analysis:covendit",
     "Investment Banking:covendit",
     "M&A Advisory:covendit",
-    "Risk management:covendit",
+    "Risk Management:covendit",
     "Strategic Insight:swisscom"
   ]
 ---
