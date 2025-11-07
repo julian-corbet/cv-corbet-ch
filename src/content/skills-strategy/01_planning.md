@@ -5,9 +5,9 @@ order: 1
 
 tags:
   [
-    ":swisscom",
     ":covendit",
-    ":leadership"
+    ":leadership",
+    ":swisscom"
   ]
 ---
 
