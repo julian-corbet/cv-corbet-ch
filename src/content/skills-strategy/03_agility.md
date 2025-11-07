@@ -5,10 +5,10 @@ order: 3
 
 tags:
   [
-    ":independent",
+    ":covendit"
     ":extracurricular",
-    "Psychology:bachelor-psychology",
-    ":covendit",
+    ":independent",
+    ":bachelor-psychology",
     ":values"
   ]
 ---
