@@ -1,6 +1,7 @@
 ---
 title: Content Strategy & Thought Leadership
 id: "thought_leadership"
+id_label: "Social Media"
 order: 2
 
 date: 2025
