@@ -5,9 +5,9 @@ order: 2
 
 tags:
   [
-    "Psychology:bachelor-psychology",
-    ":networks",
     ":ai",
+    ":networks",
+    ":bachelor-psychology",
     "Transformation:digital",
     ":vision"
   ]
