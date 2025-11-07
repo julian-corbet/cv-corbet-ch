@@ -12,8 +12,8 @@ title_url: https://cofinpro.de/
 tags:
   [
     ":cloud",
-    "Psychology:bachelor-psychology",
     "Performance Analysis:strategic",
+    "Psychology:bachelor-psychology",
   ]
 ---
 Junior Consultant | working student 
