@@ -5,11 +5,11 @@ order: 2
 
 tags:
   [
-    "AI:ai",
-    "Market Dynamics Understanding:independent",
-    "Performance analysis:nexgen",
-    "Quantitative Analysis:bachelor-master-physics",
-    "Risk management:covendit"
+    ":ai",
+    ":independent",
+    ":nexgen",
+    "Physics:bachelor-master-physics",
+    ":covendit"
   ]
 ---
 
