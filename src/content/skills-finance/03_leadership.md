@@ -5,11 +5,11 @@ order: 3
 
 tags:
   [
-    "AI:ai",
-    "Change:digital",
-    "Stakeholder communication:crypto",
-    "Strategic Insight:swisscom",
-    "Transformation:bachelor-psychology"
+    ":ai",
+    "Transformation:digital",
+    ":stakeholer",
+    ":swisscom",
+    "Psychology:bachelor-psychology"
   ]
 ---
 
