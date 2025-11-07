@@ -5,11 +5,9 @@ order: 3
 
 tags:
   [
-    "AI:ai",
-    "Humility & Learning:values",
-    "Organizational psychology:bachelor-psychology",
-    "Teamship & Collective Stewardship:values",
-    "Transformation:digital"
+    ":ai",
+    ":values",
+    "Psychology:bachelor-psychology",
   ]
 ---
 
