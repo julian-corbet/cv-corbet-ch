@@ -5,11 +5,9 @@ order: 2
 
 tags:
   [
-    "Data science:bachelor-master-physics",
-    "Financial Analysis:covendit",
-    "Investment Banking:covendit",
-    "Stakeholder communication:crypto",
-    "Strategic Insight:swisscom"
+    "Physics:bachelor-master-physics",
+    ":stakeholder",
+    ":swisscom"
   ]
 ---
 
