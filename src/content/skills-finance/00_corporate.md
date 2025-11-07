@@ -5,11 +5,9 @@ order: 0
 
 tags:
   [
-    "Financial Analysis:covendit",
-    "Investment Banking:covendit",
-    "M&A Advisory:covendit",
-    "Risk Management:covendit",
-    "Strategic Insight:swisscom"
+    ":covendit",
+    ":risk",
+    ":swisscom"
   ]
 ---
 
