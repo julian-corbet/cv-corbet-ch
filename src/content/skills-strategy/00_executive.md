@@ -5,8 +5,8 @@ order: 0
 
 tags:
   [
-    ":covendit",
     ":agility",
+    ":covendit",
     ":swisscom"
   ]
 ---
