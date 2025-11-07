@@ -11,8 +11,8 @@ title_url: https://asofterspace.com/
 
 tags:
   [
-    "Executive Summary:summary",
     ":agility",
+    ":summary",
     ":values"
   ]
 ---
