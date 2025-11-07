@@ -7,11 +7,11 @@ date: 2022
 
 tags:
   [
-    "AI:ai",
-    "Business development:independent",
-    "Cloud computing:cloud",
-    "Programming & OOP:agentic_ai_personal_cloud",
-    "Start-up:independent"
+    ":ai",
+    ":swisscom",
+    ":cloud",
+    "Homelab:agentic_ai_personal_cloud",
+    ":independent"
   ]
 ---
 
