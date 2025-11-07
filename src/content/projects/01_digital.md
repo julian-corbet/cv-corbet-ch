@@ -7,11 +7,11 @@ date: 2022
 
 tags:
   [
-    "AI:ai",
-    "Change:change",
-    "Organizational learning:values",
-    "Simplicity & Modularity:values",
-    "Transformation:leadership"
+    ":ai",
+    ":change",
+    ":leadership",
+    ":values"
+    ":vision"
   ]
 ---
 
