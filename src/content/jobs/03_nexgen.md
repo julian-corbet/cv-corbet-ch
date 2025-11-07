@@ -11,11 +11,9 @@ title_url: https://cofinpro.de/
 
 tags:
   [
-    "Cloud Migration:cloud",
-    "Leadership:bachelor-psychology",
-    "Performance analysis:strategic",
-    "Regulation of securities:summary",
-    ":corporate"
+    ":cloud",
+    "Psychology:bachelor-psychology",
+    "Performance Analysis:strategic",
   ]
 ---
 Junior Consultant | working student 
