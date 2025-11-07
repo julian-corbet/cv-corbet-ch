@@ -6,10 +6,10 @@ order: 1
 tags:
   [
     "Cloud Computing:nexgen",
-    "Cloud migration:solar",
-    "Infrastructure:swisscom",
-    "Private cloud:agentic_ai_personal_cloud",
-    "Process Optimization:airbus"
+    "OPS:solar",
+    ":swisscom",
+    "Homelab:agentic_ai_personal_cloud",
+    ":airbus"
   ]
 ---
 
