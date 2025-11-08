@@ -1,5 +1,4 @@
 ---
-// src/pages/index.astro
 import "@fontsource-variable/dm-sans";
 import { getEntry, getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -12,6 +11,7 @@ import { Icon } from "astro-icon/components";
 // Load metadata.yaml (single source of truth)
 const entry = await getEntry("config", "metadata");
 const metadata = entry?.data;
+
 if (!metadata) {
   console.error("Available config entries:", await getCollection("config"));
   throw new Error("Missing src/content/config/metadata.yaml or schema mismatch.");
@@ -29,6 +29,7 @@ const lang = metadata.page?.page_lang ?? "en";
   <Fragment slot="head">
     <!-- Theme init + toggle -->
     <script is:inline>
+      // Initialize theme from localStorage and keep <html> data-theme + .dark in sync
       const initTheme = () => {
         const theme = localStorage.getItem('theme') || 'black';
         document.documentElement.setAttribute('data-theme', theme);
@@ -37,6 +38,7 @@ const lang = metadata.page?.page_lang ?? "en";
       };
       initTheme();
 
+      // Toggle theme when the switch changes
       window.addEventListener('change', (e) => {
         if (e.target instanceof HTMLInputElement && e.target.matches('input[data-toggle-theme]')) {
           const theme = e.target.checked ? 'lofi' : 'black';
@@ -50,6 +52,7 @@ const lang = metadata.page?.page_lang ?? "en";
 
     <!-- Hash navigation for accordion sections -->
     <script is:inline>
+      // Open target collapse and scroll to it on hash navigation
       function handleHash() {
         const id = window.location.hash.slice(1);
         if (!id) return;
@@ -65,7 +68,6 @@ const lang = metadata.page?.page_lang ?? "en";
           const cb = el.querySelector('input[type="checkbox"]');
           if (cb && !cb.checked) cb.checked = true;
         }
-
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
       window.addEventListener('DOMContentLoaded', handleHash);
@@ -103,12 +105,8 @@ const lang = metadata.page?.page_lang ?? "en";
     <meta name="twitter:url" content={metadata.og.og_url} />
     <meta name="twitter:title" content={metadata.twitter.twitter_title} />
     <meta name="twitter:description" content={metadata.twitter.twitter_description} />
-    {metadata.twitter.twitter_site && (
-      <meta name="twitter:site" content={metadata.twitter.twitter_site} />
-    )}
-    {metadata.twitter.twitter_creator && (
-      <meta name="twitter:creator" content={metadata.twitter.twitter_creator} />
-    )}
+    {metadata.twitter.twitter_site && <meta name="twitter:site" content={metadata.twitter.twitter_site} />}
+    {metadata.twitter.twitter_creator && <meta name="twitter:creator" content={metadata.twitter.twitter_creator} />}
     <meta name="twitter:image" content={twImageAbs} />
 
     <!-- Person JSON-LD -->
@@ -123,67 +121,46 @@ const lang = metadata.page?.page_lang ?? "en";
   </Fragment>
 
   <body class="flex flex-col min-h-screen">
-    <!-- Header + divider inside a unified page frame -->
-    <div class="page-frame">
-      <div class="frame-inner">
-        <Header />
-      </div>
-      <div class="divider h-fit bg-secondary"></div>
+    <!-- Center the header by constraining width like divider/main -->
+    <div class="mx-auto w-[95vw] max-w-3xl">
+      <Header />
     </div>
 
-    <!-- Theme toggle (absolute) -->
+    <!-- Theme toggle (fixed position) -->
     <div class="flex items-center absolute top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 xl:top-10 xl:right-10 z-10">
       <Icon name="carbon:moon" class="w-4 h-4" />
       <input type="checkbox" data-toggle-theme="black,lofi" class="toggle toggle-sm mx-1 bg-secondary" />
       <Icon name="carbon:light" class="w-4 h-4" />
     </div>
 
-    <!-- Main content in the same frame -->
-    <main class="page-frame overflow-y-scroll py-2 max-h-[90vh] md:max-h-[70vh]">
+    <!-- Divider aligned to the same content width -->
+    <div class="divider mx-auto h-fit max-w-3xl w-[95vw] flex flex-nowrap bg-secondary"></div>
+
+    <!-- Main content area -->
+    <main class="mx-auto flex-grow max-h-[90vh] md:max-h-[70vh] max-w-3xl overflow-y-scroll py-2 grid w-[95vw]">
       <div class="container">
         <Container />
       </div>
     </main>
 
-    <!-- Footer in the same frame -->
-    <div class="page-frame">
-      <Footer class="flex justify-center items-center py-4" />
-    </div>
+    <Footer class="flex justify-center items-center py-4" />
   </body>
 </BaseLayout>
 
 <style is:global>
-  /* Typography */
+  /* Global type */
   body { font-family: "DM Sans Variable", sans-serif; }
 
-  /* Unified centered frame:
-     - same width across header/main/footer
-     - mobile gutters (px)
-     - no surprises from child widths */
-  .page-frame {
-    margin-inline: auto;
-    width: min(95vw, 48rem); /* 48rem ≈ Tailwind max-w-3xl */
-    padding-inline: 1rem;    /* mobile gutters match visual center */
-  }
-  @media (min-width: 768px) {
-    .page-frame { padding-inline: 0; } /* remove extra gutters on md+ to match main */
-  }
-  .frame-inner {
-    max-width: 100%;
-    margin-inline: auto;
-    overflow: hidden; /* prevents accidental spill from inner absolute/flex elements */
-  }
-
-  /* Scrollbar cosmetics for the scrollable main */
+  /* Thin custom scrollbar for the scrollable main area */
   .overflow-y-scroll::-webkit-scrollbar { width: 3px; }
   .overflow-y-scroll::-webkit-scrollbar-thumb { background-color: oklch(var(--s)); }
   .overflow-y-scroll { scrollbar-width: 1px; }
 
-  /* Your container behavior stays as-is */
+  /* Simple responsive container behavior */
   @media (max-width: 768px) { .container { flex-direction: column; } }
   @media (min-width: 768px) { .container { display: flex; flex-wrap: wrap; } }
 
-  /* Theme-specific icon tweaks */
+  /* Icon tweaks for dark theme assets */
   [data-theme=black] .signal-icon { filter: invert(1); }
   [data-theme=black] .matrix-icon { filter: invert(1); }
   [data-theme=black] .threema-light { display: none; }
