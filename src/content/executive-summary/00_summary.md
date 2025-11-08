@@ -12,7 +12,7 @@ tags:
     ":impact",
     "Physics:bachelor-master-physics",
     "Psychology:bachelor-psychology",
-    ":values",
+    ":values"
   ]
 ---
 ==Excellence== proven by ==four scholarships==, ==three university degrees==, experience in ==two global corporations==, and building ==one software startup==. My background spans ==M&A (Covendit, Corporate Finance)==, ==Management Consulting (Nexgen, Enterprise IT)==, ==PMO (Swisscom, Cloud & AI)==, and ==Machine Learning (Airbus, Defense)==, giving me cross-domain perspective to translate across silos, align stakeholders and lead diverse teams & projects.

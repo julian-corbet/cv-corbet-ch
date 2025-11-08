@@ -1,6 +1,7 @@
 // src/content/config.ts
 import { defineCollection, z } from "astro:content";
 
+/* Shared section schema for markdown content collections */
 const sectionSchema = z.object({
   id: z.string().optional(),
   id_label: z.string().optional(),
@@ -72,8 +73,77 @@ const downloadsSchema = z.object({
   downloads: z.array(z.union([fileItem, folderItem])),
 });
 
-/* unified data schema for config/*.yaml */
-const configUnionSchema = z.union([headersSchema, contactsSchema, downloadsSchema]);
+/* config/metadata.yaml */
+const metadataSchema = z.object({
+  page: z.object({
+    page_title: z.string(),
+    page_subtitle: z.string().optional(),
+    page_description: z.string().optional(),
+    page_lang: z.string().default("en"),
+  }).optional(),
+
+  seo: z.object({
+    seo_title: z.string(),
+    seo_description: z.string(),
+    seo_canonical_url: z.string().url(),
+    seo_keywords: z.array(z.string()).min(3),
+    seo_author: z.string(),
+    seo_site_name: z.string(),
+    seo_theme_color: z.string(),
+    seo_noindex: z.boolean().default(false),
+  }),
+
+  og: z.object({
+    og_type: z.string().default("website"),
+    og_title: z.string(),
+    og_description: z.string(),
+    og_url: z.string().url(),
+    og_site_name: z.string(),
+    og_locale: z.string().default("en_US"),
+    og_image_path: z.string(),               // allow relative path
+    og_image_width: z.number().int().positive(),
+    og_image_height: z.number().int().positive(),
+  }),
+
+  twitter: z.object({
+    twitter_card: z.string().default("summary_large_image"),
+    twitter_title: z.string(),
+    twitter_description: z.string(),
+    twitter_site: z.string().optional(),
+    twitter_creator: z.string().optional(),
+    twitter_image_path: z.string(),          // allow relative path
+  }),
+
+  person: z.object({
+    name: z.string(),
+    alternateName: z.string().optional(),
+    jobTitle: z.string(),
+    description: z.string(),
+    image: z.string().url(),
+    url: z.string().url(),
+    sameAs: z.array(z.string().url()).optional(),
+    knowsAbout: z.array(z.string()).optional(),
+    hasOccupation: z.object({
+      name: z.string(),
+      occupationLocation: z.object({
+        "@type": z.literal("Country"),
+        name: z.string(),
+        addressCountry: z.string().optional(),
+      }),
+    }),
+    contactPoint: z.object({
+      "@type": z.literal("ContactPoint"),
+      telephone: z.string().optional(),
+      email: z.string().email().optional(),
+      contactType: z.string().optional(),
+      areaServed: z.string().optional(),
+      availableLanguage: z.union([z.string(), z.array(z.string())]).optional(),
+    }),
+  }),
+});
+
+/* Unified data schema for config/*.yaml */
+const configUnionSchema = z.union([headersSchema, contactsSchema, downloadsSchema, metadataSchema]);
 
 export const collections = {
   "executive-summary": makeContent(),
@@ -86,6 +156,6 @@ export const collections = {
   jobs: makeContent(),
   education: makeContent(),
   social: makeContent(),
-  // references: makeContent(), // <— keep commented until you’re ready
+  // references: makeContent(), // keep commented until you’re ready
   config: defineCollection({ type: "data", schema: configUnionSchema }),
 };

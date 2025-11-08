@@ -6,7 +6,7 @@ order: 2
 tags:
   [
     ":ai",
-    ":covendit"
+    ":covendit",
     ":independent",
     ":nexgen",
     ":bachelor-master-physics"

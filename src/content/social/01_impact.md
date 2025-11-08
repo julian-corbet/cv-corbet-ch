@@ -6,7 +6,7 @@ order: 1
 tags:
   [
     ":aspirations",
-    ":extracurricular"
+    ":extracurricular",
     ":leadership",
     ":bachelor-psychology",
     ":teaching"

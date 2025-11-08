@@ -6,10 +6,10 @@ order: 3
 tags:
   [
     ":ai",
-    ":bachelor-psychology"
+    ":bachelor-psychology",
     ":stakeholer",
     ":swisscom",
-    "Transformation:digital",
+    "Transformation:digital"
   ]
 ---
 

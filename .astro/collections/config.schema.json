@@ -189,6 +189,282 @@
             "downloads"
           ],
           "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "page": {
+              "type": "object",
+              "properties": {
+                "page_title": {
+                  "type": "string"
+                },
+                "page_subtitle": {
+                  "type": "string"
+                },
+                "page_description": {
+                  "type": "string"
+                },
+                "page_lang": {
+                  "type": "string",
+                  "default": "en"
+                }
+              },
+              "required": [
+                "page_title"
+              ],
+              "additionalProperties": false
+            },
+            "seo": {
+              "type": "object",
+              "properties": {
+                "seo_title": {
+                  "type": "string"
+                },
+                "seo_description": {
+                  "type": "string"
+                },
+                "seo_canonical_url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "seo_keywords": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 3
+                },
+                "seo_author": {
+                  "type": "string"
+                },
+                "seo_site_name": {
+                  "type": "string"
+                },
+                "seo_theme_color": {
+                  "type": "string"
+                },
+                "seo_noindex": {
+                  "type": "boolean",
+                  "default": false
+                }
+              },
+              "required": [
+                "seo_title",
+                "seo_description",
+                "seo_canonical_url",
+                "seo_keywords",
+                "seo_author",
+                "seo_site_name",
+                "seo_theme_color"
+              ],
+              "additionalProperties": false
+            },
+            "og": {
+              "type": "object",
+              "properties": {
+                "og_type": {
+                  "type": "string",
+                  "default": "website"
+                },
+                "og_title": {
+                  "type": "string"
+                },
+                "og_description": {
+                  "type": "string"
+                },
+                "og_url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "og_site_name": {
+                  "type": "string"
+                },
+                "og_locale": {
+                  "type": "string",
+                  "default": "en_US"
+                },
+                "og_image_path": {
+                  "type": "string"
+                },
+                "og_image_width": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0
+                },
+                "og_image_height": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0
+                }
+              },
+              "required": [
+                "og_title",
+                "og_description",
+                "og_url",
+                "og_site_name",
+                "og_image_path",
+                "og_image_width",
+                "og_image_height"
+              ],
+              "additionalProperties": false
+            },
+            "twitter": {
+              "type": "object",
+              "properties": {
+                "twitter_card": {
+                  "type": "string",
+                  "default": "summary_large_image"
+                },
+                "twitter_title": {
+                  "type": "string"
+                },
+                "twitter_description": {
+                  "type": "string"
+                },
+                "twitter_site": {
+                  "type": "string"
+                },
+                "twitter_creator": {
+                  "type": "string"
+                },
+                "twitter_image_path": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "twitter_title",
+                "twitter_description",
+                "twitter_image_path"
+              ],
+              "additionalProperties": false
+            },
+            "person": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "alternateName": {
+                  "type": "string"
+                },
+                "jobTitle": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "image": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "sameAs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                },
+                "knowsAbout": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "hasOccupation": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "occupationLocation": {
+                      "type": "object",
+                      "properties": {
+                        "@type": {
+                          "type": "string",
+                          "const": "Country"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "addressCountry": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "@type",
+                        "name"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "occupationLocation"
+                  ],
+                  "additionalProperties": false
+                },
+                "contactPoint": {
+                  "type": "object",
+                  "properties": {
+                    "@type": {
+                      "type": "string",
+                      "const": "ContactPoint"
+                    },
+                    "telephone": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email"
+                    },
+                    "contactType": {
+                      "type": "string"
+                    },
+                    "areaServed": {
+                      "type": "string"
+                    },
+                    "availableLanguage": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "@type"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "name",
+                "jobTitle",
+                "description",
+                "image",
+                "url",
+                "hasOccupation",
+                "contactPoint"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "seo",
+            "og",
+            "twitter",
+            "person"
+          ],
+          "additionalProperties": false
         }
       ]
     }

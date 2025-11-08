@@ -10,7 +10,7 @@ tags:
     ":ai",
     ":change",
     ":leadership",
-    ":values"
+    ":values",
     ":vision"
   ]
 ---

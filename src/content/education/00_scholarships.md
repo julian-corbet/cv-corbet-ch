@@ -11,7 +11,7 @@ tags:
     ":agility",
     "impact",
     "Physics:bachelor-master-physics",
-    "Psychology:bachelor-psychology"
+    "Psychology:bachelor-psychology",
     ":values"
   ]
 ---

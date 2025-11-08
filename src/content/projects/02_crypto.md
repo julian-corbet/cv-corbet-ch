@@ -8,7 +8,7 @@ date: 2021
 tags:
   [
     ":ai",
-    ":change"
+    ":change",
     ":covendit",
     ":stakeholder",
     ":values"
