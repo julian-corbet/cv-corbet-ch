@@ -11,9 +11,8 @@ tags:
     ":ai",
     ":cloud",
     "Homelab:agentic_ai_personal_cloud",
-    ":independent"
+    ":independent",
     ":swisscom"
-
   ]
 ---
 

@@ -1,89 +1,133 @@
 ---
 import "@fontsource-variable/dm-sans";
+import { getEntry, getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import Header from "../components/Header.astro";
 import Container from "../components/Container.astro";
 import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
 import { Icon } from "astro-icon/components";
+
+// Load metadata.yaml (single source of truth)
+const entry = await getEntry("config", "metadata");
+const metadata = entry?.data;
+
+if (!metadata) {
+  console.error("Available config entries:", await getCollection("config"));
+  throw new Error("Missing src/content/config/metadata.yaml or schema mismatch.");
+}
+
+// Build absolute image URLs for OG/Twitter
+const ogImageAbs = new URL(metadata.og.og_image_path, metadata.og.og_url).toString();
+const twImageAbs = new URL(metadata.twitter.twitter_image_path, metadata.og.og_url).toString();
+
+// Language for <html>
+const lang = metadata.page?.page_lang ?? "en";
 ---
 
-<html lang="en">
-  <head>
+<BaseLayout lang={lang}>
+  <Fragment slot="head">
+    <!-- Theme init + toggle -->
     <script is:inline>
-      // Theme init + toggle (unverändert im Verhalten)
       const initTheme = () => {
         const theme = localStorage.getItem('theme') || 'black';
         document.documentElement.setAttribute('data-theme', theme);
-        if (theme === 'black') {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-        return theme;
+        if (theme === 'black') document.documentElement.classList.add('dark');
+        else document.documentElement.classList.remove('dark');
       };
-      const updateToggle = (theme) => {
-        const toggle = document.querySelector('input[data-toggle-theme]');
-        if (toggle) toggle.checked = theme === 'lofi';
-      };
-      const currentTheme = initTheme();
-      updateToggle(currentTheme);
-      window.changeTheme = (checked) => {
-        const theme = checked ? 'lofi' : 'black';
-        document.documentElement.setAttribute('data-theme', theme);
-        if (theme === 'black') {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-        localStorage.setItem('theme', theme);
-      };
-      document.addEventListener('change', (e) => {
-        if (e.target.matches('input[data-toggle-theme]')) {
-          window.changeTheme(e.target.checked);
+      initTheme();
+
+      window.addEventListener('change', (e) => {
+        if (e.target instanceof HTMLInputElement && e.target.matches('input[data-toggle-theme]')) {
+          const theme = e.target.checked ? 'lofi' : 'black';
+          document.documentElement.setAttribute('data-theme', theme);
+          if (theme === 'black') document.documentElement.classList.add('dark');
+          else document.documentElement.classList.remove('dark');
+          localStorage.setItem('theme', theme);
         }
       });
     </script>
 
+    <!-- Hash navigation for accordion sections -->
     <script is:inline>
-      // Hash-Links: Akkordeon öffnen & scrollen
       function handleHash() {
-        const hash = window.location.hash.substring(1);
-        if (!hash) return;
-        const targetElement = document.getElementById(hash);
-        if (!targetElement) return;
+        const id = window.location.hash.slice(1);
+        if (!id) return;
+        const el = document.getElementById(id);
+        if (!el) return;
 
-        const collapseContent = targetElement.closest('.collapse-content');
-        if (collapseContent) {
-          const collapse = collapseContent.closest('.collapse');
-          const checkbox = collapse?.querySelector('input[type="checkbox"]');
-          if (checkbox && !checkbox.checked) checkbox.checked = true;
-        } else if (targetElement.classList.contains('collapse')) {
-          const checkbox = targetElement.querySelector('input[type="checkbox"]');
-          if (checkbox && !checkbox.checked) checkbox.checked = true;
+        const cc = el.closest('.collapse-content');
+        if (cc) {
+          const collapse = cc.closest('.collapse');
+          const cb = collapse?.querySelector('input[type="checkbox"]');
+          if (cb && !cb.checked) cb.checked = true;
+        } else if (el.classList.contains('collapse')) {
+          const cb = el.querySelector('input[type="checkbox"]');
+          if (cb && !cb.checked) cb.checked = true;
         }
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
       window.addEventListener('DOMContentLoaded', handleHash);
       window.addEventListener('hashchange', handleHash);
     </script>
 
+    <!-- Basics -->
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/favicon.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
     <style is:global>@import "/src/styles/global.css";</style>
-    <title>Corbet CV</title>
-  </head>
+
+    <!-- SEO -->
+    <title>{metadata.seo.seo_title}</title>
+    <meta name="description" content={metadata.seo.seo_description} />
+    <meta name="keywords" content={metadata.seo.seo_keywords.join(", ")} />
+    <meta name="author" content={metadata.seo.seo_author} />
+    <meta name="theme-color" content={metadata.seo.seo_theme_color} />
+    <link rel="canonical" href={metadata.seo.seo_canonical_url} />
+    {metadata.seo.seo_noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={metadata.og.og_type} />
+    <meta property="og:url" content={metadata.og.og_url} />
+    <meta property="og:title" content={metadata.og.og_title} />
+    <meta property="og:description" content={metadata.og.og_description} />
+    <meta property="og:site_name" content={metadata.og.og_site_name} />
+    <meta property="og:locale" content={metadata.og.og_locale} />
+    <meta property="og:image" content={ogImageAbs} />
+    <meta property="og:image:width" content={String(metadata.og.og_image_width)} />
+    <meta property="og:image:height" content={String(metadata.og.og_image_height)} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content={metadata.twitter.twitter_card} />
+    <meta name="twitter:url" content={metadata.og.og_url} />
+    <meta name="twitter:title" content={metadata.twitter.twitter_title} />
+    <meta name="twitter:description" content={metadata.twitter.twitter_description} />
+    {metadata.twitter.twitter_site && (
+      <meta name="twitter:site" content={metadata.twitter.twitter_site} />
+    )}
+    {metadata.twitter.twitter_creator && (
+      <meta name="twitter:creator" content={metadata.twitter.twitter_creator} />
+    )}
+    <meta name="twitter:image" content={twImageAbs} />
+
+    <!-- Person JSON-LD -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        ...metadata.person
+      })}
+    />
+  </Fragment>
 
   <body class="flex flex-col min-h-screen">
     <Header />
 
     <div class="flex items-center absolute top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 xl:top-10 xl:right-10 z-10">
       <Icon name="carbon:moon" class="w-4 h-4" />
-      <input
-        type="checkbox"
-        data-toggle-theme="black,lofi"
-        class="toggle toggle-sm mx-1 bg-secondary"
-      />
+      <input type="checkbox" data-toggle-theme="black,lofi" class="toggle toggle-sm mx-1 bg-secondary" />
       <Icon name="carbon:light" class="w-4 h-4" />
     </div>
 
@@ -97,7 +141,7 @@ import { Icon } from "astro-icon/components";
 
     <Footer class="flex justify-center items-center py-4" />
   </body>
-</html>
+</BaseLayout>
 
 <style is:global>
   body { font-family: "DM Sans Variable", sans-serif; }
@@ -113,4 +157,31 @@ import { Icon } from "astro-icon/components";
   [data-theme=black] .matrix-icon { filter: invert(1); }
   [data-theme=black] .threema-light { display: none; }
   [data-theme=black] .threema-dark { display: block; }
+
+  /* -------- Desktop-only centering fixes for Header.astro (no edits in Header.astro) -------- */
+
+  /* Center the <article> within the full-width <header> only on desktop */
+  @media (min-width: 768px) {
+    header { width: 100%; }
+    header > article {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  /* Keep mobile behavior unchanged (no forced centering) */
+  @media (max-width: 767.98px) {
+    header > article {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  /* Align avatar block to the same horizontal center as the text on desktop */
+  @media (min-width: 768px) {
+    header > article > div:first-child {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 </style>

@@ -5,8 +5,8 @@ order: 1
 
 tags:
   [
-    ":airbus"
-    ":agentic_ai_personal_cloud"
+    ":airbus",
+    ":agentic_ai_personal_cloud",
     ":nexgen",
     ":solar",
     ":swisscom"

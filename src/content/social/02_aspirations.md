@@ -8,7 +8,7 @@ tags:
     ":family",
     ":agentic_ai_personal_cloud",
     ":networks",
-    ":thought_leadership"
+    ":thought_leadership",
     ":vision"
   ]
 ---

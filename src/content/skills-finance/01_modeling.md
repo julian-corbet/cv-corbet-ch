@@ -7,7 +7,7 @@ tags:
   [
     ":covendit",
     ":bachelor-master-physics",
-    ":swisscom",
+    ":swisscom"
   ]
 ---
 
