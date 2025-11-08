@@ -29,7 +29,7 @@ og:
   og_url: "https://cv.corbet.ch"
   og_site_name: "CORBET"
   og_locale: "en_US"
-  og_image_path: "/profile.webp"
+  og_image_path: "/pics/profile.webp"
   og_image_width: 1200
   og_image_height: 630
 
@@ -39,14 +39,14 @@ twitter:
   twitter_description: "Physics & Psychology with AI/Cloud and corporate finance experience across UBS, Swisscom, Airbus, and Covendit."
   twitter_site: "@Julian_Corbet"
   twitter_creator: "@Julian_Corbet"
-  twitter_image_path: "/profile.webp"
+  twitter_image_path: "/pics/profile.webp"
 
 person:
   name: "Julian Yves Richard Corbet"
   alternateName: "Julian Corbet"
   jobTitle: "AI & Investment Banking"
   description: "Physicist & psychologist bridging AI/Cloud with corporate finance and structured products."
-  image: "https://cv.corbet.ch/profile.webp"
+  image: "https://cv.corbet.ch/pics/profile.webp"
   url: "https://cv.corbet.ch"
   sameAs:
     - "https://www.linkedin.com/in/juliancorbet"
