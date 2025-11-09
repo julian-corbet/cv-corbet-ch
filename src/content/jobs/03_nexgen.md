@@ -13,7 +13,7 @@ tags:
   [
     ":cloud",
     "Performance Analysis:strategic",
-    "Psychology:psychology"
+    ":psychology"
   ]
 ---
 Junior Consultant | working student 
