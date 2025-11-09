@@ -2,7 +2,7 @@
 title: Master of Science in Physics
 id: "physics"
 id_label: "Physics"
-order: 3
+order: 4
 
 date: "2024"
 institute: Goethe University Frankfurt

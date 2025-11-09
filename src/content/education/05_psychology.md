@@ -2,7 +2,7 @@
 title: Bachelor of Science in Psychology, Bachelor of Science in Physics and Minor in Chemistry
 id: "psychology"
 id_label: "Psychology"
-order: 4
+order: 5
 
 date: 2017
 institute: Goethe University Frankfurt
