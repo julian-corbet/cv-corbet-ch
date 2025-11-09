@@ -18,7 +18,7 @@ tags:
     ":ai"
   ]
 ---
-I was selected for the fully financed MBA programme of the Collège des Ingénieurs (CDI), one of Europe’s most selective management programmes for high potentials with a quantitative and scientific background (selectivity ~4%). The programme combines executive-level training with international, high-responsibility assignments in leading European companies, exposing participants to strategic, operational, and technology-driven decision environments. I used my time at CDI to deepen my capabilities in ==AI leadership==, ==capital & people skills==, and ==technology & innovation management==, strengthening my ability to convert analytical insight into business impact.
+I was selected for the ==fully financed MBA== programme of the ==Collège des Ingénieurs (CDI)==, one of Europe’s most selective management programmes for high potentials with a quantitative and scientific background (==selectivity ~4%==). The programme combines executive-level training with international, high-responsibility assignments in leading European companies, exposing participants to strategic, operational, and technology-driven decision environments. I used my time at CDI to deepen my capabilities in ==AI leadership==, ==capital & people skills==, and ==technology & innovation management==, strengthening my ability to convert analytical insight into business impact.
 
 ### AI Leadership
 
