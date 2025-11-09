@@ -27,6 +27,4 @@ Within Enactus, I contributed to the ==Enactus X innovation team==, creating ==e
 
 At Green Finance Consulting, I contributed to a pro-bono ==collaboration with Roland Berger== and the Big Girls Foundation. My key achievement was ==designing a scalable database system== for thousands of scholarship applications, enabling the growth of girls’ education programmes in Kenya. Additionally, I acted as a BDSU liaison, advocating for & strengthening our connection to Germany’s national student consulting network.
 
-#### Independent Volunteering
-
-Beyond student organisations, I engaged in substantial independent volunteering across tutoring, applied-statistics teaching, suicide prevention, crisis intervention, and harm-reduction work. 
+***Beyond student organisations, I engaged in substantial independent volunteering across tutoring, suicide prevention, crisis intervention, and harm-reduction work.*** 
