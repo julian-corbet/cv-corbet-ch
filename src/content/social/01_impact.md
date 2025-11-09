@@ -8,7 +8,7 @@ tags:
     ":aspirations",
     ":extracurricular",
     ":leadership",
-    ":bachelor-psychology",
+    ":psychology",
     ":teaching"
   ]
 ---

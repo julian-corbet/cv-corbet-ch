@@ -1,7 +1,7 @@
 ---
-title: Scaling Solar Cloud Migration & Ops Recovery
+title: "Cloud Advice & Ops Recovery"
 id: "solar"
-id_label: "OPS"
+id_label: "Renewables"
 order: 0
 
 date: 2022

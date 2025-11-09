@@ -5,7 +5,7 @@ order: 2
 
 tags:
   [
-    ":bachelor-master-physics",
+    ":physics",
     ":stakeholder",
     ":swisscom"
   ]

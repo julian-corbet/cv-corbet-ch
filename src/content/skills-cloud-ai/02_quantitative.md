@@ -9,7 +9,7 @@ tags:
     ":covendit",
     ":independent",
     ":nexgen",
-    ":bachelor-master-physics"
+    ":physics"
   ]
 ---
 

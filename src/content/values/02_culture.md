@@ -7,7 +7,7 @@ tags:
   [
     ":ai",
     ":networks",
-    ":bachelor-psychology",
+    ":psychology",
     "Transformation:digital",
     ":vision"
   ]

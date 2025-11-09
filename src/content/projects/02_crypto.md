@@ -1,5 +1,5 @@
 ---
-title: Crypto advisory and mining projects across multiple ventures
+title: Crypto advisory & ETH mining
 id: "crypto"
 order: 2
 

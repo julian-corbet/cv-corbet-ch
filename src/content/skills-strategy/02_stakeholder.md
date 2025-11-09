@@ -8,7 +8,7 @@ tags:
     ":agility",
     ":change",
     ":covendit",
-    ":bachelor-psychology",
+    ":psychology",
     ":values"
   ]
 ---

@@ -1,6 +1,6 @@
 ---
 title: Bachelor of Science in Psychology, Bachelor of Science in Physics and Minor in Chemistry
-id: "bachelor-psychology"
+id: "psychology"
 id_label: "Psychology"
 order: 4
 

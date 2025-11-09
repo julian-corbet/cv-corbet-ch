@@ -6,7 +6,7 @@ order: 1
 tags:
   [
     ":covendit",
-    ":bachelor-master-physics",
+    ":physics",
     ":swisscom"
   ]
 ---

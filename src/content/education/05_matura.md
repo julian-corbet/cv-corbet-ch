@@ -11,8 +11,8 @@ tags:
   [
     ":summary",
     ":scholarships",
-    ":bachelor-master-physics",
-    ":bachelor-psychology",
+    ":physics",
+    ":psychology",
     ":values"
   ]
 ---

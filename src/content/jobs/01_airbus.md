@@ -13,7 +13,7 @@ tags:
   [
     ":ai",
     ":summary",
-    "Physics:bachelor-master-physics"
+    "Physics:physics"
   ]
 ---
 Certification Engineer | Master thesis Airworthiness

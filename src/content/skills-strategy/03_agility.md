@@ -8,7 +8,7 @@ tags:
     ":covendit",
     ":extracurricular",
     ":independent",
-    ":bachelor-psychology",
+    ":psychology",
     ":values"
   ]
 ---

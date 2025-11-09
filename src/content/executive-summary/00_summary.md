@@ -10,8 +10,8 @@ tags:
   [
     ":extracurricular",
     ":impact",
-    "Physics:bachelor-master-physics",
-    "Psychology:bachelor-psychology",
+    "Physics:physics",
+    "Psychology:psychology",
     ":values"
   ]
 ---

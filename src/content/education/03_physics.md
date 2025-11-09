@@ -1,6 +1,6 @@
 ---
 title: Master of Science in Physics
-id: "bachelor-master-physics"
+id: "physics"
 id_label: "Physics"
 order: 3
 
@@ -14,7 +14,7 @@ tags:
     ":ai",
     ":airbus",
     ":cloud",
-    ":bachelor-master-physics",
+    ":physics",
     ":risk"
   ]
 ---
