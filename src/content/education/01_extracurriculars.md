@@ -1,6 +1,6 @@
 ---
-title: Extracurricular
-id: "extracurricular"
+title: Extracurriculars
+id: "extracurriculars"
 order: 1
 
 institute: Goethe University Frankfurt

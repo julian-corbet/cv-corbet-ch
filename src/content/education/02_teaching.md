@@ -1,5 +1,5 @@
 ---
-title: Teaching Students
+title: Educational Leadership
 id: "teaching"
 order: 2
 
