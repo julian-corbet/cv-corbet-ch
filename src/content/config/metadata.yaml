@@ -35,7 +35,7 @@ og:
   profile_username: "richc"   
   profile_gender: "male"            
 
-  og_title: "Julian Corbet - AI, Finance & Strategy Consultant"
+  og_title: "AI | Finance | Strategy — Julian Corbet"
   og_description: "AI and strategy consultant combining finance, cloud and decision-science expertise for complex, high-impact challenges"
   og_url: "https://cv.corbet.ch"
   og_site_name: "CORBET"
@@ -70,6 +70,7 @@ twitter:
   twitter_image_path: "/pics/profile.webp"
 
 person:
+  "@type": "Person"
   name: "Julian Yves Richard Corbet"
 
   alternateName:
@@ -120,5 +121,5 @@ person:
     contactType: "Professional"
     areaServed: "CH"
     availableLanguage:
-      - "English"
-      - "German"
+      - "en"
+      - "de"
