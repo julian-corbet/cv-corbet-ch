@@ -1,7 +1,7 @@
 page:
   page_title: "Julian Yves Richard Corbet"
-  page_subtitle: "Physics & Psychologand Corporate Finance"
-  page_description: "Excellence proven by four scholarships and three degrees across Physics, Psychology, AI/Cloud and corporate finance roles."
+  page_subtitle: "AI | Cloud | Consulting | Crypto | Finance | Strategy"
+  page_description: "AI and strategy consultant combining finance, cloud and decision-science expertise for complex, high-impact challenges"
   page_lang: "en"
 
 seo:
@@ -35,8 +35,8 @@ og:
   profile_username: "richc"   
   profile_gender: "male"            
 
-  og_title: "Julian Corbet — AI & Investment Banking · Inventing the Future"
-  og_description: "Physics & Psychology with AI/Cloud and corporate finance experience across UBS, Swisscom, Airbus, and Covendit."
+  og_title: "Julian Corbet - AI, Finance & Strategy Consultant"
+  og_description: "AI and strategy consultant combining finance, cloud and decision-science expertise for complex, high-impact challenges"
   og_url: "https://cv.corbet.ch"
   og_site_name: "CORBET"
   og_locale: "en_US"
@@ -63,8 +63,8 @@ og:
 
 twitter:
   twitter_card: "summary_large_image"
-  twitter_title: "Julian Corbet — AI & Investment Banking · Inventing the Future"
-  twitter_description: "Physics & Psychology with AI/Cloud and corporate finance experience across UBS, Swisscom, Airbus, and Covendit."
+  twitter_title: "Julian Corbet - AI, Finance & Strategy Consultant"
+  twitter_description: "AI and strategy consultant combining finance, cloud and decision-science expertise for complex, high-impact challenges"
   twitter_site: "@Julian_Corbet"
   twitter_creator: "@Julian_Corbet"
   twitter_image_path: "/pics/profile.webp"
