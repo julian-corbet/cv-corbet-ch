@@ -39,6 +39,10 @@ sections:
     title: "Social & Impact"
     icon: "carbon:share"
 
+  - folder: "references"
+    title: "Professional References"
+    icon: "carbon:user-certification"
+
 special:
   downloads:
     title: "Downloads"

@@ -17,6 +17,7 @@ const VALID_KEYS = [
   "jobs",
   "education",
   "social",
+  "references",
 ] as const;
 type Key = typeof VALID_KEYS[number];
 const isKey = (k: string): k is Key => (VALID_KEYS as readonly string[]).includes(k as Key);
