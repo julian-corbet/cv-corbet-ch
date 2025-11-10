@@ -212,9 +212,11 @@ declare module 'astro:content' {
 }>;
 "references": Record<string, {
   id: string;
-  body?: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
   collection: "references";
-  data: any;
+  data: InferEntrySchema<"references">;
   rendered?: RenderedContent;
   filePath?: string;
 }>;

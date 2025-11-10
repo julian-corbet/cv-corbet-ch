@@ -174,6 +174,6 @@ export const collections = {
   jobs: makeContent(),
   education: makeContent(),
   social: makeContent(),
-  // references: makeContent(),
+  references: makeContent(),
   config: defineCollection({ type: "data", schema: configUnionSchema }),
 };
