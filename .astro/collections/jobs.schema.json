@@ -16,12 +16,6 @@
         "subtitle": {
           "type": "string"
         },
-        "name": {
-          "type": "string"
-        },
-        "designation": {
-          "type": "string"
-        },
         "date": {
           "type": "string"
         },

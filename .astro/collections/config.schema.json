@@ -113,7 +113,8 @@
                   "format": "uri"
                 },
                 "matrix": {
-                  "type": "string"
+                  "type": "string",
+                  "format": "uri"
                 }
               },
               "additionalProperties": false
@@ -241,9 +242,6 @@
                 "seo_site_name": {
                   "type": "string"
                 },
-                "seo_theme_color": {
-                  "type": "string"
-                },
                 "seo_noindex": {
                   "type": "boolean",
                   "default": false
@@ -255,8 +253,7 @@
                 "seo_canonical_url",
                 "seo_keywords",
                 "seo_author",
-                "seo_site_name",
-                "seo_theme_color"
+                "seo_site_name"
               ],
               "additionalProperties": false
             },
@@ -265,6 +262,10 @@
               "properties": {
                 "og_type": {
                   "type": "string",
+                  "enum": [
+                    "website",
+                    "profile"
+                  ],
                   "default": "website"
                 },
                 "og_title": {
@@ -284,6 +285,34 @@
                   "type": "string",
                   "default": "en_US"
                 },
+                "og_images": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "path": {
+                        "type": "string"
+                      },
+                      "width": {
+                        "type": "integer",
+                        "exclusiveMinimum": 0
+                      },
+                      "height": {
+                        "type": "integer",
+                        "exclusiveMinimum": 0
+                      },
+                      "alt": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "path",
+                      "width",
+                      "height"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
                 "og_image_path": {
                   "type": "string"
                 },
@@ -294,16 +323,25 @@
                 "og_image_height": {
                   "type": "integer",
                   "exclusiveMinimum": 0
+                },
+                "profile_first_name": {
+                  "type": "string"
+                },
+                "profile_last_name": {
+                  "type": "string"
+                },
+                "profile_username": {
+                  "type": "string"
+                },
+                "profile_gender": {
+                  "type": "string"
                 }
               },
               "required": [
                 "og_title",
                 "og_description",
                 "og_url",
-                "og_site_name",
-                "og_image_path",
-                "og_image_width",
-                "og_image_height"
+                "og_site_name"
               ],
               "additionalProperties": false
             },
@@ -344,7 +382,10 @@
                   "type": "string"
                 },
                 "alternateName": {
-                  "type": "string"
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "jobTitle": {
                   "type": "string"

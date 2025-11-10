@@ -1,10 +1,7 @@
 ---
-name: "Julian Yves Richard Corbet"
 id: "summary"
 id_label: "Executive Summary"
 order: 0
-
-designation: "AI | Investment Banking | Inventing the Future"
 
 tags:
   [

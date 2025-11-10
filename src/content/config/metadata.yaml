@@ -1,37 +1,65 @@
 page:
-  page_title: "Julian Corbet — AI & Investment Banking · Inventing the Future"
-  page_subtitle: "Physics & Psychology with AI/Cloud and Corporate Finance"
+  page_title: "Julian Yves Richard Corbet"
+  page_subtitle: "Physics & Psychologand Corporate Finance"
   page_description: "Excellence proven by four scholarships and three degrees across Physics, Psychology, AI/Cloud and corporate finance roles."
   page_lang: "en"
 
 seo:
-  seo_title: "Julian Corbet — AI & Investment Banking · Inventing the Future"
-  seo_description: "Physics & Psychology with AI/Cloud and corporate finance experience across UBS, Swisscom, Airbus, and Covendit."
+  seo_title: "Julian Corbet - AI, Finance & Strategy Consultant"
+  seo_description: "AI and strategy consultant combining finance, cloud and decision-science expertise for complex, high-impact challenges"
   seo_canonical_url: "https://cv.corbet.ch"
   seo_keywords:
-    - AI leadership
-    - investment banking
-    - structured products
-    - corporate finance
-    - M&A
-    - machine learning
-    - cloud
+    - AI Consulting
+    - AI Strategy
+    - Corporate Finance
+    - Digital Health
+    - Digital Transformation
+    - Infrastructure Finance
+    - Investment Banking
+    - Machine Learning
+    - Project Finance
+    - Strategy Consulting
+    - Structured Products
     - Switzerland
   seo_author: "Julian Yves Richard Corbet"
   seo_site_name: "CORBET"
-  seo_theme_color: "#1f2937"
   seo_noindex: true
 
 og:
-  og_type: "website"
+  # "profile" → signals this page represents a person
+  og_type: "profile"
+
+  # Optional OG profile properties (safe to include)
+  profile_first_name: "Julian"
+  profile_last_name: "Corbet"
+  profile_username: "richc"   
+  profile_gender: "male"            
+
   og_title: "Julian Corbet — AI & Investment Banking · Inventing the Future"
   og_description: "Physics & Psychology with AI/Cloud and corporate finance experience across UBS, Swisscom, Airbus, and Covendit."
   og_url: "https://cv.corbet.ch"
   og_site_name: "CORBET"
   og_locale: "en_US"
-  og_image_path: "/pics/profile1.webp"
-  og_image_width: 1200
-  og_image_height: 630
+
+  # Multi-picture OG support
+  og_images:
+    # Primary 1200x630 — best for LinkedIn, Facebook, Slack
+    - path: "/pics/profile1.webp"
+      width: 1200
+      height: 630
+      alt: "Primary social preview image"
+
+    # Square 800x800 — best for WhatsApp, iMessage, mobile apps
+    - path: "/pics/profile1.webp"
+      width: 800
+      height: 800
+      alt: "Square social preview image"
+
+    # Small 600x315 — fallback for legacy scrapers
+    - path: "/pics/profile1.webp"
+      width: 600
+      height: 315
+      alt: "Small fallback social image"
 
 twitter:
   twitter_card: "summary_large_image"
@@ -43,32 +71,48 @@ twitter:
 
 person:
   name: "Julian Yves Richard Corbet"
-  alternateName: "Julian Corbet"
-  jobTitle: "AI & Investment Banking"
-  description: "Physicist & psychologist bridging AI/Cloud with corporate finance and structured products."
+
+  alternateName:
+    - "Julian Corbet"
+    - "Richard Corbet"
+    - "Yves Corbet"
+
+  jobTitle: "AI, Finance & Strategy Consultant"
+  description: "AI and strategy consultant combining finance, cloud and decision-science expertise for complex, high-impact challenges"
   image: "https://cv.corbet.ch/pics/profile.webp"
   url: "https://cv.corbet.ch"
+
   sameAs:
     - "https://www.linkedin.com/in/juliancorbet"
     - "https://x.com/Julian_Corbet"
     - "https://github.com/juliancorbet"
     - "https://corbet.ch"
+
   knowsAbout:
     - Artificial Intelligence
-    - Investment Banking
-    - Corporate Finance
-    - Mergers and Acquisitions
-    - Machine Learning
-    - Physics
-    - Psychology
     - Cloud Computing
-    - Consulting
+    - Corporate Finance
+    - Data Engineering
+    - Decision Science
+    - Digital Health
+    - Human Factors
+    - Infrastructure Finance
+    - Investment Banking
+    - Machine Learning
+    - Organizational Behaviour
+    - Project Finance
+    - Risk Management
+    - Strategy Consulting
+    - Systems Architecture
+    - Systems Thinking
+
   hasOccupation:
-    name: "AI Specialist & Investment Banking Professional"
+    name: "AI, Cloud, Finance, Strategy Consultant"
     occupationLocation:
       "@type": "Country"
       name: "Switzerland"
       addressCountry: "CH"
+
   contactPoint:
     "@type": "ContactPoint"
     telephone: "+41 79 930 37 96"

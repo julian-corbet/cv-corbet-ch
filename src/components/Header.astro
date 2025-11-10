@@ -1,36 +1,61 @@
 ---
+// src/components/Header.astro
 import { Icon } from "astro-icon/components";
-import { getCollection, getEntry } from "astro:content";
+import { getEntry } from "astro:content";
 
-/* ---- executive summary ---- */
-const execAll = await getCollection("executive-summary");
-const exec = execAll.find((e) => e.data?.hidden !== true) ?? null;
-const executiveSummary = {
-  frontmatter: {
-    name: exec?.data?.name ?? exec?.data?.title ?? "",
-    designation: exec?.data?.designation ?? exec?.data?.subtitle ?? "",
-  },
-};
+/* ---- props ---- */
+const { metadata } = Astro.props as { metadata: any };
 
-/* ---- contacts ---- */
+/* ---- person display (from metadata) ---- */
+const displayName: string = metadata?.person?.name ?? "";
+const designation: string = metadata?.page?.page_subtitle ?? "";
+
+/* ---- contacts (config/contacts.yaml) ---- */
 let contactsData: any = null;
 try {
   const c = await getEntry("config", "contacts");
   contactsData = c?.data ?? null;
-} catch (e) {
-  console.warn("[Header] contacts not found (content/config/contacts.yaml)", e);
-}
+} catch { /* no-op */ }
+
 const contacts = {
-  frontmatter: contactsData ?? { header: { phone: "", email: "", location: "" }, social: {} },
+  frontmatter: contactsData ?? {
+    header: { phone: "", email: "", location: "" },
+    social: {},
+  },
+} as {
+  frontmatter: {
+    header: { phone: string; email: string; location: string };
+    social: Record<string, string | undefined>;
+  };
 };
 
-/* ---- icon mapping ---- */
-const iconMap = {
+/* ---- icon mapping (astro-icon) ---- */
+const iconMap: Record<string, string> = {
   whatsapp: "mdi:whatsapp",
   telegram: "mdi:telegram",
   linkedin: "mdi:linkedin",
   x: "carbon:logo-x",
-} as const;
+};
+
+/* ---- build social entries in TS (avoid casts inside template) ---- */
+type SocialItem = {
+  platform: string;
+  url: string;
+  isImage: boolean;
+  iconName?: string;
+};
+
+const socialRaw = (contacts.frontmatter.social ?? {}) as Record<string, string | undefined>;
+
+const socialEntries: SocialItem[] = Object.entries(socialRaw)
+  .filter(([k, v]) => k !== "calendar" && typeof v === "string" && !!v)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([platform, url]) => {
+    const p = platform.toLowerCase();
+    const isImage = p === "signal" || p === "matrix" || p === "threema";
+    const iconName = !isImage ? (iconMap[p] ?? "carbon:add") : undefined;
+    return { platform: p, url: url!, isImage, iconName };
+  });
 ---
 
 <header class="mx-auto pt-6 pb-2 relative">
@@ -41,17 +66,19 @@ const iconMap = {
 
     <div class="text-left md:max-w-md mx-auto">
       <h1 class="hdr-title text-3xl font-extrabold tracking-tight md:text-3xl relative">
-        {executiveSummary.frontmatter.name}
+        {displayName}
       </h1>
       <h2 class="hdr-sub text-lg mb-2 text-secondary">
-        {executiveSummary.frontmatter.designation}
+        {designation}
       </h2>
 
       <!-- CONTACT LINE -->
       <div class="hdr-row flex items-center md:justify-between mt-1 text-sm text-secondary">
         <span class="flex items-center">
           <Icon name="carbon:phone" class="w-4 h-4 mr-1" />
-          <a href={`tel:${contacts.frontmatter.header.phone}`} class="hover:underline">{contacts.frontmatter.header.phone}</a>
+          <a href={`tel:${contacts.frontmatter.header.phone}`} class="hover:underline">
+            {contacts.frontmatter.header.phone}
+          </a>
         </span>
         <span class="mx-2">|</span>
         <span class="flex items-center">
@@ -61,45 +88,52 @@ const iconMap = {
         <span class="mx-2">|</span>
         <span class="flex items-center">
           <Icon name="carbon:email" class="w-4 h-4 mr-1" />
-          <a href={`mailto:${contacts.frontmatter.header.email}`} class="hover:underline">{contacts.frontmatter.header.email}</a>
+          <a href={`mailto:${contacts.frontmatter.header.email}`} class="hover:underline">
+            {contacts.frontmatter.header.email}
+          </a>
         </span>
       </div>
 
       <!-- SOCIAL LINE -->
       <div class="hdr-row flex items-center justify-between mt-1 text-sm text-secondary">
         <div class="flex items-center">
-          <span class="mr-2">Let's grab coffee:</span>
-          <Icon name="carbon:calendar" class="w-4 h-4 mr-1" />
-          <a href={contacts.frontmatter.social.calendar} class="underline hover:no-underline connect-link mr-3" target="_blank">connect.corbet.ch</a>
-          <span class="mr-2">|</span>
+          {contacts.frontmatter.social?.calendar && (
+            <>
+              <span class="mr-2">Let's grab coffee:</span>
+              <Icon name="carbon:calendar" class="w-4 h-4 mr-1" />
+              <a
+                href={contacts.frontmatter.social.calendar as string}
+                class="underline hover:no-underline connect-link mr-3"
+                target="_blank"
+                rel="noopener"
+              >
+                connect.corbet.ch
+              </a>
+              <span class="mr-2">|</span>
+            </>
+          )}
         </div>
 
         <div class="flex items-center">
-          {
-            Object.entries(contacts.frontmatter.social)
-              .filter(([key]) => key !== "calendar")
-              .sort(([a], [b]) => a.localeCompare(b))
-              .map(([platform, url]) => {
-                if (!url) return null;
-                const iconName = iconMap[platform] || "carbon:add";
-                return (
-                  <a href={url} class="mr-1 hover:scale-105 transition-transform" target="_blank" rel="noopener">
-                    {platform === "signal" ? (
-                      <img src="/icons/signal.svg" alt="Signal Messenger" class="w-4 h-4 signal-icon" />
-                    ) : platform === "matrix" ? (
-                      <img src="/icons/matrix.png" alt="Matrix" class="w-4 h-4 matrix-icon" />
-                    ) : platform === "threema" ? (
-                      <>
-                        <img src="/icons/threema.svg" alt="Threema" class="w-4 h-4 threema-light" />
-                        <img src="/icons/threema-negative.svg" alt="Threema" class="w-4 h-4 threema-dark hidden" />
-                      </>
-                    ) : (
-                      <Icon name={iconName} class="w-4 h-4" />
-                    )}
-                  </a>
-                );
-              })
-          }
+          {socialEntries.map(({ platform, url, isImage, iconName }) => (
+            <a href={url} class="mr-1 hover:scale-105 transition-transform" target="_blank" rel="noopener">
+              {isImage ? (
+                platform === "signal" ? (
+                  <img src="/icons/signal.svg" alt="Signal Messenger" class="w-4 h-4 signal-icon" />
+                ) : platform === "matrix" ? (
+                  <img src="/icons/matrix.png" alt="Matrix" class="w-4 h-4 matrix-icon" />
+                ) : (
+                  /* Threema: swap icon on dark mode */
+                  <>
+                    <img src="/icons/threema.svg" alt="Threema" class="w-4 h-4 threema-light block dark:hidden" />
+                    <img src="/icons/threema-negative.svg" alt="Threema" class="w-4 h-4 threema-dark hidden dark:block" />
+                  </>
+                )
+              ) : (
+                <Icon name={iconName!} class="w-4 h-4" />
+              )}
+            </a>
+          ))}
         </div>
       </div>
     </div>

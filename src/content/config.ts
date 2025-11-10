@@ -7,8 +7,6 @@ const sectionSchema = z.object({
   id_label: z.string().optional(),
   title: z.string().optional(),
   subtitle: z.string().optional(),
-  name: z.string().optional(),
-  designation: z.string().optional(),
   date: z.coerce.string().optional(),
   timeframe: z.coerce.string().optional(),
   location: z.string().optional(),
@@ -52,7 +50,7 @@ const contactsSchema = z.object({
     linkedin: z.string().url().optional(),
     threema: z.string().url().optional(),
     x: z.string().url().optional(),
-    matrix: z.string().optional(),
+    matrix: z.string().url().optional(),
   }),
 });
 
@@ -89,20 +87,38 @@ const metadataSchema = z.object({
     seo_keywords: z.array(z.string()).min(3),
     seo_author: z.string(),
     seo_site_name: z.string(),
-    seo_theme_color: z.string(),
     seo_noindex: z.boolean().default(false),
   }),
 
   og: z.object({
-    og_type: z.string().default("website"),
+    og_type: z.enum([
+      "website",
+      "profile",
+    ]).default("website"),
     og_title: z.string(),
     og_description: z.string(),
     og_url: z.string().url(),
     og_site_name: z.string(),
     og_locale: z.string().default("en_US"),
-    og_image_path: z.string(),               // allow relative path
-    og_image_width: z.number().int().positive(),
-    og_image_height: z.number().int().positive(),
+
+    // EITHER multiple images...
+    og_images: z.array(z.object({
+      path: z.string(),
+      width: z.number().int().positive(),
+      height: z.number().int().positive(),
+      alt: z.string().optional(),
+    })).optional(),
+
+    // ...OR a single image (back-compat)
+    og_image_path: z.string().optional(),
+    og_image_width: z.number().int().positive().optional(),
+    og_image_height: z.number().int().positive().optional(),
+
+    // Open Graph profile properties (used when og_type = "profile")
+    profile_first_name: z.string().optional(),
+    profile_last_name: z.string().optional(),
+    profile_username: z.string().optional(),
+    profile_gender: z.string().optional(),
   }),
 
   twitter: z.object({
@@ -111,18 +127,19 @@ const metadataSchema = z.object({
     twitter_description: z.string(),
     twitter_site: z.string().optional(),
     twitter_creator: z.string().optional(),
-    twitter_image_path: z.string(),          // allow relative path
+    twitter_image_path: z.string(),
   }),
 
   person: z.object({
     name: z.string(),
-    alternateName: z.string().optional(),
+    alternateName: z.array(z.string()).optional(),
     jobTitle: z.string(),
     description: z.string(),
     image: z.string().url(),
     url: z.string().url(),
     sameAs: z.array(z.string().url()).optional(),
     knowsAbout: z.array(z.string()).optional(),
+
     hasOccupation: z.object({
       name: z.string(),
       occupationLocation: z.object({
@@ -131,6 +148,7 @@ const metadataSchema = z.object({
         addressCountry: z.string().optional(),
       }),
     }),
+
     contactPoint: z.object({
       "@type": z.literal("ContactPoint"),
       telephone: z.string().optional(),
@@ -156,6 +174,6 @@ export const collections = {
   jobs: makeContent(),
   education: makeContent(),
   social: makeContent(),
-  // references: makeContent(), // keep commented until you’re ready
+  // references: makeContent(),
   config: defineCollection({ type: "data", schema: configUnionSchema }),
 };

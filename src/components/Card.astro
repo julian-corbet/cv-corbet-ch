@@ -5,7 +5,6 @@ const { frontmatter = {}, ...directProps } = Astro.props;
 const d = { ...frontmatter, ...directProps };
 
 const cardId     = d.id ?? undefined;
-const cardLabel  = d.id_label ?? undefined;
 const title      = d.title ?? undefined;
 const subtitle   = d.subtitle ?? undefined;
 const timeframe  = d.timeframe ?? d.date ?? undefined;
