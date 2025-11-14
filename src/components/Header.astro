@@ -1,0 +1,185 @@
+---
+// src/components/Header.astro
+import { Icon } from "astro-icon/components";
+import { getEntry } from "astro:content";
+
+/* ---- props ---- */
+const { metadata } = Astro.props as { metadata: any };
+
+/* ---- person display (from metadata) ---- */
+const displayName: string = metadata?.person?.name ?? "";
+const designation: string = metadata?.page?.page_subtitle ?? "";
+
+/* ---- contacts (config/contacts.yaml) ---- */
+let contactsData: any = null;
+try {
+  const c = await getEntry("config", "contacts");
+  contactsData = c?.data ?? null;
+} catch { /* no-op */ }
+
+const contacts = {
+  frontmatter: contactsData ?? {
+    header: { phone: "", email: "", location: "" },
+    social: {},
+  },
+} as {
+  frontmatter: {
+    header: { phone: string; email: string; location: string };
+    social: Record<string, string | undefined>;
+  };
+};
+
+/* ---- icon mapping (astro-icon) ---- */
+const iconMap: Record<string, string> = {
+  whatsapp: "mdi:whatsapp",
+  telegram: "mdi:telegram",
+  linkedin: "mdi:linkedin",
+  x: "carbon:logo-x",
+};
+
+/* ---- build social entries in TS (avoid casts inside template) ---- */
+type SocialItem = {
+  platform: string;
+  url: string;
+  isImage: boolean;
+  iconName?: string;
+};
+
+const socialRaw = (contacts.frontmatter.social ?? {}) as Record<string, string | undefined>;
+
+const socialEntries: SocialItem[] = Object.entries(socialRaw)
+  .filter(([k, v]) => k !== "calendar" && typeof v === "string" && !!v)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([platform, url]) => {
+    const p = platform.toLowerCase();
+    const isImage = p === "signal" || p === "matrix" || p === "threema";
+    const iconName = !isImage ? (iconMap[p] ?? "carbon:add") : undefined;
+    return { platform: p, url: url!, isImage, iconName };
+  });
+---
+
+<header class="mx-auto pt-6 pb-2 relative">
+  <article class="flex flex-col md:flex-col items-center gap-4 w-full max-w-2xl">
+    <div class="flex-shrink-0 w-20 md:w-24 rounded-full shadow-sm overflow-hidden">
+      <img alt="avatar" src="/pics/profile.webp" class="grayscale-[50] hover:grayscale-0" />
+    </div>
+
+    <div class="text-left md:max-w-md mx-auto">
+      <h1 class="hdr-title text-3xl font-extrabold tracking-tight md:text-3xl relative">
+        {displayName}
+      </h1>
+      <h2 class="hdr-sub text-lg mb-2 text-secondary">
+        {designation}
+      </h2>
+
+      <!-- CONTACT LINE -->
+      <div class="hdr-row flex items-center md:justify-between mt-1 text-sm text-secondary">
+        <span class="flex items-center">
+          <Icon name="carbon:phone" class="w-4 h-4 mr-1" />
+          <a href={`tel:${contacts.frontmatter.header.phone}`} class="hover:underline">
+            {contacts.frontmatter.header.phone}
+          </a>
+        </span>
+        <span class="mx-2">|</span>
+        <span class="flex items-center">
+          <Icon name="carbon:location" class="w-4 h-4 mr-1" />
+          {contacts.frontmatter.header.location}
+        </span>
+        <span class="mx-2">|</span>
+        <span class="flex items-center">
+          <Icon name="carbon:email" class="w-4 h-4 mr-1" />
+          <a href={`mailto:${contacts.frontmatter.header.email}`} class="hover:underline">
+            {contacts.frontmatter.header.email}
+          </a>
+        </span>
+      </div>
+
+      <!-- SOCIAL LINE -->
+      <div class="hdr-row flex items-center justify-between mt-1 text-sm text-secondary">
+        <div class="flex items-center">
+          {contacts.frontmatter.social?.calendar && (
+            <>
+              <span class="mr-2">Let's grab coffee:</span>
+              <Icon name="carbon:calendar" class="w-4 h-4 mr-1" />
+              <a
+                href={contacts.frontmatter.social.calendar as string}
+                class="underline hover:no-underline connect-link mr-3"
+                target="_blank"
+                rel="noopener"
+              >
+                connect.corbet.ch
+              </a>
+              <span class="mr-2">|</span>
+            </>
+          )}
+        </div>
+
+        <div class="flex items-center">
+          {socialEntries.map(({ platform, url, isImage, iconName }) => (
+            <a href={url} class="mr-1 hover:scale-105 transition-transform" target="_blank" rel="noopener">
+              {isImage ? (
+                platform === "signal" ? (
+                  <img src="/icons/signal.svg" alt="Signal Messenger" class="w-4 h-4 signal-icon" />
+                ) : platform === "matrix" ? (
+                  <img src="/icons/matrix.png" alt="Matrix" class="w-4 h-4 matrix-icon" />
+                ) : (
+                  /* Threema: swap icon on dark mode */
+                  <>
+                    <img src="/icons/threema.svg" alt="Threema" class="w-4 h-4 threema-light block dark:hidden" />
+                    <img src="/icons/threema-negative.svg" alt="Threema" class="w-4 h-4 threema-dark hidden dark:block" />
+                  </>
+                )
+              ) : (
+                <Icon name={iconName!} class="w-4 h-4" />
+              )}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </article>
+</header>
+
+<style>
+  /* Desktop behaviour unchanged */
+  @media (max-width: 768px) {
+    .flex-col.justify-end {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  /* MOBILE ONLY FIX */
+  @media (max-width: 767.98px) {
+    /* Contact & social lines */
+    .hdr-row {
+      white-space: nowrap;
+      font-size: clamp(10px, 3.4vw, 14px);
+      line-height: 1.25;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .hdr-row .w-4, .hdr-row .h-4 {
+      width: 1em;
+      height: 1em;
+    }
+    .hdr-row .mx-2 {
+      margin-left: 0.35rem;
+      margin-right: 0.35rem;
+    }
+
+    /* Title & subtitle — shrink only on *very* narrow phones */
+    @media (max-width: 420px) {
+      .hdr-title {
+        font-size: clamp(1.1rem, 6vw, 1.8rem);
+        white-space: nowrap;
+      }
+      .hdr-sub {
+        font-size: clamp(0.85rem, 4.5vw, 1rem);
+        white-space: nowrap;
+      }
+    }
+  }
+</style>
