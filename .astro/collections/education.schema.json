@@ -1,0 +1,57 @@
+{
+  "$ref": "#/definitions/education",
+  "definitions": {
+    "education": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "id_label": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "timeframe": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "title_url": {
+          "type": "string"
+        },
+        "link_url": {
+          "type": "string"
+        },
+        "link_label": {
+          "type": "string"
+        },
+        "order": {
+          "type": "number"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
