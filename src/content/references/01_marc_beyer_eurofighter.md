@@ -1,6 +1,6 @@
 ---
 title: «Exceptional Flexibility & Resilience»
-subtitle: Certification Project @Eurofighter
+subtitle: Machine Learning & AI Project @AIRBUS
 id: "ref_marc_beyer_eurofighter"
 id_label: "Reference: Marc Beyer"
 title_url: "#airbus"

@@ -30,12 +30,33 @@ const lang = metadata.page?.page_lang ?? "en";
     <!-- Theme init + toggle -->
     <script is:inline>
       const initTheme = () => {
-        const theme = localStorage.getItem('theme') || 'black';
+        // 1. Try LocalStorage
+        let theme = localStorage.getItem('theme');
+        
+        // 2. If not set, try System Preference
+        if (!theme) {
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            theme = 'black';
+          } else {
+            theme = 'lofi'; // Default to light
+          }
+        }
+
         document.documentElement.setAttribute('data-theme', theme);
         if (theme === 'black') document.documentElement.classList.add('dark');
         else document.documentElement.classList.remove('dark');
       };
       initTheme();
+
+      // Sync checkbox state on load
+      window.addEventListener('DOMContentLoaded', () => {
+        const theme = document.documentElement.getAttribute('data-theme');
+        const toggle = document.querySelector('input[data-toggle-theme]');
+        if (toggle) {
+          // If theme is 'lofi' (light), checkbox should be checked
+          toggle.checked = (theme === 'lofi');
+        }
+      });
 
       window.addEventListener('change', (e) => {
         if (e.target instanceof HTMLInputElement && e.target.matches('input[data-toggle-theme]')) {

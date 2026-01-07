@@ -1,6 +1,6 @@
 ---
 title: «Outstanding Professional Expertise»
-subtitle: Data Analysis Project @AIRBUS
+subtitle: Machine Learning & AI Project @AIRBUS
 id: "ref_alexander_max_airbus"
 id_label: "Reference: Alexander Max"
 title_url: "#airbus"
