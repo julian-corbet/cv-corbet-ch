@@ -1,3 +1,26 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+@plugin "daisyui" {
+  themes: lofi --default, black --prefersdark;
+}
+
+@plugin "daisyui/theme" {
+  name: "lofi";
+  --radius-box: 1rem;
+  --radius-btn: 0.5rem;
+  --radius-badge: 1.9rem;
+}
+
+@plugin "daisyui/theme" {
+  name: "black";
+  --radius-box: 1rem;
+  --radius-btn: 0.5rem;
+  --radius-badge: 1.9rem;
+  --color-secondary: #e5e5e5;
+}
+
 :root {
   --md-hl-color: #008351;
   --md-hl-bg: rgba(220, 252, 231, .99);
@@ -69,4 +92,8 @@
 .overflow-y-scroll::-webkit-scrollbar-thumb { background-color: oklch(var(--s)); }
 .overflow-y-scroll { scrollbar-width: 1px; }
 
-body { font-family: "DM Sans Variable", sans-serif; }
+body {
+  font-family: "DM Sans Variable", sans-serif;
+  color: var(--color-base-content);
+  background-color: var(--color-base-100);
+}

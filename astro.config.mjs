@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import compress from "astro-compress";
 import remarkHighlight from "./src/lib/remarkHighlight.js";
@@ -8,30 +8,15 @@ export default defineConfig({
   output: "static",
   compressHTML: true,
   markdown: {
-    remarkPlugins: [
-      remarkHighlight,
-    ],
+    remarkPlugins: [remarkHighlight],
   },
   build: {
-    inlineStylesheets: 'auto',
+    inlineStylesheets: "auto",
   },
   vite: {
-    build: {
-      cssCodeSplit: true,
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            vendor: ['astro-icon']
-          }
-        }
-      }
-    },
-    optimizeDeps: {
-      exclude: ['astro-compress']
-    }
+    plugins: [tailwindcss()],
   },
   integrations: [
-    tailwind(),
     icon(),
     compress({
       CSS: true,
@@ -39,6 +24,6 @@ export default defineConfig({
       Image: true,
       JavaScript: true,
       SVG: true,
-    })
-  ]
+    }),
+  ],
 });

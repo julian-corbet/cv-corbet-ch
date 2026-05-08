@@ -97,7 +97,6 @@ const lang = metadata.page?.page_lang ?? "en";
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/pics/favicon.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style is:global>@import "/src/styles/global.css";</style>
 
     <!-- SEO -->
     <title>{metadata.seo.seo_title}</title>
@@ -187,9 +186,9 @@ const lang = metadata.page?.page_lang ?? "en";
     <!-- Pass metadata into Header -->
     <Header metadata={metadata} />
 
-    <div class="flex items-center absolute top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 xl:top-10 xl:right-10 z-10">
+    <div class="text-base-content flex items-center absolute top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 xl:top-10 xl:right-10 z-10">
       <Icon name="carbon:moon" class="w-4 h-4" />
-      <input type="checkbox" data-toggle-theme="black,lofi" class="toggle toggle-sm mx-1 bg-secondary" />
+      <input type="checkbox" data-toggle-theme="black,lofi" class="toggle toggle-sm mx-1 bg-secondary rounded-full" />
       <Icon name="carbon:light" class="w-4 h-4" />
     </div>
 

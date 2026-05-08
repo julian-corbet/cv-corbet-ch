@@ -1,5 +1,6 @@
 // src/content/config.ts
 import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
 
 /* Shared section schema for markdown content collections */
 const sectionSchema = z.object({
@@ -18,7 +19,11 @@ const sectionSchema = z.object({
   hidden: z.boolean().optional(),
 });
 
-const makeContent = () => defineCollection({ type: "content", schema: sectionSchema });
+const makeContent = (folder: string) =>
+  defineCollection({
+    loader: glob({ pattern: "*.md", base: `./src/content/${folder}` }),
+    schema: sectionSchema,
+  });
 
 /* config/headers.yaml */
 const headersSchema = z.object({
@@ -39,18 +44,18 @@ const headersSchema = z.object({
 const contactsSchema = z.object({
   header: z.object({
     phone: z.string(),
-    email: z.string().email(),
+    email: z.email(),
     location: z.string(),
   }),
   social: z.object({
-    calendar: z.string().url().optional(),
-    signal: z.string().url().optional(),
-    whatsapp: z.string().url().optional(),
-    telegram: z.string().url().optional(),
-    linkedin: z.string().url().optional(),
-    threema: z.string().url().optional(),
-    x: z.string().url().optional(),
-    matrix: z.string().url().optional(),
+    calendar: z.url().optional(),
+    signal: z.url().optional(),
+    whatsapp: z.url().optional(),
+    telegram: z.url().optional(),
+    linkedin: z.url().optional(),
+    threema: z.url().optional(),
+    x: z.url().optional(),
+    matrix: z.url().optional(),
   }),
 });
 
@@ -83,7 +88,7 @@ const metadataSchema = z.object({
   seo: z.object({
     seo_title: z.string(),
     seo_description: z.string(),
-    seo_canonical_url: z.string().url(),
+    seo_canonical_url: z.url(),
     seo_keywords: z.array(z.string()).min(3),
     seo_author: z.string(),
     seo_site_name: z.string(),
@@ -91,17 +96,13 @@ const metadataSchema = z.object({
   }),
 
   og: z.object({
-    og_type: z.enum([
-      "website",
-      "profile",
-    ]).default("website"),
+    og_type: z.enum(["website", "profile"]).default("website"),
     og_title: z.string(),
     og_description: z.string(),
-    og_url: z.string().url(),
+    og_url: z.url(),
     og_site_name: z.string(),
     og_locale: z.string().default("en_US"),
 
-    // EITHER multiple images...
     og_images: z.array(z.object({
       path: z.string(),
       width: z.number().int().positive(),
@@ -109,12 +110,10 @@ const metadataSchema = z.object({
       alt: z.string().optional(),
     })).optional(),
 
-    // ...OR a single image (back-compat)
     og_image_path: z.string().optional(),
     og_image_width: z.number().int().positive().optional(),
     og_image_height: z.number().int().positive().optional(),
 
-    // Open Graph profile properties (used when og_type = "profile")
     profile_first_name: z.string().optional(),
     profile_last_name: z.string().optional(),
     profile_username: z.string().optional(),
@@ -135,9 +134,9 @@ const metadataSchema = z.object({
     alternateName: z.array(z.string()).optional(),
     jobTitle: z.string(),
     description: z.string(),
-    image: z.string().url(),
-    url: z.string().url(),
-    sameAs: z.array(z.string().url()).optional(),
+    image: z.url(),
+    url: z.url(),
+    sameAs: z.array(z.url()).optional(),
     knowsAbout: z.array(z.string()).optional(),
 
     hasOccupation: z.object({
@@ -152,7 +151,7 @@ const metadataSchema = z.object({
     contactPoint: z.object({
       "@type": z.literal("ContactPoint"),
       telephone: z.string().optional(),
-      email: z.string().email().optional(),
+      email: z.email().optional(),
       contactType: z.string().optional(),
       areaServed: z.string().optional(),
       availableLanguage: z.union([z.string(), z.array(z.string())]).optional(),
@@ -160,20 +159,23 @@ const metadataSchema = z.object({
   }),
 });
 
-/* Unified data schema for config/*.yaml */
+/* Unified data schema for config/*.yaml — Astro picks one based on content shape */
 const configUnionSchema = z.union([headersSchema, contactsSchema, downloadsSchema, metadataSchema]);
 
 export const collections = {
-  "executive-summary": makeContent(),
-  values: makeContent(),
-  "skills-finance": makeContent(),
-  "skills-strategy": makeContent(),
-  "skills-cloud-ai": makeContent(),
-  thoughts: makeContent(),
-  projects: makeContent(),
-  jobs: makeContent(),
-  education: makeContent(),
-  social: makeContent(),
-  references: makeContent(),
-  config: defineCollection({ type: "data", schema: configUnionSchema }),
+  "executive-summary": makeContent("executive-summary"),
+  values: makeContent("values"),
+  "skills-finance": makeContent("skills-finance"),
+  "skills-strategy": makeContent("skills-strategy"),
+  "skills-cloud-ai": makeContent("skills-cloud-ai"),
+  thoughts: makeContent("thoughts"),
+  projects: makeContent("projects"),
+  jobs: makeContent("jobs"),
+  education: makeContent("education"),
+  social: makeContent("social"),
+  references: makeContent("references"),
+  config: defineCollection({
+    loader: glob({ pattern: "*.yaml", base: "./src/content/config" }),
+    schema: configUnionSchema,
+  }),
 };

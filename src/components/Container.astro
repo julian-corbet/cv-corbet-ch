@@ -1,5 +1,5 @@
 ---
-import { getEntry, getCollection } from "astro:content";
+import { getEntry, getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
 import AccordionLayout from "../layouts/AccordionLayout.astro";
@@ -70,7 +70,7 @@ for (const s of sections) {
     const items: Item<Key>[] = await Promise.all(
       visible.map(async (e) => {
         try {
-          const { Content } = await e.render();
+          const { Content } = await render(e);
           return { data: e.data, Content };
         } catch (err) {
           console.error(`[Container] render failed for entry '${e.id}' in '${s.folder}'`, err);
