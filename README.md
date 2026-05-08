@@ -63,17 +63,16 @@ Global settings like contact information, download links, and page metadata are 
 ## 🛠️ Installation & Usage
 
 ### Prerequisites
-- Node.js (v18 or higher)
-- npm
+- [Bun](https://bun.sh/) (v1.0 or higher)
 
 ### Commands
 
 | Command | Action |
 | :--- | :--- |
-| `npm install` | Installs all dependencies. |
-| `npm run dev` | Starts the local development server at `localhost:4321`. |
-| `npm run build` | Builds the production site to the `./dist/` directory. |
-| `npm run preview` | Previews the built site locally. |
+| `bun install` | Installs all dependencies. |
+| `bun run dev` | Starts the local development server at `localhost:4321`. |
+| `bun run build` | Builds the production site to the `./dist/` directory. |
+| `bun run preview` | Previews the built site locally. |
 
 ## 📄 License
 
