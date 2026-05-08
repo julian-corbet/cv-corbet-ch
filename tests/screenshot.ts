@@ -13,10 +13,12 @@ if (!url || !viewportArg || !theme || !outPath) {
 const [w, h] = viewportArg.split("x").map(Number);
 
 const browser = await chromium.launch();
+const dsf = Number(process.env.DSF ?? "2");
 const ctx = await browser.newContext({
   viewport: { width: w, height: h },
-  deviceScaleFactor: 2,
+  deviceScaleFactor: dsf,
 });
+await ctx.route("**/*", r => r.continue({ headers: { ...r.request().headers(), "cache-control": "no-cache, no-store" } }));
 await ctx.addInitScript(t => localStorage.setItem("theme", t), theme);
 const page = await ctx.newPage();
 await page.goto(url, { waitUntil: "networkidle" });

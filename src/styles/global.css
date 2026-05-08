@@ -97,3 +97,15 @@ body {
   color: var(--color-base-content);
   background-color: var(--color-base-100);
 }
+
+/* daisyUI 4 had .join-vertical > * { margin-top: -1px } for shared borders.
+   Removed in v5; restore for v1 visual parity (compensates the row gap by
+   1px so cumulative drift across 12 sections doesn't break alignment).
+   Applied to all children, including first, so the whole stack starts 1px
+   higher to match v1's anchor. */
+.join-vertical > * { margin-top: -1px; }
+
+/* daisyUI 5 placed the collapse-arrow chevron at top: 2rem; v4 had 1.9rem.
+   Restore to keep the chevron vertically centered like v1. */
+.collapse-arrow > .collapse-title::after,
+.collapse-arrow > input[type="checkbox"] + .collapse-title::after { top: 1.9rem; }
