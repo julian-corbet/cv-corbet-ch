@@ -23,10 +23,6 @@
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.2.20",
-    "@iconify-json/heroicons": "^1.2.3",
-    "@iconify-json/lucide": "^1.2.105",
-    "@iconify-json/material-symbols": "^1.2.70",
-    "@iconify-json/twemoji": "^1.2.5",
     "@tailwindcss/typography": "^0.5.19",
     "daisyui": "^5.5.19",
     "playwright": "^1.59.1"

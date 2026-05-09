@@ -18,10 +18,6 @@
       },
       "devDependencies": {
         "@iconify-json/carbon": "^1.2.20",
-        "@iconify-json/heroicons": "^1.2.3",
-        "@iconify-json/lucide": "^1.2.105",
-        "@iconify-json/material-symbols": "^1.2.70",
-        "@iconify-json/twemoji": "^1.2.5",
         "@tailwindcss/typography": "^0.5.19",
         "daisyui": "^5.5.19",
         "playwright": "^1.59.1",
@@ -135,15 +131,7 @@
 
     "@iconify-json/carbon": ["@iconify-json/carbon@1.2.20", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-wqyxKEbIRdzGdfCAwQqn8iSfO6jx0m1toZAAQdx1NFjxd6iFl1YY4eKI1woWt7XOxs7s7phMW530kDD867JZGw=="],
 
-    "@iconify-json/heroicons": ["@iconify-json/heroicons@1.2.3", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-n+vmCEgTesRsOpp5AB5ILB6srsgsYK+bieoQBNlafvoEhjVXLq8nIGN4B0v/s4DUfa0dOrjwE/cKJgIKdJXOEg=="],
-
-    "@iconify-json/lucide": ["@iconify-json/lucide@1.2.105", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-tbE+cGEixWcRFtW8xkzX1HaGRqp7CDhZb01uPBh7PnRoxXzVET9E73rHOXDdsLKUGoTuYGZKhhX6oirvoy5NDg=="],
-
-    "@iconify-json/material-symbols": ["@iconify-json/material-symbols@1.2.70", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-8FljpHMgaYwqHKEt7ovTog4d5Vuz6ivv0jih3yuoo68UWM1VltL6FUxSq/HrAsgItWBy9VNIOQUSIHgNUoHrkA=="],
-
     "@iconify-json/mdi": ["@iconify-json/mdi@1.2.3", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg=="],
-
-    "@iconify-json/twemoji": ["@iconify-json/twemoji@1.2.5", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-uKpuIEV0v6K5BW3Mjdyl+XKFVAbbcPxAgifKvEMtZoUZB5+YiY5zaMm2uNNCxyXzAWU9yNLlj41WU6/mvgALsw=="],
 
     "@iconify/tools": ["@iconify/tools@4.2.0", "", { "dependencies": { "@iconify/types": "^2.0.0", "@iconify/utils": "^2.3.0", "cheerio": "^1.1.2", "domhandler": "^5.0.3", "extract-zip": "^2.0.1", "local-pkg": "^1.1.2", "pathe": "^2.0.3", "svgo": "^3.3.2", "tar": "^7.5.2" } }, "sha512-WRxPva/ipxYkqZd1+CkEAQmd86dQmrwH0vwK89gmp2Kh2WyyVw57XbPng0NehP3x4V1LzLsXUneP1uMfTMZmUA=="],
 
