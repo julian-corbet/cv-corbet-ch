@@ -1,0 +1,10 @@
+schema = 1
+project = "cv"
+
+# Static build only; browser acceptance and deployment remain separate.
+
+[checks.build]
+kind = "javascript"
+manager = "bun"
+scripts = ["build"]
+install = true
